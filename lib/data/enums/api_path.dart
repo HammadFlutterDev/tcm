@@ -1,0 +1,33 @@
+enum APIPath {
+  signup,
+  signin,
+  screenName,
+  completeProfile,
+  verifyOTP,
+  favouriteList,
+  resendOTP,
+  forgetPassword,
+  forgetPasswordVerify,
+  resetPassword,
+  updateProfile,
+  deleteProfile,
+  getAllCategories,
+  homeProductsByType,
+  homeAllProductsByType,
+  productDetails,
+  productListByType,
+  favouriteCheck,
+  favouriteUncheck,
+  subcategories,
+  subcategoriesProducts,
+  favouriteProducts,
+  similarProducts,
+  contactSupport,
+  searchProduct,
+  logout,
+  refresh,
+  notifications,
+  privacyPolicy
+
+
+}
