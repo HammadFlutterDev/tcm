@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/ad_preview_view.dart';
 import 'package:tcm/view/ad_product_view.dart';
+import 'package:tcm/view/checkout_view.dart';
+import 'package:tcm/view/vender_view.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:tcm/widgets/custom_button_widget.dart';
 import 'package:tcm/widgets/display_network_image.dart';
 import 'package:tcm/widgets/scroll_behavior.dart';
 
@@ -22,6 +28,28 @@ class VenderProductDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(AppStyles.screenHorizontalPadding),
+        child: Row(
+          children: [
+            Expanded(
+                child: CustomButtonWidget(
+              title: "Ad to Cart",
+              onPressed: () {},
+              border: Border.all(color: AppColors.borderColor),
+              textColor: Colors.black,
+              color: const Color(0xffEFEDEC),
+            )),
+            9.pw,
+            Expanded(
+                child: CustomButtonWidget(
+                    title: "Buy Now",
+                    onPressed: () {
+                      AppRouter.push(const CheckoutView());
+                    }))
+          ],
+        ),
+      ),
       appBar: AppBar(
         iconTheme: IconThemeData(size: 100.r),
         automaticallyImplyLeading: false,
@@ -77,7 +105,12 @@ class VenderProductDetailView extends StatelessWidget {
                                 Text(
                                   'Fast Dilvery',
                                   style: context.textStyle.bodyMedium,
-                                )
+                                ),
+                                3.pw,
+                                SvgPicture.asset(
+                                  Assets.deliveryVanIcon,
+                                  width: 17.r,
+                                ),
                               ],
                             ),
                           )
@@ -99,8 +132,34 @@ class VenderProductDetailView extends StatelessWidget {
                         children: [
                           Text(
                             "\$${product.productPrice}",
-                            style: context.textStyle.headlineLarge,
+                            style: context.textStyle.displayMedium!.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 30.sp),
                           ),
+                          5.pw,
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 10.r),
+                            child: Text(
+                              "\$12.00",
+                              style: context.textStyle.bodyMedium!.copyWith(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+
+                          // TextSpan(
+                          //     text: '2',
+                          //     style: TextStyle(
+                          //         color: Colors.black,
+                          //         fontSize: 30,
+                          //         fontFeatures: [
+                          //           FontFeature.superscripts()
+                          //         ])),
+                          // TextSpan(
+                          //     text: 'O',
+                          //     style: TextStyle(
+                          //         color: Colors.black, fontSize: 30)),
+
                           const Spacer(),
                           Container(
                             height: 27.h,
@@ -182,6 +241,7 @@ class VenderProductDetailView extends StatelessWidget {
                                       Container(
                                         width: 49.r,
                                         height: 46.r,
+                                        padding: EdgeInsets.all(10.r),
                                         decoration: BoxDecoration(
                                           // Background with linear gradient (from #F5F6F9 to #FFF)
                                           gradient: const LinearGradient(
@@ -197,16 +257,22 @@ class VenderProductDetailView extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                         ),
+                                        child: SvgPicture.asset(
+                                          ProductFeatureDataModel
+                                              .feature[index].icon,
+                                        ),
                                       ),
+                                      10.ph,
                                       Expanded(
                                         child: Text(
-                                          "High Rated gdhjsg",
+                                          ProductFeatureDataModel
+                                              .feature[index].title,
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.center,
                                           style: context.textStyle.displaySmall!
                                               .copyWith(
-                                                  height: 1.3,
+                                                  height: 0.8,
                                                   color: Colors.black
                                                       .withValues(alpha: 0.7)),
                                         ),
@@ -216,7 +282,7 @@ class VenderProductDetailView extends StatelessWidget {
                                 ),
                             separatorBuilder: (context, index) =>
                                 const VerticalDivider(),
-                            itemCount: 4),
+                            itemCount: ProductFeatureDataModel.feature.length),
                         // child: Row(
                         //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         //   children: List.generate(
@@ -279,10 +345,22 @@ class VenderProductDetailView extends StatelessWidget {
                         features: product.keyFeatures,
                       ),
                       const UserRatingWidget(),
-                      AboutSellerWidget()
+                      const AboutSellerWidget(),
+                      const Row(
+                        children: [
+                          Expanded(
+                              child: TitleHeadingWidget(
+                                  title: "More Product Similar To This"))
+                        ],
+                      ),
+                      10.ph,
                     ],
                   ),
-                )
+                ),
+                Consumer(builder: (context, ref, child) {
+                  final product = ref.watch(productDataProvider).nearByProducts;
+                  return VerticalProjectsDisplayLayoutWidget(temp: product);
+                }),
               ],
             ),
           )),
@@ -331,7 +409,7 @@ class AboutSellerWidget extends StatelessWidget {
               Container(
                 // height: 45.h,
                 // constraints: BoxConstraints(maxHeight: 45.h, minHeight: 45.h),
-                padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 4.r),
+                padding: EdgeInsets.symmetric(vertical: 4.r),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6.r),
                     color: const Color(0xffE8F0FF)),
@@ -340,27 +418,59 @@ class AboutSellerWidget extends StatelessWidget {
                     3,
                     (index) => Expanded(
                         child: Container(
+                      padding: EdgeInsets.only(left: 20.r),
+                      decoration: BoxDecoration(
+                          border: index == 1
+                              ? Border(
+                                  left:
+                                      BorderSide(color: AppColors.borderColor),
+                                  right:
+                                      BorderSide(color: AppColors.borderColor))
+                              : null),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
                               Text(
-                                "84%",
+                                index == 0 ? "84%" : "100%",
                                 style: context.textStyle.displayMedium,
                               ),
                               3.pw,
-                              Text(
-                                "Medium",
-                                style: context.textStyle.bodySmall!
-                                    .copyWith(fontSize: 10.sp),
-                              )
+                              index == 0
+                                  ? Text(
+                                      "Medium",
+                                      style: context.textStyle.bodySmall!
+                                          .copyWith(fontSize: 10.sp),
+                                    )
+                                  : Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 5.r,
+                                        // vertical: 2.r
+                                      ),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xff4CAF50),
+                                          borderRadius:
+                                              BorderRadius.circular(2.r)),
+                                      child: Text(
+                                        "High",
+                                        style: context.textStyle.bodySmall!
+                                            .copyWith(
+                                                fontSize: 10.sp,
+                                                color: Colors.white),
+                                      ),
+                                    )
                             ],
                           ),
                           Row(
                             children: [
                               Expanded(
                                 child: Text(
-                                  "sghsg" * 5,
+                                  index == 0
+                                      ? "Positive Seller..."
+                                      : index == 1
+                                          ? "Ship on Time"
+                                          : "Return Guaranteed",
                                   style: context.textStyle.bodySmall!,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -506,4 +616,22 @@ class CustomRatingIndicator extends StatelessWidget {
       direction: Axis.horizontal,
     );
   }
+}
+
+class ProductFeatureDataModel {
+  late final String title;
+  late final String icon;
+
+  ProductFeatureDataModel({required this.title, required this.icon});
+
+  static List<ProductFeatureDataModel> feature = [
+    ProductFeatureDataModel(
+        title: "Delivery on time", icon: Assets.deliveryTruckIcon),
+    ProductFeatureDataModel(
+        title: "High Rated Seller", icon: Assets.ratingStarIcons),
+    ProductFeatureDataModel(
+        title: "Cash on Delivery", icon: Assets.cashNoteIcons),
+    ProductFeatureDataModel(
+        title: "Secure Transaction", icon: Assets.securityIcons),
+  ];
 }

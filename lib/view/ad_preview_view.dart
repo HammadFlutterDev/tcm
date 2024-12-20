@@ -70,11 +70,7 @@ class AdPreviewView extends StatelessWidget {
 class ProductDetailWidget extends StatelessWidget {
   final String? description;
   final List<String>? features;
-  const ProductDetailWidget({
-    super.key,
-    this.description,
-    this.features
-  });
+  const ProductDetailWidget({super.key, this.description, this.features});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +83,8 @@ class ProductDetailWidget extends StatelessWidget {
           children: [
             Expanded(
                 child: Text(
-          description ??    "Red Bull Energy Drink is a premium energy beverage designed to give you wings whenever you need them. Whether you're tackling a busy day, pursuing sports, or studying late at night, Red Bull provides a quick and effective energy boost.",
+              description ??
+                  "Red Bull Energy Drink is a premium energy beverage designed to give you wings whenever you need them. Whether you're tackling a busy day, pursuing sports, or studying late at night, Red Bull provides a quick and effective energy boost.",
               style: context.textStyle.bodyMedium,
             )),
           ],
@@ -108,7 +105,7 @@ class ProductDetailWidget extends StatelessWidget {
                 10.pw,
                 Expanded(
                     child: Text(
-             features?[0]??     "This is Best" * 10,
+                  features?[0] ?? "This is Best" * 10,
                   style: context.textStyle.bodyMedium,
                 )),
               ],
@@ -126,7 +123,7 @@ class ProductDetailWidget extends StatelessWidget {
               Expanded(
                 child: TextWithSeeMore(
                   maxLength: 4,
-                  text:features?[0] ?? "This is Best" * 10,
+                  text: features?[0] ?? "This is Best" * 10,
                 ),
               ),
             ],
@@ -175,12 +172,22 @@ class LocationDetailWidget extends StatelessWidget {
 }
 
 class AdDetailWidget extends StatelessWidget {
-  const AdDetailWidget({
-    super.key,
-  });
+  final bool? showRecipt;
+  final VoidCallback? onTap;
+  const AdDetailWidget({super.key, this.showRecipt = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    List<ProductDetailTitleDataModel> list = [];
+    if (showRecipt!) {
+      list = List.from(ProductDetailTitleDataModel.detailList);
+      list.insertAll(2, [
+        ProductDetailTitleDataModel(
+            title: "Buying receipt", description: "View Receipt")
+      ]);
+    } else {
+      list = List.from(ProductDetailTitleDataModel.detailList);
+    }
     return Column(
       spacing: 10.h,
       children: [
@@ -188,13 +195,12 @@ class AdDetailWidget extends StatelessWidget {
           children: [TitleHeadingWidget(title: "Details")],
         ),
         ...List.generate(
-          ProductDetailTitleDataModel.detailList.length,
+          list.length,
           (index) => ProductDetailTitleWidget(
-            title: ProductDetailTitleDataModel.detailList[index].title,
-            description:
-                ProductDetailTitleDataModel.detailList[index].description,
-            showOutline:
-                index != ProductDetailTitleDataModel.detailList.length - 1,
+            title: list[index].title,
+            description: list[index].description,
+            showOutline: index != list.length - 1,
+            onTap: onTap,
           ),
         )
       ],
@@ -206,10 +212,12 @@ class ProductDetailTitleWidget extends StatelessWidget {
   final String title;
   final String description;
   final bool showOutline;
+  final VoidCallback? onTap;
   const ProductDetailTitleWidget(
       {super.key,
       required this.title,
       required this.description,
+      this.onTap,
       this.showOutline = true});
 
   @override
@@ -228,11 +236,24 @@ class ProductDetailTitleWidget extends StatelessWidget {
             style: context.textStyle.bodyMedium!.copyWith(fontSize: 16.sp),
           ),
           Expanded(
-              child: Text(
-            description,
-            textAlign: TextAlign.right,
-            style: context.textStyle.displayMedium!.copyWith(fontSize: 16.sp),
-          ))
+              child: description != "View Receipt"
+                  ? Text(
+                      description,
+                      textAlign: TextAlign.right,
+                      style: context.textStyle.displayMedium!
+                          .copyWith(fontSize: 16.sp),
+                    )
+                  : GestureDetector(
+                      onTap: onTap,
+                      child: Text(
+                        description,
+                        textAlign: TextAlign.right,
+                        style: context.textStyle.displayMedium!.copyWith(
+                          decoration: TextDecoration.underline,
+                          fontSize: 16.sp,
+                          color: AppColors.primaryColor,
+                        ),
+                      )))
         ],
       ),
     );
@@ -240,9 +261,11 @@ class ProductDetailTitleWidget extends StatelessWidget {
 }
 
 class ProductTitleWidget extends StatelessWidget {
-  const ProductTitleWidget({
-    super.key,
-  });
+  final String? title;
+  final String? address;
+  final String? price;
+
+  const ProductTitleWidget({super.key, this.title, this.address, this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -252,7 +275,8 @@ class ProductTitleWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                "Best Travel neck pillow available two sets in good price",
+                title ??
+                    "Best Travel neck pillow available two sets in good price",
                 style:
                     context.textStyle.displayLarge!.copyWith(fontSize: 20.sp),
               ),
@@ -263,13 +287,13 @@ class ProductTitleWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              "\$12.00",
+              "\$${price ?? 12.00}",
               style: context.textStyle.headlineLarge,
             ),
           ],
         ),
-        const AddressDisplayTextWidget(
-            address: "Rainbow Resort, San Luis Obispo")
+        AddressDisplayTextWidget(
+            address: address ?? "Rainbow Resort, San Luis Obispo")
       ],
     );
   }

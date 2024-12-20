@@ -5,7 +5,8 @@ import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
-import 'package:tcm/view/vender_product_detail_view.dart';
+import 'package:tcm/view/product_detail_view.dart';
+
 import 'package:tcm/widgets/display_network_image.dart';
 
 class ProductItemCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class ProductItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        AppRouter.push(VenderProductDetailView(
+        AppRouter.push(ProductDetailView(
           product: product,
         ));
       },

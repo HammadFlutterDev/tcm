@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/widgets/custom_search_bar_widget.dart';
 
 class BuySellScreenTemplateWidget extends StatefulWidget {
   final String title;
@@ -26,11 +27,16 @@ class _BuySellScreenTemplateWidgetState
       padding:
           EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
       children: [
+        if (widget.searchEnable!) ...[
+          CustomSearchBarWidget(
+              controller: TextEditingController(), hintText: "Search product"),
+          20.ph,
+        ],
         Text(
           widget.title,
           style: context.textStyle.displayMedium!.copyWith(fontSize: 18.sp),
         ),
-        20.ph,
+        10.ph,
         ...widget.childrens
       ],
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
@@ -15,12 +16,12 @@ class SellProductView extends StatelessWidget {
   final List<Widget>? children;
   final bool? showSearchBar;
   // final CategoryDataModel? category;
-  const SellProductView(
-      {super.key,
-      this.title,
-      this.children,
-      this.showSearchBar = false,
-      });
+  const SellProductView({
+    super.key,
+    this.title,
+    this.children,
+    this.showSearchBar = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +42,25 @@ class SellProductView extends StatelessWidget {
                         title: CategoryDataModel.categories[index].title,
                         onTap: () {
                           AppRouter.push(SellProductView(
-                            
                             children: List.generate(
-                                CategoryDataModel.subCategories.length,
+                                CategoryDataModel.sellSubCategories.length,
                                 (index) => ProductCategoryTitleWidget(
                                       title: CategoryDataModel
-                                          .subCategories[index].title,
+                                          .sellSubCategories[index].title,
                                       onTap: () {
                                         AppRouter.push(SellProductView(
-                                        
+                                          showSearchBar: true,
                                           title: CategoryDataModel
-                                              .subCategories[index].title,
+                                              .sellSubCategories[index].title,
                                           children: List.generate(
                                               CategoryDataModel
-                                                  .subCategories.length,
+                                                  .sellSubInnerCategories
+                                                  .length,
                                               (index) =>
                                                   ProductCategoryTitleWidget(
                                                     title: CategoryDataModel
-                                                        .subCategories[index]
+                                                        .sellSubInnerCategories[
+                                                            index]
                                                         .title,
                                                     onTap: () {
                                                       AppRouter.push(AdProductView(
@@ -68,7 +70,7 @@ class SellProductView extends StatelessWidget {
                                                                   index],
                                                           subCategoryTitle:
                                                               CategoryDataModel
-                                                                  .subCategories[
+                                                                  .sellSubInnerCategories[
                                                                       index]
                                                                   .title));
                                                     },
@@ -94,11 +96,15 @@ class ProductCategoryTitleWidget extends StatelessWidget {
   final String title;
   final String? imageUrl;
   final VoidCallback onTap;
+  final bool? isSelectOpt;
+  final bool? isCheck;
   const ProductCategoryTitleWidget(
       {super.key,
       this.showLeadWidget = false,
       required this.title,
       required this.onTap,
+      this.isSelectOpt = false,
+      this.isCheck = false,
       this.imageUrl = ""});
 
   @override
@@ -141,13 +147,34 @@ class ProductCategoryTitleWidget extends StatelessWidget {
           : null,
       title: Text(
         title,
-        style: context.textStyle.bodyMedium!.copyWith(fontSize: 16.sp),
+        style: context.textStyle.bodyMedium!.copyWith(
+            fontSize: 16.sp,
+            color: isSelectOpt!
+                ? Colors.black.withValues(alpha: 0.5)
+                : Colors.black),
       ),
-      trailing: Icon(
-        Icons.arrow_forward_ios,
-        size: 15.r,
-        color: Colors.black,
-      ),
+      trailing: !isSelectOpt!
+          ? Icon(
+              Icons.arrow_forward_ios,
+              size: 15.r,
+              color: Colors.black,
+            )
+          : GestureDetector(
+              child: Container(
+                width: 30.r,
+                height: 30.r,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: isCheck! ? AppColors.primaryGradinet : null,
+                  color: !isCheck! ? Colors.grey.withValues(alpha: 0.2) : null,
+                ),
+                child: Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 18.r,
+                ),
+              ),
+            ),
     );
   }
 }

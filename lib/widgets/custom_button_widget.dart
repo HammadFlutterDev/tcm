@@ -12,6 +12,7 @@ class CustomButtonWidget extends StatelessWidget {
   final Color? textColor;
   final Widget? child;
   final bool isLoad;
+  final BoxBorder? border;
 
   const CustomButtonWidget(
       {super.key,
@@ -22,6 +23,7 @@ class CustomButtonWidget extends StatelessWidget {
       this.textColor,
       this.child,
       this.isLoad = false,
+      this.border,
       this.width});
 
   @override
@@ -29,6 +31,7 @@ class CustomButtonWidget extends StatelessWidget {
     return Container(
       width: width ?? double.infinity,
       decoration: BoxDecoration(
+        border: border,
           gradient: color == null ? AppColors.primaryGradinet : null,
           borderRadius: BorderRadius.circular(32.r)),
       height: height ?? 54.h,
@@ -47,7 +50,7 @@ class CustomButtonWidget extends StatelessWidget {
                   (!isLoad
                       ? Text(
                           title,
-                          style: context.textStyle.bodyMedium!.copyWith(
+                          style: context.textStyle.displayMedium!.copyWith(
                               color: textColor ?? Colors.white,
                               fontSize: 16.sp),
                         )

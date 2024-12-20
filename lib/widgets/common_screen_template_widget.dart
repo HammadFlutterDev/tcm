@@ -7,13 +7,22 @@ import '../config/app_colors.dart';
 
 class CommonScreenTemplateWidget extends StatelessWidget {
   final String title;
-  final Widget ? leadingWidget;
-  final Widget ? actionWidget;
-  final Widget  child;
-  final double ?appBarHeight;
+  final Widget? leadingWidget;
+  final Widget? actionWidget;
+  final Widget child;
+  final double? appBarHeight;
+  final PreferredSizeWidget? bottomAppbarWidget;
   final Widget? bottomWidget;
 
-  const CommonScreenTemplateWidget({super.key, this.leadingWidget, required this.title, required this.child, this.actionWidget, this.appBarHeight, this.bottomWidget});
+  const CommonScreenTemplateWidget(
+      {super.key,
+      this.leadingWidget,
+      required this.title,
+      required this.child,
+      this.actionWidget,
+      this.appBarHeight,
+      this.bottomWidget,
+      this.bottomAppbarWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,8 @@ class CommonScreenTemplateWidget extends StatelessWidget {
       backgroundColor: AppColors.scaffoldColor1,
       bottomSheet: bottomWidget,
       appBar: PreferredSize(
-        preferredSize:  Size.fromHeight( appBarHeight ?? AppBar().preferredSize.height + 40.h),
+        preferredSize: Size.fromHeight(
+            appBarHeight ?? AppBar().preferredSize.height + 40.h),
         child: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -33,16 +43,11 @@ class CommonScreenTemplateWidget extends StatelessWidget {
             style: context.textStyle.displayMedium!.copyWith(fontSize: 18.sp),
           ),
           iconTheme: IconThemeData(size: 100.r),
-          actions: actionWidget != null ? [
-           actionWidget!
-          ] : null,  
+          actions: actionWidget != null ? [actionWidget!] : null,
+          bottom: bottomAppbarWidget,
         ),
-
       ),
-      body: ScrollConfiguration(
-        behavior: MyBehavior(),
-        child: child   ),
+      body: ScrollConfiguration(behavior: MyBehavior(), child: child),
     );
-
   }
 }

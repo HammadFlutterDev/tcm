@@ -77,8 +77,9 @@ class Assets {
   //GIF
   static const String weatherIcon = "${gifPath}weather_icon.gif";
   static const String doneIcon = "${gifPath}done_icon.gif";
-  static const String notificationSetIcon = "${gifPath}notification_set_icon.gif";
-
+  static const String notificationSetIcon =
+      "${gifPath}notification_set_icon.gif";
+  static const String searchIconGif = "${gifPath}search_icon.gif";
 
   //COMMON
   static const String userAvatar = "${imagePath}user_avatar.jpg";
@@ -95,7 +96,19 @@ class Assets {
   static const String plusIcon = "${iconPath}plus_icon.svg";
   static const String addDocumentIcon = "${iconPath}add_document_icon.svg";
   static const String ratingStarIcon = "${iconPath}rating_star_icon.svg";
-  
+  static const String deliveryIcon = "${iconPath}delivery_truck.svg";
+  static const String deliveryVanIcon = "${iconPath}delivery_van_icon.svg";
+  static const String deliveryTruckIcon = "${iconPath}delivery_truck.svg";
+  static const String ratingStarIcons = "${iconPath}rating_stars_icons.svg";
+  static const String cashNoteIcons = "${iconPath}payment_transfer_icon.svg";
+  static const String securityIcons = "${iconPath}secure_icon.svg";
+  static const String setPinLocationIcon = "${iconPath}set_location_icon.svg";
+  static const String map = "${imagePath}map_image.png";
+  static const String mobileMockUpImage = "${imagePath}mobile_mockup.png";
+  static const String searchIcon = "${iconPath}search_icon.svg";
+  static const String confirmOrderIcon = "${iconPath}order_confirm_icon.svg";
+
+
 
   static const String userImage =
       "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=";

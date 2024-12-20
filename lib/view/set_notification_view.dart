@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/providers/bottom_index_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
+import 'package:tcm/view/navigation_view.dart';
 
 import 'package:tcm/widgets/custom_button_widget.dart';
 
@@ -20,11 +23,14 @@ class SetNotificationView extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: AppStyles.screenHorizontalPadding,
             vertical: AppStyles.screenHorizontalPadding),
-        child: CustomButtonWidget(
-            title: "Done",
-            onPressed: () {
-              AppRouter.back();
-            }),
+        child: Consumer(builder: (context, ref, child) {
+          return CustomButtonWidget(
+              title: "Done",
+              onPressed: () {
+                ref.read(bottomIndexProvider.notifier).setIndex(0);
+                AppRouter.pushAndRemoveUntil(const NavigationView());
+              });
+        }),
       ),
       body: Center(
         child: Padding(

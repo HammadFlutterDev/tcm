@@ -9,6 +9,8 @@ import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/utils/app_router.dart';
+import 'package:tcm/view/search_product_view.dart';
 import 'package:tcm/widgets/cutom_dot_slide_widget.dart';
 import 'package:tcm/widgets/display_network_image.dart';
 import 'package:tcm/widgets/tab_screen_template.dart';
@@ -48,17 +50,32 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
         ProductDisplayWidget(
           items: products,
           title: "Pre-owned Items Nearby",
+          onTap: () {
+            AppRouter.push(const SearchProductView(
+              title: "Pre-owned Items Nearby",
+            ));
+          },
         ),
         const BannerWidget(),
         ProductDisplayWidget(
           items: products,
           title: "Discounted Pre-owned Beverages",
+          onTap: (){
+            AppRouter.push(const SearchProductView(
+              title:"Discounted Pre-owned Beverages",
+            ));
+          },
         ),
         const OfferWidget(),
         ProductDisplayWidget(
           items: products,
           showAddCard: true,
           title: "Buy from Stores",
+          onTap: (){
+             AppRouter.push(const SearchProductView(
+              title:"Buy from Stores",
+            ));
+          },
         ),
       ],
     );

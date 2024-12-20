@@ -11,6 +11,7 @@ import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/widgets/category_widget.dart';
 
 
+import '../widgets/custom_search_bar_widget.dart';
 import '../widgets/product_widget.dart';
 import '../widgets/tab_screen_template.dart';
 
@@ -33,6 +34,12 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
         height: 162.h,
         topImage: Assets.venderTopViewImage,
         childrens: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.screenHorizontalPadding),
+            child: CustomSearchBarWidget(
+                controller: TextEditingController(), hintText: "What are you looking for?"),
+          ),
           CategoriesWidget(items: CategoryDataModel.categories),
           Padding(
             padding: EdgeInsets.symmetric(

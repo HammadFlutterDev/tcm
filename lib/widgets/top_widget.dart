@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/chatting_list_view.dart';
+import 'package:tcm/view/my_cart_view.dart';
 import 'package:tcm/view/notification_view.dart';
 import 'package:tcm/widgets/custom_menu_icon_shape_widget.dart';
 
@@ -218,10 +219,16 @@ class TopWidget extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Text(
-                            "Search any product",
-                            style: context.textStyle.bodyMedium!.copyWith(
-                                color: Colors.black.withValues(alpha: 0.5)),
+                          Expanded(
+                            child: Text(
+                              "Search any product",
+                              style: context.textStyle.bodyMedium!.copyWith(
+                                  color: Colors.black.withValues(alpha: 0.5)),
+                            ),
+                          ),
+                          Image.asset(
+                            Assets.searchIconGif,
+                            width: 35.r,
                           )
                         ],
                       ),
@@ -234,7 +241,10 @@ class TopWidget extends StatelessWidget {
                           height: 0.9,
                         ),
                         child: CustomMenuIconShape(
-                            icon: Assets.bagIcon, onTap: () {}))
+                            icon: Assets.bagIcon,
+                            onTap: () {
+                              AppRouter.push(MyCartView());
+                            }))
                   ],
                 )
             ],

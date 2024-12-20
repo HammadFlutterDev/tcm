@@ -315,7 +315,7 @@ class ReactionIconWidget extends StatelessWidget {
       height: radius ?? 22.r,
       decoration: const BoxDecoration(
           color: AppColors.reactionIconColor, shape: BoxShape.circle),
-      child: SvgPicture.asset(emoji),
+      child: emoji != "" ? SvgPicture.asset(emoji) : null,
     );
   }
 }
