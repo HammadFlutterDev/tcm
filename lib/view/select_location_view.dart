@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/checkout_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
@@ -11,7 +12,8 @@ import 'package:tcm/widgets/custom_button_widget.dart';
 import '../widgets/custom_search_bar_widget.dart';
 
 class SelectLocationView extends StatelessWidget {
-  const SelectLocationView({super.key});
+  final ProductDataModel ?product;
+  const SelectLocationView({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +70,9 @@ class SelectLocationView extends StatelessWidget {
                       title: "Select",
                       onPressed: () {
                         AppRouter.back();
-                        AppRouter.pushReplacement(const CheckoutView(
+                        AppRouter.pushReplacement( CheckoutView(
                           isLocationSet: true,
+                          product: product,
                         ));
                       }),
                 ],

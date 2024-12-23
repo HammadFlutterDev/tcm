@@ -32,7 +32,7 @@ class CustomListWidget extends StatelessWidget {
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              width: 1, color: AppColors.lightIconColor.withOpacity(0.1)),
+              width: 1, color: AppColors.lightIconColor.withValues(alpha: 0.1)),
         ),
         child: ListTile(
           leading: Container(

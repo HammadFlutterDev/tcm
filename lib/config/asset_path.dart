@@ -16,7 +16,7 @@ class Assets {
   static const String slideImg3b = '${imagePath}slide_image3b.png';
 
   //LOTTIE ANIMATION
-  static const String splashAnimation = '${lottiePath}splash_animation.json';
+  static const String splashAnimation = "${lottiePath}splash_lottie_json.josn";
   static const String internetIssueAnimation =
       '${lottiePath}internet_issue.json';
   static const String noFavouriteAnimation = '${lottiePath}animation_2.json';
@@ -68,21 +68,21 @@ class Assets {
   static const String darkIcon = '${iconPath}nightlight.svg';
   static const String favouriteIcon = '${iconPath}favorite.svg';
   static const String contactSupportIcon = '${iconPath}contact_support.svg';
-  static const String wallet= '${iconPath}wallet.svg';
-  static const String buyProfile= '${iconPath}buyProfile.svg';
-  static const String arrowStrip= '${iconPath}arrow_strip.svg';
-  static const String alignRight= '${iconPath}align_right.svg';
-  static const String volumeHigh= '${iconPath}volume_high.svg';
-  static const String editProfile= '${iconPath}edit_square.svg';
-  static const String logout= '${iconPath}logout.svg';
-  static const String down= '${iconPath}down.svg';
+  static const String wallet = '${iconPath}wallet.svg';
+  static const String buyProfile = '${iconPath}buyProfile.svg';
+  static const String arrowStrip = '${iconPath}arrow_strip.svg';
+  static const String alignRight = '${iconPath}align_right.svg';
+  static const String volumeHigh = '${iconPath}volume_high.svg';
+  static const String editProfile = '${iconPath}edit_square.svg';
+  static const String logout = '${iconPath}logout.svg';
+  static const String down = '${iconPath}down.svg';
 
   //SETTING SCREEN IMAGES
-  static const String masterCard= '${imagePath}master_card.svg';
-  static const String paypal= '${imagePath}paypal.svg';
-  static const String visa= '${imagePath}visa.svg';
+  static const String masterCard = '${iconPath}master_card.svg';
+  static const String paypal = '${iconPath}paypal.svg';
+  static const String visa = '${iconPath}visa.svg';
 
-  static const String refresh= '${iconPath}refresh.svg';
+  static const String refresh = '${iconPath}refresh.svg';
   //SOCIAL ICONS
   static const String googleIcon = "${iconPath}google_icon.svg";
   static const String facebookIcon = "${iconPath}facebook_icon.svg";
@@ -91,9 +91,10 @@ class Assets {
   //GIF
   static const String weatherIcon = "${gifPath}weather_icon.gif";
   static const String doneIcon = "${gifPath}done_icon.gif";
-  static const String notificationSetIcon = "${gifPath}notification_set_icon.gif";
+  static const String notificationSetIcon =
+      "${gifPath}notification_set_icon.gif";
   static const String walletIcon = "${gifPath}flying_wallet.gif";
-  
+  static const String splashGif = "${gifPath}splash_gif.gif";
 
   static const String searchIconGif = "${gifPath}search_icon.gif";
 
@@ -122,10 +123,14 @@ class Assets {
   static const String map = "${imagePath}map_image.png";
   static const String mobileMockUpImage = "${imagePath}mobile_mockup.png";
   static const String searchIcon = "${iconPath}search_icon.svg";
-  static const String confirmOrderIcon = "${iconPath}order_confirm_icon.svg";
+  static const String confirmOrderIcon = "${gifPath}deliver_confirmation.gif";
+  static const String deleteIcon = "${iconPath}delete_icon.svg";
+  static const String shopIcon = "${iconPath}shop_icon.svg";
 
 
 
   static const String userImage =
       "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=";
+
+
 }

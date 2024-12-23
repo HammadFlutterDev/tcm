@@ -9,6 +9,7 @@ class ProductDataModel {
   late final List<String>? keyFeatures;
   late final ProductOwnerData? productOwner;
   late final LocationData locationData;
+  late final bool isStoreProduct; 
 
   ProductDataModel({
     this.id,
@@ -21,6 +22,7 @@ class ProductDataModel {
     this.keyFeatures,
     this.productOwner,
     required this.locationData,
+    this.isStoreProduct = false
   });
 
   // fromJson method to parse JSON into a ProductDataModel object

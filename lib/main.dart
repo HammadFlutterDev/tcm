@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/utils/app_theme.dart';
+import 'package:tcm/view/splash_view.dart';
 
 import 'utils/app_router.dart';
-import 'view/onboarding_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +41,7 @@ class MyApp extends ConsumerWidget {
           navigatorKey: AppRouter.navKey,
           theme: AppTheme.lightTheme,
           // theme: ref.watch(themeProvider),
-          home: const OnboardingView(),
+          home: const SplashView(),
         );
       },
     );

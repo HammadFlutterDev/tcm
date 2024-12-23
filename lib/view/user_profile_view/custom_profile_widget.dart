@@ -24,15 +24,15 @@ class CustomProfileScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      GestureDetector(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 60,
         decoration: BoxDecoration(
           color: AppColors.scaffoldColor1,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(width: 1, color: AppColors.lightIconColor.withOpacity(0.1)),
+          border: Border.all(
+              width: 1, color: AppColors.lightIconColor.withValues(alpha: 0.1)),
         ),
         child: Row(
           children: [
@@ -41,14 +41,16 @@ class CustomProfileScreenWidget extends StatelessWidget {
               width: width ?? 40.r,
               height: height ?? 40.r,
               padding: EdgeInsets.all(8.r),
-
               child: SvgPicture.asset(icon),
             ),
             SizedBox(width: 12.w),
             Expanded(
               child: Text(
                 title,
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500,color: color ?? AppColors.lightIconColor),
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: color ?? AppColors.lightIconColor),
               ),
             ),
             Icon(

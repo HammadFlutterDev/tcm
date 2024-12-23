@@ -21,7 +21,7 @@ class AppColors {
 
   static const Color deleteButtonColor = Color(0xffFF3D00);
 
-  static final Color borderColor = Colors.black.withOpacity( 0.10);
+  static final Color borderColor = Colors.black.withValues(alpha: 0.10);
   static const Color secondaryTextColor = Color(0xFF64748B);
   static const Color reactionIconColor = Color(0xffEFEFEF);
   static const Gradient primaryGradinet = LinearGradient(

@@ -6,6 +6,7 @@ import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/chatting_list_view.dart';
 import 'package:tcm/view/my_cart_view.dart';
 import 'package:tcm/view/notification_view.dart';
+import 'package:tcm/view/user_profile_view/setting_view.dart';
 import 'package:tcm/widgets/custom_menu_icon_shape_widget.dart';
 
 import '../config/app_colors.dart';
@@ -110,7 +111,10 @@ class TopWidget extends StatelessWidget {
                         ),
                         6.pw,
                         CustomMenuIconShape(
-                            icon: Assets.verticalMenuIcon, onTap: () {}),
+                            icon: Assets.verticalMenuIcon,
+                            onTap: () {
+                              AppRouter.push(SettingView());
+                            }),
                       ],
                     ),
                   if (index == 1)
@@ -226,6 +230,7 @@ class TopWidget extends StatelessWidget {
                                   color: Colors.black.withValues(alpha: 0.5)),
                             ),
                           ),
+                          // Expanded(child: MultipleTissueRollText()),
                           Image.asset(
                             Assets.searchIconGif,
                             width: 35.r,
@@ -272,5 +277,74 @@ class CustomBadgeWidget extends StatelessWidget {
           height: 0.9,
         ),
         child: child);
+  }
+}
+
+class MultipleTissueRollText extends StatefulWidget {
+  @override
+  _MultipleTissueRollTextState createState() => _MultipleTissueRollTextState();
+}
+
+class _MultipleTissueRollTextState extends State<MultipleTissueRollText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  late List<Animation<double>> _textAnimations;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2), // Speed of the scrolling
+    );
+
+    // We will create a set of animations for multiple texts
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.linear),
+    );
+
+    // Repeat the animation infinitely
+    _controller.repeat();
+
+    _textAnimations = List.generate(2, (index) {
+      // Create a separate animation for each text
+      return Tween<double>(begin: -100.0 * (index + 1), end: 1.0).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.linear),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 20, // Adjust the height of the widget
+      width: double.infinity,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Stack(
+            children: List.generate(_textAnimations.length, (index) {
+              return Positioned(
+                top: _textAnimations[index].value *
+                    300, // Control the vertical position
+                bottom: 10, // Horizontal padding for the text
+                child: Text(
+                  'Scrolling Text #${index + 1}',
+                  style: context.textStyle.bodyMedium!
+                      .copyWith(color: context.colors.primary),
+                ),
+              );
+            }),
+          );
+        },
+      ),
+    );
   }
 }

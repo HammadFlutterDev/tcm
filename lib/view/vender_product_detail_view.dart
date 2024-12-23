@@ -45,7 +45,9 @@ class VenderProductDetailView extends StatelessWidget {
                 child: CustomButtonWidget(
                     title: "Buy Now",
                     onPressed: () {
-                      AppRouter.push(const CheckoutView());
+                      AppRouter.push( CheckoutView(
+                        product: product,
+                      ));
                     }))
           ],
         ),

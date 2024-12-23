@@ -54,7 +54,9 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 child: CustomButtonWidget(
                     title: "Buy Now",
                     onPressed: () {
-                      AppRouter.push(const CheckoutView());
+                      AppRouter.push( CheckoutView(
+                        product: widget.product,
+                      ));
                     }))
           ],
         ),

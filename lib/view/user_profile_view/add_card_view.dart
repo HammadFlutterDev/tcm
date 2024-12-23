@@ -13,7 +13,8 @@ import '../../widgets/common_screen_template_widget.dart';
 import '../../widgets/custom_back_button_widget.dart';
 
 class AddCardView extends StatelessWidget {
-  const AddCardView({super.key});
+  final VoidCallback? onTap;
+  const AddCardView({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -128,9 +129,10 @@ class AddCardView extends StatelessWidget {
                   vertical: AppStyles.screenHorizontalPadding),
               child: CustomButtonWidget(
                   title: "Add Card",
-                  onPressed: () {
-                    AppRouter.push(const MoneyDepositView());
-                  }),
+                  onPressed: onTap ??
+                      () {
+                        AppRouter.push(const MoneyDepositView());
+                      }),
             )
           ],
         ),
@@ -187,11 +189,11 @@ class TextFieldUnderGround extends StatelessWidget {
         hintStyle: context.textStyle.displayMedium?.copyWith(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.greyColor70.withOpacity(0.4)),
+            color: AppColors.greyColor70.withValues(alpha: 0.4)),
 
         enabledBorder: UnderlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.lightIconColor.withOpacity(0.05)),
+          borderSide: BorderSide(
+              color: AppColors.lightIconColor.withValues(alpha: 0.05)),
         ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.blue, width: 2.0),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -80,12 +79,13 @@ class WalletView extends StatelessWidget {
                                 child: CustomButtonWidget(
                                   title: "Deposit",
                                   onPressed: () {
-
                                     AppRouter.push(const SelectPaymetView());
                                   },
                                   color: AppColors.greyColor,
+                                  child: Row(
+                                    children: [],
+                                  ),
                                   textColor: AppColors.lightIconColor,
-                                  gif: Assets.walletIcon,
                                 ))
                           ],
                         ),
@@ -154,25 +154,25 @@ class WalletView extends StatelessWidget {
             ),
             CustomDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withOpacity(0.1),
+                AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.down,
                 context),
             CustomDepositedStatus(
                 "Refund Successfully",
-                AppColors.blueColor.withOpacity(0.1),
+                AppColors.blueColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.refresh,
                 context),
             CustomDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withOpacity(0.1),
+                AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.down,
                 context),
             CustomDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withOpacity(0.1),
+                AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.down,
                 context),
@@ -189,7 +189,8 @@ class WalletView extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: color ?? AppColors.greenColor.withOpacity(0.1),
+            backgroundColor:
+                color ?? AppColors.greenColor.withValues(alpha: 0.1),
             radius: 40.r,
             child: Container(
               width: 40.r,

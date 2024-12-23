@@ -132,7 +132,7 @@ class TextFieldUnderGround extends StatelessWidget {
           title ?? "",
           style: context.textStyle.displayMedium!.copyWith(
               fontSize: 14.sp,
-              color: AppColors.lightIconColor.withOpacity(0.5),
+              color: AppColors.lightIconColor.withValues(alpha: 0.5),
               fontWeight: FontWeight.w500),
         ),
         12.ph,
@@ -166,11 +166,11 @@ class TextFieldUnderGround extends StatelessWidget {
             hintStyle: context.textStyle.displayMedium?.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: AppColors.lightIconColor.withOpacity(0.5)),
+                color: AppColors.lightIconColor.withValues(alpha: 0.5)),
 
             enabledBorder: UnderlineInputBorder(
-              borderSide:
-                  BorderSide(color: AppColors.lightIconColor.withOpacity(0.05)),
+              borderSide: BorderSide(
+                  color: AppColors.lightIconColor.withValues(alpha: 0.05)),
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.blue, width: 2.0),
