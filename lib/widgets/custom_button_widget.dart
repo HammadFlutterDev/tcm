@@ -4,6 +4,7 @@ import 'package:tcm/utils/app_extensions.dart';
 
 import '../config/app_colors.dart';
 
+
 class CustomButtonWidget extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
@@ -57,8 +58,8 @@ class CustomButtonWidget extends StatelessWidget {
                       : CircularProgressIndicator.adaptive(
                           valueColor:
                               AlwaysStoppedAnimation(textColor ?? Colors.white),
-                        ))
-              : CircularProgressIndicator.adaptive(
+                        )) :
+                  CircularProgressIndicator.adaptive(
                   valueColor: AlwaysStoppedAnimation(textColor ?? Colors.white),
                 )),
     );

@@ -6,16 +6,22 @@ class AppColors {
   static const Color bagdeColor = Color(0xffF26327);
   static const Color secondaryColor = Color(0xffF8F8F8);
   static const Color secondaryColor1 = Color(0xffF6F6F6);
-
   static const Color scaffoldColor1 = Color(0xffF9F9F9);
+  static const Color greyColor = Color(0xffEFEDEC);
+  static const Color blueColor = Color(0xff168FD6);
+  static const Color greenColor50 = Color(0xff4CAF50);
+  static const Color greyColor50 = Color(0xffD9D9D9);
+  static const Color greyColor70 = Color(0xff747474);
 
   static const Color unselectTab = Color(0xFF64748B);
   static const Color lightIconColor = Colors.black;
   static const Color darkIconColor = Colors.white;
 
+  static const Color greenColor = Color(0xff008000);
+
   static const Color deleteButtonColor = Color(0xffFF3D00);
 
-  static final Color borderColor = Colors.black.withValues(alpha: 0.10);
+  static final Color borderColor = Colors.black.withOpacity( 0.10);
   static const Color secondaryTextColor = Color(0xFF64748B);
   static const Color reactionIconColor = Color(0xffEFEFEF);
   static const Gradient primaryGradinet = LinearGradient(
