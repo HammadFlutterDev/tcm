@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/utils/app_extensions.dart';
 
 import '../config/app_colors.dart';
+import '../config/asset_path.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   final String title;
@@ -12,6 +13,7 @@ class CustomButtonWidget extends StatelessWidget {
   final Color? textColor;
   final Widget? child;
   final bool isLoad;
+  final String? gif;
 
   const CustomButtonWidget(
       {super.key,
@@ -20,6 +22,7 @@ class CustomButtonWidget extends StatelessWidget {
       this.height,
       this.color,
       this.textColor,
+      this.gif,
       this.child,
       this.isLoad = false,
       this.width});
@@ -44,17 +47,22 @@ class CustomButtonWidget extends StatelessWidget {
           onPressed: !isLoad ? onPressed : () {},
           child: !isLoad
               ? child ??
-                  (!isLoad
-                      ? Text(
-                          title,
-                          style: context.textStyle.bodyMedium!.copyWith(
-                              color: textColor ?? Colors.white,
-                              fontSize: 16.sp),
-                        )
-                      : CircularProgressIndicator.adaptive(
-                          valueColor:
-                              AlwaysStoppedAnimation(textColor ?? Colors.white),
-                        ))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: context.textStyle.bodyMedium!.copyWith(
+                            color: textColor ?? Colors.white, fontSize: 16.sp),
+                      ),
+                      if (gif != null) SizedBox(width: 8.sp),
+                      if (gif != null)
+                        Image.asset(
+                          Assets.doneIcon,
+                          width: 70.r,
+                        ),
+                    ],
+                  )
               : CircularProgressIndicator.adaptive(
                   valueColor: AlwaysStoppedAnimation(textColor ?? Colors.white),
                 )),

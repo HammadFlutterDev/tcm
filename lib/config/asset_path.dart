@@ -68,7 +68,21 @@ class Assets {
   static const String darkIcon = '${iconPath}nightlight.svg';
   static const String favouriteIcon = '${iconPath}favorite.svg';
   static const String contactSupportIcon = '${iconPath}contact_support.svg';
+  static const String wallet= '${iconPath}wallet.svg';
+  static const String buyProfile= '${iconPath}buyProfile.svg';
+  static const String arrowStrip= '${iconPath}arrow_strip.svg';
+  static const String alignRight= '${iconPath}align_right.svg';
+  static const String volumeHigh= '${iconPath}volume_high.svg';
+  static const String editProfile= '${iconPath}edit_square.svg';
+  static const String logout= '${iconPath}logout.svg';
+  static const String down= '${iconPath}down.svg';
 
+  //SETTING SCREEN IMAGES
+  static const String masterCard= '${imagePath}master_card.svg';
+  static const String paypal= '${imagePath}paypal.svg';
+  static const String visa= '${imagePath}visa.svg';
+
+  static const String refresh= '${iconPath}refresh.svg';
   //SOCIAL ICONS
   static const String googleIcon = "${iconPath}google_icon.svg";
   static const String facebookIcon = "${iconPath}facebook_icon.svg";
@@ -78,6 +92,7 @@ class Assets {
   static const String weatherIcon = "${gifPath}weather_icon.gif";
   static const String doneIcon = "${gifPath}done_icon.gif";
   static const String notificationSetIcon = "${gifPath}notification_set_icon.gif";
+  static const String walletIcon = "${gifPath}flying_wallet.gif";
 
 
   //COMMON
