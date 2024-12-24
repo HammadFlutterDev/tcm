@@ -13,14 +13,14 @@ class CustomProfileScreenWidget extends StatelessWidget {
   final Color? color;
 
   const CustomProfileScreenWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     this.width,
     this.height,
     this.color,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

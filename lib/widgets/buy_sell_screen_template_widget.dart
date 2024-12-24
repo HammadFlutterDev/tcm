@@ -24,8 +24,10 @@ class _BuySellScreenTemplateWidgetState
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding:
-          EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
+      padding: EdgeInsets.only(
+          left: AppStyles.screenHorizontalPadding,
+          right: AppStyles.screenHorizontalPadding,
+          bottom: 40.r),
       children: [
         if (widget.searchEnable!) ...[
           CustomSearchBarWidget(

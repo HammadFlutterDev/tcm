@@ -6,10 +6,10 @@ class RowAnimation extends StatefulWidget {
   const RowAnimation({super.key});
 
   @override
-  _RowAnimationState createState() => _RowAnimationState();
+  RowAnimationState createState() => RowAnimationState();
 }
 
-class _RowAnimationState extends State<RowAnimation>
+class RowAnimationState extends State<RowAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;

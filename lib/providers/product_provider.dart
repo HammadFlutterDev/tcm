@@ -4,7 +4,6 @@ import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/models/product_data_model.dart';
 
 class ProductProvider with ChangeNotifier {
-
   List<ProductDataModel> checkOutList = [];
   List<ProductDataModel> nearByProducts = [
     ProductDataModel(
@@ -231,16 +230,20 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addToCart(ProductDataModel data){
-    if(!checkOutList.contains(data)){
+  void addToCart(ProductDataModel data) {
+    if (!checkOutList.contains(data)) {
       checkOutList.add(data);
       notifyListeners();
     }
-    
-    
   }
-  void clearCheckOutList(){
+
+  void clearCheckOutList() {
     checkOutList.clear();
+    notifyListeners();
+  }
+
+  void removeItem(index) {
+    checkOutList.removeAt(index);
     notifyListeners();
   }
 }

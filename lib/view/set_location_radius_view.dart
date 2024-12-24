@@ -253,7 +253,7 @@ void showFullScreenModal(BuildContext context) {
                     CustomButtonWidget(
                         title: 'Turn on Notifications',
                         onPressed: () {
-                          AppRouter.push(SetNotificationView());
+                          AppRouter.push(const SetNotificationView());
                         })
                   ],
                 ),

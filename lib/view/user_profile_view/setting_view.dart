@@ -106,6 +106,7 @@ class SettingView extends StatelessWidget {
                       style: context.textStyle.displayMedium
                           ?.copyWith(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
+                    8.pw,
                     GestureDetector(
                         onTap: () {
                           AppRouter.push(const EditProfileView());

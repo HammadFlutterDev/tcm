@@ -162,7 +162,6 @@ class _CheckoutViewState extends State<CheckoutView> {
                               ),
                               if ((widget.product?.isStoreProduct ?? false) &&
                                   !widget.isDeliveryOptionSet! &&
-                                  !widget.isLocationSet! &&
                                   !widget.isPaymentMethodSet!)
                                 Container(
                                   height: 40.h,

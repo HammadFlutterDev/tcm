@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/models/product_data_model.dart';
-import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/view/home_view.dart';
 import 'package:tcm/view/search_product_view.dart';
 import 'package:tcm/widgets/category_widget.dart';
@@ -13,18 +11,18 @@ import 'package:tcm/widgets/tab_screen_template.dart';
 import '../models/category_data_model.dart';
 import '../utils/app_router.dart';
 
-class MarketView extends ConsumerStatefulWidget {
+class MarketView extends StatefulWidget {
   const MarketView({super.key});
 
   @override
-  ConsumerState<MarketView> createState() => _MarketViewConsumerState();
+  State<MarketView> createState() => _MarketViewState();
 }
 
-class _MarketViewConsumerState extends ConsumerState<MarketView> {
+class _MarketViewState extends State<MarketView> {
   final List<ProductDataModel> allMarketProducts = [
     ProductDataModel(
       id: 4,
-      productName: 'Beach Towels',
+      productName: 'Bold, vibrant 100% cotton beach towels.',
       productImage: 'https://i.ibb.co/2WLKNNS/image3.png',
       productPrice: '15.99',
       isFavourite: false,
@@ -35,7 +33,7 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
       productDescription:
           'These vibrant beach towels are designed for comfort and style. Made from soft, absorbent fabric, they are perfect for drying off after a swim or lounging on the sand.',
       keyFeatures: [
-        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging.Colorful Designs: Available in various bright colors and patterns to suit your style.'
+        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging. Colorful Designs: Available in various bright colors and patterns to suit your style.'
       ],
       productOwner: ProductOwnerData(
         id: 4,
@@ -52,7 +50,7 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
     ),
     ProductDataModel(
       id: 3,
-      productName: 'Neck Pillow',
+      productName: 'Best travel neck pillow available two sets',
       productImage: 'https://i.ibb.co/ssVbBkd/image4.png',
       productPrice: '19.99',
       isFavourite: true,
@@ -63,7 +61,7 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
       productDescription:
           'The Neck Pillow is designed to provide maximum comfort during travel or relaxation at home. Its ergonomic shape supports the neck and head, reducing strain and fatigue during long journeys.',
       keyFeatures: [
-        'Ergonomic Design: Contoured shape that fits snugly around the neck for optimal support. Memory Foam Material: Adapts to the shape of your neck, providing personalized comfort. Portable and Lightweight: Easy to carry, making it perfect for travel.'
+        'Ergonomic Design: Contoured shape that fits snugly around the neck for optimal support. Memory Foam Material: Adapts to the shape of your neck, providing personalized comfort.Portable and Lightweight: Easy to carry, making it perfect for travel.'
       ],
       productOwner: ProductOwnerData(
         id: 3,
@@ -76,6 +74,34 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
         lat: 51.5074,
         long: -0.1278,
         address: '789 Travel Rd, London',
+      ),
+    ),
+    ProductDataModel(
+      id: 4,
+      productName: 'Diamond Resort International Bag Canvas',
+      productImage: 'https://i.ibb.co/KNvJ8P6/bag.png',
+      productPrice: '15.99',
+      isFavourite: false,
+      productSampleImages: [
+        'https://i.ebayimg.com/images/g/8VMAAOSwWaxghfq0/s-l400.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPGhh-Dmh9S9KS5Bq9QDMWlCAOJSmYCE4MiA&s'
+      ],
+      productDescription:
+          'These vibrant beach towels are designed for comfort and style. Made from soft, absorbent fabric, they are perfect for drying off after a swim or lounging on the sand.',
+      keyFeatures: [
+        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging. Colorful Designs: Available in various bright colors and patterns to suit your style.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 4,
+        username: 'BeachGearCo',
+        userImage:
+            'https://upload.wikimedia.org/wikipedia/en/0/04/All-american-boy-song.jpg',
+        userFeedback: 'Essential for summer fun!',
+      ),
+      locationData: LocationData(
+        lat: 25.7617,
+        long: -80.1918,
+        address: '321 Ocean Blvd, Miami',
       ),
     ),
   ];
@@ -138,6 +164,35 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
         address: '456 Sweet St, Ottawa',
       ),
     ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Schweppes American Ginger Ale',
+      productImage:
+          'https://i.ibb.co/bRhnFfG/Schweppes-American-Ginger-Ale.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://www.schweppesus.com/images/catalog/products/schweppes-ginger-ale.png',
+        'https://m.media-amazon.com/images/I/91QAjCtG+fL._AC_UF1000,1000_QL80_.jpg'
+      ],
+      productDescription:
+          "Schweppes American Ginger Ale is a carbonated drink that balances sweetness and ginger spice. It's made with high-quality ingredients and is a specialty of the Schweppes brand, which has been making premium carbonated beverages for over 200 years",
+      keyFeatures: [
+        'Hydration: Because ginger alleviates nausea and cramps, ginger ale is often used to rehydrate a person recovering from the loss of body fluids due to sweating, vomiting, fever, and diarrhea. Hangover: For obvious reasons, ginger ale can help a person recover from a night of too much partying and booze.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
   ];
   final List<ProductDataModel> preOwnedEntertainmentProducts = [
     ProductDataModel(
@@ -192,7 +247,35 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
       ),
       locationData: LocationData(
           lat: 40.7306, long: -73.9352, address: "444 Sound St, New York City"),
-    )
+    ),
+    ProductDataModel(
+      id: 10,
+      productName: 'Acoustic Guitar 38' ' Available in different colors',
+      productImage: 'https://i.ibb.co/w7pSMtR/guitar.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://kalabrand.com/cdn/shop/products/KA-GTR-NY25_21_R_1024x1024.jpg?v=1610556204',
+        'https://m1.com.pk/wp-content/uploads/2014/09/Yamaha-C40-II-Classical-Acoustic-Guitar-Natural.jpg'
+      ],
+      productDescription:
+          'Acoustic guitar designed for beginners, it is easy to use and play. The 38-inch guitar is very suitable for use in classes, recitals, band rehearsals',
+      keyFeatures: [
+        'Guitar can play in ANY key, with or without capo. Most guitar friendly keys are ones that let you use open strings, so in standard EADGBe tuning, those would be E, A, D, G, B, and C.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
   ];
   final List<ProductDataModel> preOwnedInfantProducts = [
     ProductDataModel(
@@ -250,12 +333,126 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
         long: -118.2437,
         address: "222 Fashion Ave, Los Angeles",
       ),
-    )
+    ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Baby Pram & Strollers - No. 1 Best Price Store',
+      productImage: 'https://i.ibb.co/HzG5HDG/baby-trolly.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://duckduckbaby.in/cdn/shop/files/DDB8883_1.jpg?v=1720249881',
+        'https://khanaan.pk/cdn/shop/files/S-2S_686x686.webp?v=1698749443'
+      ],
+      productDescription:
+          'Shop Baby Strollers & Prams – Safe & Convenient for Parents at Zubaidas Official™. Discover comfortable, durable strollers and prams for your little one.',
+      keyFeatures: [
+        "Wheels and suspension The front wheels should measure at least 17.5–20 cm (7–8 in.) and the back wheels at least 22.5–25 cm (9–10 in.) to roll smoothly on rough terrain. Larger wheels will also roll more easily through snow. The suspension absorbs bumps in the road and helps keep your child comfortable. ',Weight and sizeOpt for a 9–13 kg (20–28.6 lb.) traditional or convertible stroller, or a roughly 5 kg (11 lb.) umbrella stroller. You’ll find models measuring 55–67.5 cm (22–27 in.) wide. Strollers at the upper end of this range are relatively bulky. Note that a standard door is approximately 30 in. wide."
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
   ];
+  final List<ProductDataModel> discountPreOwnedProducts = [
+    ProductDataModel(
+      id: 1,
+      productName: 'Pepsi S’mores collection 3 can',
+      productImage: 'https://i.ibb.co/Rhm9Txj/image.png',
+      productPrice: '1.50',
+      isFavourite: false,
+      productSampleImages: [
+        'https://www.pepsico.com/images/default-source/products-brands/pepsi_12oz.png?sfvrsn=46c9ae09_3',
+        'https://i.pinimg.com/736x/6e/9d/3c/6e9d3c47c2b4d396abb5209140125c2c.jpg'
+      ],
+      productDescription:
+          'Refreshing cola beverage with a bold taste and a hint of citrus. Pepsi is a globally recognized carbonated soft drink that delivers a refreshing burst of flavor. With its unique blend of sweetness and citrus notes, Pepsi is perfect for quenching your thirst on a hot day or as a complement to your favorite meals. Enjoy it chilled for the best experience.',
+      keyFeatures: [
+        "Bold Flavor: A distinct taste that sets it apart from other soft drinks, making it a favorite among cola enthusiasts. Carbonated Refreshment: The perfect level of carbonation to provide a fizzy sensation with every sip. Versatile Pairing: Pairs well with a wide variety of foods, enhancing the overall dining experience."
+      ],
+      productOwner: ProductOwnerData(
+        id: 1,
+        username: 'BeverageWorld',
+        userImage:
+            'https://upload.wikimedia.org/wikipedia/en/0/04/All-american-boy-song.jpg',
+        userFeedback: 'Perfect for any occasion!',
+      ),
+      locationData: LocationData(
+        lat: 34.0522,
+        long: -118.2437,
+        address: '123 Beverage Ave, Los Angeles',
+      ),
+    ),
+    ProductDataModel(
+      id: 5,
+      productName: 'Red Bull Energy Drink 3 can',
+      productImage: 'https://i.ibb.co/kSK3Jbw/1.png',
+      productPrice: '2.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://images.latestdeals.co.uk/post-large/p-5fc777ca37018f7c8d391942-2.jpg',
+        'https://www.shutterstock.com/image-photo/kyiv-ukraine-july-04-2018red-260nw-1126889948.jpg'
+      ],
+      productDescription:
+          'Red Bull is an energy drink formulated to boost your energy levels and enhance mental focus. With its unique blend of caffeine, taurine, and B-vitamins, Red Bull provides an invigorating lift whenever you need it.',
+      keyFeatures: [
+        'Energy Boosting Formula: Contains caffeine and taurine to enhance alertness and performance. Convenient Packaging: Available in easy-to-carry cans for on-the-go consumption. Variety of Flavors: Offered in multiple flavors to cater to different taste preferences'
+      ],
+      productOwner: ProductOwnerData(
+        id: 5,
+        username: 'EnergyBoostersInc',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjZirTv3YUaHSe-VVIQzwXUHXxb8mnJ-krbg&s',
+        userFeedback: 'Perfect for a quick pick-me-up!',
+      ),
+      locationData: LocationData(
+        lat: 40.7128,
+        long: -74.0060,
+        address: '654 Energy St, New York City',
+      ),
+    ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Schweppes American Ginger Ale',
+      productImage:
+          'https://i.ibb.co/bRhnFfG/Schweppes-American-Ginger-Ale.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://www.schweppesus.com/images/catalog/products/schweppes-ginger-ale.png',
+        'https://m.media-amazon.com/images/I/91QAjCtG+fL._AC_UF1000,1000_QL80_.jpg'
+      ],
+      productDescription:
+          "Schweppes American Ginger Ale is a carbonated drink that balances sweetness and ginger spice. It's made with high-quality ingredients and is a specialty of the Schweppes brand, which has been making premium carbonated beverages for over 200 years",
+      keyFeatures: [
+        'Hydration: Because ginger alleviates nausea and cramps, ginger ale is often used to rehydrate a person recovering from the loss of body fluids due to sweating, vomiting, fever, and diarrhea. Hangover: For obvious reasons, ginger ale can help a person recover from a night of too much partying and booze.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final products = ref.watch(productDataProvider).nearByProducts;
-
     return TabScreenTemplate(
         tabIndex: 1,
         height: 162.h,
@@ -273,17 +470,19 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
             title: "Marketplace All Prodcuts",
             items: allMarketProducts,
             onTap: () {
-              AppRouter.push(const SearchProductView(
+              AppRouter.push(SearchProductView(
                 title: "Marketplace All Prodcuts",
+                products: allMarketProducts,
               ));
             },
           ),
           ProductDisplayWidget(
             title: "Discounted Pre-owned Beverages",
-            items: products,
+            items: discountPreOwnedProducts,
             onTap: () {
-              AppRouter.push(const SearchProductView(
+              AppRouter.push(SearchProductView(
                 title: "Discounted Pre-owned Beverages",
+                products: discountPreOwnedProducts,
               ));
             },
           ),
@@ -292,8 +491,9 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
             title: "Discounted Pre-owned Grocery",
             items: discountPreOwnedGroceryProducts,
             onTap: () {
-              AppRouter.push(const SearchProductView(
+              AppRouter.push(SearchProductView(
                 title: "Discounted Pre-owned Grocery",
+                products: discountPreOwnedGroceryProducts,
               ));
             },
           ),
@@ -301,8 +501,9 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
             title: "Pre-owned Entertainment",
             items: preOwnedEntertainmentProducts,
             onTap: () {
-              AppRouter.push(const SearchProductView(
+              AppRouter.push(SearchProductView(
                 title: "Pre-owned Entertainment",
+                products: preOwnedEntertainmentProducts,
               ));
             },
           ),
@@ -310,8 +511,9 @@ class _MarketViewConsumerState extends ConsumerState<MarketView> {
             title: "Pre-owned Infant",
             items: preOwnedInfantProducts,
             onTap: () {
-              AppRouter.push(const SearchProductView(
+              AppRouter.push(SearchProductView(
                 title: "Pre-owned Infant",
+                products: preOwnedInfantProducts,
               ));
             },
           ),

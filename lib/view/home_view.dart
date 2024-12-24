@@ -7,6 +7,7 @@ import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/models/product_data_model.dart';
+import 'package:tcm/providers/product_provider.dart';
 
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
@@ -29,7 +30,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
   final List<ProductDataModel> nearByItems = [
     ProductDataModel(
       id: 4,
-      productName: 'Beach Towels',
+      productName: 'Bold, vibrant 100% cotton beach towels.',
       productImage: 'https://i.ibb.co/2WLKNNS/image3.png',
       productPrice: '15.99',
       isFavourite: false,
@@ -40,7 +41,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       productDescription:
           'These vibrant beach towels are designed for comfort and style. Made from soft, absorbent fabric, they are perfect for drying off after a swim or lounging on the sand.',
       keyFeatures: [
-        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging.Colorful Designs: Available in various bright colors and patterns to suit your style.'
+        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging. Colorful Designs: Available in various bright colors and patterns to suit your style.'
       ],
       productOwner: ProductOwnerData(
         id: 4,
@@ -56,144 +57,67 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       ),
     ),
     ProductDataModel(
-      id: 5,
-      productName: 'Red Bull Energy Drink',
-      productImage: 'https://i.ibb.co/kSK3Jbw/1.png',
-      productPrice: '2.99',
+      id: 3,
+      productName: 'Best travel neck pillow available two sets',
+      productImage: 'https://i.ibb.co/ssVbBkd/image4.png',
+      productPrice: '19.99',
       isFavourite: true,
       productSampleImages: [
-        'https://images.latestdeals.co.uk/post-large/p-5fc777ca37018f7c8d391942-2.jpg',
-        'https://www.shutterstock.com/image-photo/kyiv-ukraine-july-04-2018red-260nw-1126889948.jpg'
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZ3MLALqrveBjqVQaqW3OrUJVJboxr-lhAw&s',
+        'https://media.istockphoto.com/id/538896642/photo/happy-young-man-sleeping-in-travel-bus[…]12&w=0&k=20&c=4kbnXQ0rhGGBsZugMwdS6VaQJ90wekeFReneXuRV8c0='
       ],
       productDescription:
-          'Red Bull is an energy drink formulated to boost your energy levels and enhance mental focus. With its unique blend of caffeine, taurine, and B-vitamins, Red Bull provides an invigorating lift whenever you need it.',
+          'The Neck Pillow is designed to provide maximum comfort during travel or relaxation at home. Its ergonomic shape supports the neck and head, reducing strain and fatigue during long journeys.',
       keyFeatures: [
-        'Energy Boosting Formula: Contains caffeine and taurine to enhance alertness and performance. Convenient Packaging: Available in easy-to-carry cans for on-the-go consumption.Variety of Flavors: Offered in multiple flavors to cater to different taste preferences'
+        'Ergonomic Design: Contoured shape that fits snugly around the neck for optimal support. Memory Foam Material: Adapts to the shape of your neck, providing personalized comfort.Portable and Lightweight: Easy to carry, making it perfect for travel.'
       ],
       productOwner: ProductOwnerData(
-        id: 5,
-        username: 'EnergyBoostersInc',
+        id: 3,
+        username: 'TravelEssentials',
         userImage:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjZirTv3YUaHSe-VVIQzwXUHXxb8mnJ-krbg&s',
-        userFeedback: 'Perfect for a quick pick-me-up!',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
       ),
       locationData: LocationData(
-        lat: 40.7128,
-        long: -74.0060,
-        address: '654 Energy St, New York City',
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
       ),
     ),
     ProductDataModel(
-      id: 6,
-      productName: "Vegetable Oil",
-      productImage: "https://i.ibb.co/x7g9tr5/image4.png",
-      productPrice: "3.49",
+      id: 4,
+      productName: 'Diamond Resort International Bag Canvas',
+      productImage: 'https://i.ibb.co/KNvJ8P6/bag.png',
+      productPrice: '15.99',
       isFavourite: false,
       productSampleImages: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbYicFK41GQBzjJTPu4BusvC0qhcfnYeI8ew&s",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Olive_oil_from_Oneglia.jpg/640px-Olive_oil_from_Oneglia.jpg"
+        'https://i.ebayimg.com/images/g/8VMAAOSwWaxghfq0/s-l400.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPGhh-Dmh9S9KS5Bq9QDMWlCAOJSmYCE4MiA&s'
       ],
       productDescription:
-          "Versatile cooking oil suitable for frying, baking, and salad dressings.",
+          'These vibrant beach towels are designed for comfort and style. Made from soft, absorbent fabric, they are perfect for drying off after a swim or lounging on the sand.',
       keyFeatures: [
-        "High Smoke Point",
-        "Neutral Flavor",
-        "Rich in Unsaturated Fats"
+        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging. Colorful Designs: Available in various bright colors and patterns to suit your style.'
       ],
       productOwner: ProductOwnerData(
-        id: 6,
-        username: "HealthyCooking",
+        id: 4,
+        username: 'BeachGearCo',
         userImage:
-            "https://plus.unsplash.com/premium_photo-1677231559666-53bed9be43ba?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym95c3xlbnwwfHwwfHx8MA%3D%3D",
-        userFeedback: "A kitchen essential!",
+            'https://upload.wikimedia.org/wikipedia/en/0/04/All-american-boy-song.jpg',
+        userFeedback: 'Essential for summer fun!',
       ),
       locationData: LocationData(
-        lat: 39.7392,
-        long: -104.9903,
-        address: "111 Healthy Way, Denver",
+        lat: 25.7617,
+        long: -80.1918,
+        address: '321 Ocean Blvd, Miami',
       ),
-    ),
-    ProductDataModel(
-      id: 7,
-      productName: "Stylish Jacket",
-      productImage: "https://i.ibb.co/R7JZVZL/jacket.png",
-      productPrice: "49.99",
-      isFavourite: true,
-      productSampleImages: [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrUFkJi3YyWHzOQVX1gSR80PTUegJmxk9inw&s",
-        "https://i.pinimg.com/736x/35/d4/4c/35d44c8100a8cdf841aee112099c9d87.jpg"
-      ],
-      productDescription:
-          "Trendy jacket made from high-quality materials, perfect for all seasons.",
-      keyFeatures: ["Water-Resistant", "Multiple Pockets", "Comfort Fit"],
-      productOwner: ProductOwnerData(
-        id: 7,
-        username: "FashionHub",
-        userImage:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjZirTv3YUaHSe-VVIQzwXUHXxb8mnJ-krbg&s",
-        userFeedback: "Stay warm and stylish!",
-      ),
-      locationData: LocationData(
-        lat: 34.0522,
-        long: -118.2437,
-        address: "222 Fashion Ave, Los Angeles",
-      ),
-    ),
-    ProductDataModel(
-      id: 8,
-      productName: "Portable Bluetooth Speaker",
-      productImage: "https://i.ibb.co/0Q3fVxn/speakers.png",
-      productPrice: "29.99",
-      isFavourite: true,
-      productSampleImages: [
-        "https://images-cdn.ubuy.co.in/661a1ab34c4721068f07ef51-audioengine-a2-wireless-bluetooth-pc.jpg",
-        "https://jblstore.com.ph/cdn/shop/files/dui_600x.jpg?v=1734396984"
-      ],
-      productDescription:
-          "Compact Bluetooth speaker with powerful sound and long battery life.",
-      keyFeatures: ["Wireless Connectivity", "Water-Resistant", "Lightweight"],
-      productOwner: ProductOwnerData(
-        id: 8,
-        username: "AudioExperts",
-        userImage:
-            "https://pics.craiyon.com/2023-11-26/oMNPpACzTtO5OVERUZwh3Q.webp",
-        userFeedback: "Perfect for outdoor adventures!",
-      ),
-      locationData: LocationData(
-        lat: 37.7749,
-        long: -122.4194,
-        address: "333 Audio Lane, San Francisco",
-      ),
-    ),
-    ProductDataModel(
-      id: 9,
-      productName: "High-Fidelity Bluetooth Speaker",
-      productImage: "https://i.ibb.co/JkDqPDH/bluetooth-speaker.png",
-      productPrice: "59.99",
-      isFavourite: false,
-      productSampleImages: [
-        "https://i.pcmag.com/imagery/reviews/03V8y6C5wPv1ZV44gbJFZtQ-8.fit_lim.size_919x518.v1698156812.jpg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh9ZnfRsp62jVGOPtjN3Dokxsos0EpEn4LWw&s"
-      ],
-      productDescription:
-          "Experience superior sound quality with this high-fidelity Bluetooth speaker.",
-      keyFeatures: ["Deep Bass", "Long Range", "Sleek Design"],
-      productOwner: ProductOwnerData(
-        id: 9,
-        username: "SoundMasters",
-        userImage:
-            "https://plus.unsplash.com/premium_photo-1677231559666-53bed9be43ba?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym95c3xlbnwwfHwwfHx8MA%3D%3D",
-        userFeedback: "Unmatched audio experience!",
-      ),
-      locationData: LocationData(
-          lat: 40.7306, long: -73.9352, address: "444 Sound St, New York City"),
     ),
   ];
 
   final List<ProductDataModel> discountPreOwnedProducts = [
     ProductDataModel(
       id: 1,
-      productName: 'Pepsi',
+      productName: 'Pepsi S’mores collection 3 can',
       productImage: 'https://i.ibb.co/Rhm9Txj/image.png',
       productPrice: '1.50',
       isFavourite: false,
@@ -204,7 +128,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       productDescription:
           'Refreshing cola beverage with a bold taste and a hint of citrus. Pepsi is a globally recognized carbonated soft drink that delivers a refreshing burst of flavor. With its unique blend of sweetness and citrus notes, Pepsi is perfect for quenching your thirst on a hot day or as a complement to your favorite meals. Enjoy it chilled for the best experience.',
       keyFeatures: [
-        "Bold Flavor: A distinct taste that sets it apart from other soft drinks, making it a favorite among cola enthusiasts.Carbonated Refreshment: The perfect level of carbonation to provide a fizzy sensation with every sip.Versatile Pairing: Pairs well with a wide variety of foods, enhancing the overall dining experience."
+        "Bold Flavor: A distinct taste that sets it apart from other soft drinks, making it a favorite among cola enthusiasts. Carbonated Refreshment: The perfect level of carbonation to provide a fizzy sensation with every sip. Versatile Pairing: Pairs well with a wide variety of foods, enhancing the overall dining experience."
       ],
       productOwner: ProductOwnerData(
         id: 1,
@@ -221,7 +145,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
     ),
     ProductDataModel(
       id: 5,
-      productName: 'Red Bull Energy Drink',
+      productName: 'Red Bull Energy Drink 3 can',
       productImage: 'https://i.ibb.co/kSK3Jbw/1.png',
       productPrice: '2.99',
       isFavourite: true,
@@ -232,7 +156,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       productDescription:
           'Red Bull is an energy drink formulated to boost your energy levels and enhance mental focus. With its unique blend of caffeine, taurine, and B-vitamins, Red Bull provides an invigorating lift whenever you need it.',
       keyFeatures: [
-        'Energy Boosting Formula: Contains caffeine and taurine to enhance alertness and performance.Convenient Packaging: Available in easy-to-carry cans for on-the-go consumption. Variety of Flavors: Offered in multiple flavors to cater to different taste preferences'
+        'Energy Boosting Formula: Contains caffeine and taurine to enhance alertness and performance. Convenient Packaging: Available in easy-to-carry cans for on-the-go consumption. Variety of Flavors: Offered in multiple flavors to cater to different taste preferences'
       ],
       productOwner: ProductOwnerData(
         id: 5,
@@ -247,22 +171,52 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
         address: '654 Energy St, New York City',
       ),
     ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Schweppes American Ginger Ale',
+      productImage:
+          'https://i.ibb.co/bRhnFfG/Schweppes-American-Ginger-Ale.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      productSampleImages: [
+        'https://www.schweppesus.com/images/catalog/products/schweppes-ginger-ale.png',
+        'https://m.media-amazon.com/images/I/91QAjCtG+fL._AC_UF1000,1000_QL80_.jpg'
+      ],
+      productDescription:
+          "Schweppes American Ginger Ale is a carbonated drink that balances sweetness and ginger spice. It's made with high-quality ingredients and is a specialty of the Schweppes brand, which has been making premium carbonated beverages for over 200 years",
+      keyFeatures: [
+        'Hydration: Because ginger alleviates nausea and cramps, ginger ale is often used to rehydrate a person recovering from the loss of body fluids due to sweating, vomiting, fever, and diarrhea. Hangover: For obvious reasons, ginger ale can help a person recover from a night of too much partying and booze.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
   ];
   final List<ProductDataModel> buyfromStore = [
     ProductDataModel(
       id: 1,
-      productName: 'Pepsi',
+      productName: 'Pepsi S’mores collection 3 can',
       productImage: 'https://i.ibb.co/Rhm9Txj/image.png',
       productPrice: '1.50',
       isFavourite: false,
+      isStoreProduct: true,
       productSampleImages: [
         'https://www.pepsico.com/images/default-source/products-brands/pepsi_12oz.png?sfvrsn=46c9ae09_3',
         'https://i.pinimg.com/736x/6e/9d/3c/6e9d3c47c2b4d396abb5209140125c2c.jpg'
       ],
       productDescription:
-          'Refreshing cola beverage with a bold taste and a hint of citrus.',
+          'Refreshing cola beverage with a bold taste and a hint of citrus. Pepsi is a globally recognized carbonated soft drink that delivers a refreshing burst of flavor. With its unique blend of sweetness and citrus notes, Pepsi is perfect for quenching your thirst on a hot day or as a complement to your favorite meals. Enjoy it chilled for the best experience.',
       keyFeatures: [
-        "Bold Flavor: A distinct taste that sets it apart from other soft drinks."
+        "Bold Flavor: A distinct taste that sets it apart from other soft drinks, making it a favorite among cola enthusiasts. Carbonated Refreshment: The perfect level of carbonation to provide a fizzy sensation with every sip. Versatile Pairing: Pairs well with a wide variety of foods, enhancing the overall dining experience."
       ],
       productOwner: ProductOwnerData(
         id: 1,
@@ -276,25 +230,142 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
         long: -118.2437,
         address: '123 Beverage Ave, Los Angeles',
       ),
-      isStoreProduct: true, // This product is marked as a store product
     ),
     ProductDataModel(
-      id: 2,
-      productName: 'Red Bull Energy Drink',
+      id: 4,
+      productName: 'Bold, vibrant 100% cotton beach towels.',
+      productImage: 'https://i.ibb.co/2WLKNNS/image3.png',
+      productPrice: '15.99',
+      isFavourite: false,
+      isStoreProduct: true,
+      productSampleImages: [
+        'https://d3izeps273dd1j.cloudfront.net/images/CFBT3060VCP.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSatlfSh6Jnxby8hsdL5z2M1HjnM0MoE6FWeQ&s'
+      ],
+      productDescription:
+          'These vibrant beach towels are designed for comfort and style. Made from soft, absorbent fabric, they are perfect for drying off after a swim or lounging on the sand.',
+      keyFeatures: [
+        'Quick Drying Fabric: Dries rapidly after use, keeping you comfortable and dry. Large Size: Generously sized to provide ample coverage while lounging. Colorful Designs: Available in various bright colors and patterns to suit your style.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 4,
+        username: 'BeachGearCo',
+        userImage:
+            'https://upload.wikimedia.org/wikipedia/en/0/04/All-american-boy-song.jpg',
+        userFeedback: 'Essential for summer fun!',
+      ),
+      locationData: LocationData(
+        lat: 25.7617,
+        long: -80.1918,
+        address: '321 Ocean Blvd, Miami',
+      ),
+    ),
+    ProductDataModel(
+      id: 11,
+      productName: 'Holder Toothpaste Stand Bathroom ',
+      productImage:
+          'https://i.ibb.co/2nWcVzr/Holder-Toothpaste-Stand-Bathroom.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      isStoreProduct: true,
+      productSampleImages: [
+        'https://images-cdn.ubuy.co.id/638ae1adff848f5d8c595a62-ihave-toothbrush-holder-for-bathroom.jpg',
+        'https://images-cdn.ubuy.co.i64c2111c48233b158c3db54c-ihave-toothbrush-holders-bathroomjpg'
+      ],
+      productDescription:
+          '5 holes for toothbrushes, 2 holes for toothpastes, and 3 larger space for your rinse cups ; TOOTHBRUSH HOLDER · Made of Food-grade ABS Plastic, Eco-',
+      keyFeatures: [
+        'Rather than using makeshift solutions like plastic bags or foil, invest in a holder specifically designed for toothbrushes. These holders are equipped with air holes to promote drying, protecting the bristles from damage.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Master Roll Eco Friendly Luxury Bamboo Toilet ',
+      productImage: 'https://i.ibb.co/4FjzjWt/image-19.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      isStoreProduct: true,
+      productSampleImages: [
+        'https://m.media-amazon.com/images/I/71S2QJ4x1lL._AC_UF894,1000_QL80_.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnL_QcxDRWOSxY_A3hOJmqJOhJtWSDGpbhBg&s'
+      ],
+      productDescription:
+          'Master Roll offers sustainable bamboo toilet paper that is eco friendly, biodegradable, Soft & plastic free. Join us in reducing deforestation & plastic',
+      keyFeatures: [
+        "Master Roll Premium Bamboo Toilet Paper is Soft, Strong, Absorbent & Plastic Free. Experience the ultimate luxury with Master Roll's 100% bamboo toilet paper. Designed for those who care about comfort and the planet, our toilet paper is soft, strong, absorbent and plastic free."
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
+    ProductDataModel(
+      id: 3,
+      productName: 'Prime Hydration Drink Variety Pack ',
+      productImage: 'https://i.ibb.co/rZk39RC/prime.png',
+      productPrice: '19.99',
+      isFavourite: true,
+      isStoreProduct: true,
+      productSampleImages: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGMzVdKp4NR2pb1eh9QiErunSsECXOmA_sVA&s'
+            'https://down-my.img.susercontent.com/file/my-11134207-7r98q-lqyfucs6gxdj8f'
+      ],
+      productDescription:
+          'Hydration drink variety pack: 2 Cherry Freeze, 1 Strawberry Watermelon, 1 Lemonade, 1 UFC, 1 Ice Pop and 1 Mystery Flavora + 1ST LIMITED EDITION COIN',
+      keyFeatures: [
+        'Each drink includes 10% coconut water (from concentrate) and 834 mg of electrolytes to support deep hydration. Has 250mg of BCAAs to restore your essential amino acid levels and aid in muscle recovery. Antioxidants and B vitamins help prevent dehydration. Gluten-free with zero sugar added.'
+      ],
+      productOwner: ProductOwnerData(
+        id: 3,
+        username: 'TravelEssentials',
+        userImage:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Qv5s5REahX2Vcj11jPnU1ibiEUfTc-VMAQ&s',
+        userFeedback: 'Perfect for long journeys!',
+      ),
+      locationData: LocationData(
+        lat: 51.5074,
+        long: -0.1278,
+        address: '789 Travel Rd, London',
+      ),
+    ),
+    ProductDataModel(
+      id: 5,
+      productName: 'Red Bull Energy Drink 3 can',
       productImage: 'https://i.ibb.co/kSK3Jbw/1.png',
       productPrice: '2.99',
       isFavourite: true,
+      isStoreProduct: true,
       productSampleImages: [
         'https://images.latestdeals.co.uk/post-large/p-5fc777ca37018f7c8d391942-2.jpg',
         'https://www.shutterstock.com/image-photo/kyiv-ukraine-july-04-2018red-260nw-1126889948.jpg'
       ],
       productDescription:
-          'Red Bull is an energy drink formulated to boost your energy levels.',
+          'Red Bull is an energy drink formulated to boost your energy levels and enhance mental focus. With its unique blend of caffeine, taurine, and B-vitamins, Red Bull provides an invigorating lift whenever you need it.',
       keyFeatures: [
-        'Energy Boosting Formula: Contains caffeine and taurine.',
+        'Energy Boosting Formula: Contains caffeine and taurine to enhance alertness and performance. Convenient Packaging: Available in easy-to-carry cans for on-the-go consumption. Variety of Flavors: Offered in multiple flavors to cater to different taste preferences'
       ],
       productOwner: ProductOwnerData(
-        id: 2,
+        id: 5,
         username: 'EnergyBoostersInc',
         userImage:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjZirTv3YUaHSe-VVIQzwXUHXxb8mnJ-krbg&s',
@@ -305,88 +376,22 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
         long: -74.0060,
         address: '654 Energy St, New York City',
       ),
-      isStoreProduct: true, // This product is marked as a store product
-    ),
-    ProductDataModel(
-      id: 3,
-      productName: 'Mountain Dew',
-      productImage: 'https://i.ibb.co/Y2kGVs3/image.png',
-      productPrice: '1.75',
-      isFavourite: false,
-      productSampleImages: [
-        'https://www.mountaindew.com/sites/default/files/images/md-welcome-page.jpg',
-      ],
-      productDescription: 'A citrus-flavored soda for your adventurous spirit.',
-      keyFeatures: [
-        "Citrus Flavor: A refreshing burst of citrus flavor in every sip."
-      ],
-      productOwner: ProductOwnerData(
-        id: 3,
-        username: 'SodaKing',
-        userImage:
-            'https://upload.wikimedia.org/wikipedia/commons/e/e6/Placeholder_profile.svg',
-        userFeedback: 'Always refreshing!',
-      ),
-      locationData: LocationData(
-        lat: 40.7128,
-        long: -74.0060,
-        address: '123 Mountain Dew St, New York City',
-      ),
-      isStoreProduct: true, // This product is marked as a store product
-    ),
-    ProductDataModel(
-      id: 4,
-      productName: 'Sprite',
-      productImage: 'https://i.ibb.co/sK6wHK0/image.png',
-      productPrice: '1.25',
-      isFavourite: true,
-      productSampleImages: [
-        'https://www.spritesoda.com/img/hero_sprite.jpg',
-      ],
-      productDescription:
-          'A lemon-lime flavored soda that refreshes like no other.',
-      keyFeatures: ["Crisp and Refreshing: A clean lemon-lime taste."],
-      productOwner: ProductOwnerData(
-        id: 4,
-        username: 'LemonLimeCo',
-        userImage:
-            'https://upload.wikimedia.org/wikipedia/commons/e/e6/Placeholder_profile.svg',
-        userFeedback: 'Loves it!',
-      ),
-      locationData: LocationData(
-        lat: 34.0522,
-        long: -118.2437,
-        address: '456 Lemon Street, Los Angeles',
-      ),
-      isStoreProduct: true, // This product is marked as a store product
-    ),
-    // Additional products with isStoreProduct set to true
-    ProductDataModel(
-      id: 5,
-      productName: 'Coca-Cola',
-      productImage: 'https://i.ibb.co/2jYswh8/coca-cola.png',
-      productPrice: '1.60',
-      isFavourite: false,
-      productSampleImages: [
-        'https://upload.wikimedia.org/wikipedia/commons/a/a2/Original_Coca-Cola_logo.png',
-      ],
-      productDescription: 'A refreshing soft drink with a distinct taste.',
-      keyFeatures: ["Sweet and refreshing taste.", "Perfect for meals."],
-      productOwner: ProductOwnerData(
-        id: 5,
-        username: 'CocaColaInc',
-        userImage:
-            'https://upload.wikimedia.org/wikipedia/commons/a/a2/Original_Coca-Cola_logo.png',
-        userFeedback: 'A classic drink!',
-      ),
-      locationData: LocationData(
-        lat: 41.8781,
-        long: -87.6298,
-        address: '789 Coke Blvd, Chicago',
-      ),
-      isStoreProduct: true, // This product is marked as a store product
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    Future.delayed(Duration.zero, () {
+      ref.read(productDataProvider.notifier).clearCheckOutList();
+    });
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     // final products = ref.watch(productDataProvider).nearByProducts;
@@ -414,8 +419,9 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
           items: nearByItems,
           title: "Pre-owned Items Nearby",
           onTap: () {
-            AppRouter.push(const SearchProductView(
+            AppRouter.push(SearchProductView(
               title: "Pre-owned Items Nearby",
+              products: nearByItems,
             ));
           },
         ),
@@ -424,8 +430,9 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
           items: discountPreOwnedProducts,
           title: "Discounted Pre-owned Beverages",
           onTap: () {
-            AppRouter.push(const SearchProductView(
+            AppRouter.push(SearchProductView(
               title: "Discounted Pre-owned Beverages",
+              products: discountPreOwnedProducts,
             ));
           },
         ),
@@ -435,8 +442,9 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
           showAddCard: true,
           title: "Buy from Stores",
           onTap: () {
-            AppRouter.push(const SearchProductView(
+            AppRouter.push(SearchProductView(
               title: "Buy from Stores",
+              products: buyfromStore,
             ));
           },
         ),
@@ -454,8 +462,8 @@ class OfferWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 250.h,
-      padding: EdgeInsets.only(
-          top: 15.r, left: AppStyles.screenHorizontalPadding, bottom: 15.r),
+      padding: EdgeInsets.symmetric(
+          horizontal: AppStyles.screenHorizontalPadding, vertical: 15.r),
       margin: EdgeInsets.only(bottom: 10.r),
       color: AppColors.primaryColor,
       child: Column(
@@ -483,7 +491,7 @@ class OfferWidget extends StatelessWidget {
           Expanded(
             child: GridView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: VacationDealProductModel.products.length,
               shrinkWrap: true,
               padding: EdgeInsets.only(
                 top: 30.r,
@@ -520,7 +528,8 @@ class OfferWidget extends StatelessWidget {
                                     gradient: AppColors.primaryGradinet,
                                     borderRadius: BorderRadius.circular(500.r)),
                                 child: Text(
-                                  "${index + 1} Day Left",
+                                  VacationDealProductModel
+                                      .products[index].dayRemaining!,
                                   style: context.textStyle.bodySmall!.copyWith(
                                       color: Colors.white, fontSize: 10.sp),
                                 ),
@@ -529,13 +538,14 @@ class OfferWidget extends StatelessWidget {
                           ),
                           3.ph,
                           Text(
-                            "Feelflows twin fish keel",
+                            VacationDealProductModel
+                                .products[index].productTitle!,
                             style: context.textStyle.labelMedium,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            "\$320.00",
+                            "\$${VacationDealProductModel.products[index].productPrice}",
                             style: context.textStyle.displayMedium!
                                 .copyWith(fontSize: 18.sp),
                             maxLines: 1,
@@ -543,11 +553,14 @@ class OfferWidget extends StatelessWidget {
                           )
                         ],
                       )),
-                      Container(
-                        width: 84.r,
-                        decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            borderRadius: BorderRadius.circular(8.r)),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: DisplayNetworkImage(
+                          height: context.screenheight,
+                          imageUrl: VacationDealProductModel
+                              .products[index].productImage!,
+                          width: 84.r,
+                        ),
                       )
                     ],
                   ),
@@ -651,7 +664,7 @@ class ProductDisplayWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ProductItemCard(
                   product: items[index],
-                  isAddToCard: showAddCard,
+                  isAddToCard: items[index].isStoreProduct,
                 );
               },
             ),
@@ -748,4 +761,30 @@ class _AdSliderWidgetState extends State<AdSliderWidget> {
       ),
     );
   }
+}
+
+class VacationDealProductModel {
+  late final String? productTitle;
+  late final String? productPrice;
+  late final String? dayRemaining;
+  late final String? productImage;
+
+  VacationDealProductModel(
+      {required this.productTitle,
+      required this.productImage,
+      required this.productPrice,
+      required this.dayRemaining});
+
+  static final List<VacationDealProductModel> products = [
+    VacationDealProductModel(
+        productTitle: "Feelflows twin fish keel",
+        productImage: "https://i.ibb.co/tBGMvH3/image1.png",
+        productPrice: "320.00",
+        dayRemaining: "1 Day Left"),
+    VacationDealProductModel(
+        productTitle: "3-Pack Sloppy Chef Towels",
+        productImage: "https://i.ibb.co/F4JZGN2/vacation.png",
+        productPrice: "20.00",
+        dayRemaining: "2 Days Left"),
+  ];
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
-import 'package:tcm/providers/product_provider.dart';
+import 'package:tcm/models/product_data_model.dart';
+
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/chatting_list_view.dart';
@@ -15,7 +16,9 @@ import 'package:tcm/widgets/custom_search_bar_widget.dart';
 
 class SearchProductView extends StatefulWidget {
   final String title;
-  const SearchProductView({super.key, required this.title});
+  final List<ProductDataModel> products;
+  const SearchProductView(
+      {super.key, required this.title, required this.products});
 
   @override
   State<SearchProductView> createState() => _SearchProductViewState();
@@ -63,10 +66,7 @@ class _SearchProductViewState extends State<SearchProductView> {
             ),
           ),
           10.ph,
-          Consumer(builder: (context, ref, child) {
-            final product = ref.watch(productDataProvider).nearByProducts;
-            return VerticalProjectsDisplayLayoutWidget(temp: product);
-          })
+          VerticalProjectsDisplayLayoutWidget(temp: widget.products)
         ],
       ),
     );

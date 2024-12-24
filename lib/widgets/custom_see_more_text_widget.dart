@@ -10,10 +10,10 @@ class TextWithSeeMore extends StatefulWidget {
       {super.key, required this.text, required this.maxLength});
 
   @override
-  _TextWithSeeMoreState createState() => _TextWithSeeMoreState();
+  TextWithSeeMoreState createState() => TextWithSeeMoreState();
 }
 
-class _TextWithSeeMoreState extends State<TextWithSeeMore> {
+class TextWithSeeMoreState extends State<TextWithSeeMore> {
   bool _isExpanded = false;
 
   @override

@@ -1,95 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/utils/app_router.dart';
+import 'package:tcm/view/checkout_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:tcm/widgets/custom_button_widget.dart';
 import 'package:tcm/widgets/display_network_image.dart';
 
-class MyCartView extends StatefulWidget {
+class MyCartView extends ConsumerStatefulWidget {
   const MyCartView({super.key});
 
   @override
-  State<MyCartView> createState() => _MyCartViewState();
+  ConsumerState<MyCartView> createState() => _MyCartViewConsumerState();
 }
 
-class _MyCartViewState extends State<MyCartView> {
+class _MyCartViewConsumerState extends ConsumerState<MyCartView> {
   bool isCheck = false;
   bool cart1 = false;
   bool cart2 = false;
+  List<bool> check = [];
+
   @override
   Widget build(BuildContext context) {
+    final checkoutList = ref.watch(productDataProvider).checkOutList;
+    if (check.isEmpty) {
+      check = List.generate(
+        checkoutList.length,
+        (index) => false,
+      );
+    }
     return CommonScreenTemplateWidget(
         leadingWidget: const CustomBackButtonWidget(),
-        bottomWidget: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: AppStyles.screenHorizontalPadding,
-              vertical: AppStyles.screenHorizontalPadding),
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  isCheck = !isCheck;
-                  if (isCheck) {
-                    cart1 = true;
-                    cart2 = true;
-                  } else {
-                    cart1 = false;
-                    cart2 = false;
-                  }
-                  setState(() {});
-                },
-                child: Container(
-                  width: 22.r,
-                  height: 22.r,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: isCheck ? AppColors.primaryGradinet : null,
-                      border:
-                          !isCheck ? Border.all(color: Colors.black) : null),
-                  child: Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 17.r,
-                  ),
+        bottomWidget: checkoutList.isNotEmpty
+            ? Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppStyles.screenHorizontalPadding,
+                    vertical: AppStyles.screenHorizontalPadding),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        isCheck = !isCheck;
+
+                        check = List.generate(check.length, (index) => isCheck);
+
+                        setState(() {});
+                      },
+                      child: Container(
+                        width: 22.r,
+                        height: 22.r,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient:
+                                isCheck ? AppColors.primaryGradinet : null,
+                            border: !isCheck
+                                ? Border.all(color: Colors.black)
+                                : null),
+                        child: Icon(
+                          Icons.check,
+                          color: Colors.white,
+                          size: 17.r,
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Text(
+                      "All",
+                      style: context.textStyle.bodyMedium,
+                    ),
+                    const Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Total:",
+                          style: context.textStyle.displayMedium!
+                              .copyWith(fontSize: 16.sp),
+                        ),
+                        Text(
+                          "\$15.00",
+                          style: context.textStyle.displayLarge!.copyWith(
+                              fontWeight: FontWeight.w700, fontSize: 24.sp),
+                        )
+                      ],
+                    ),
+                    20.pw,
+                    SizedBox(
+                        width: 126.w,
+                        child: CustomButtonWidget(
+                            title: "Check Out (${checkoutList.length})",
+                            onPressed: () {
+                              AppRouter.push(CheckoutView(
+                                product: checkoutList[0],
+                              ));
+                            }))
+                  ],
                 ),
-              ),
-              5.pw,
-              Text(
-                "All",
-                style: context.textStyle.bodyMedium,
-              ),
-              const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Total:",
-                    style: context.textStyle.displayMedium!
-                        .copyWith(fontSize: 16.sp),
-                  ),
-                  Text(
-                    "\$15.00",
-                    style: context.textStyle.displayLarge!
-                        .copyWith(fontWeight: FontWeight.w700, fontSize: 24.sp),
-                  )
-                ],
-              ),
-              20.pw,
-              SizedBox(
-                  width: 126.w,
-                  child: CustomButtonWidget(
-                      title: "Check Out (1)", onPressed: () {}))
-            ],
-          ),
-        ),
+              )
+            : null,
         actionWidget: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            if (isCheck) {
+              ref.read(productDataProvider.notifier).clearCheckOutList();
+            } else {
+              ref
+                  .read(productDataProvider.notifier)
+                  .removeItem(check.indexOf(true));
+            }
+            setState(() {});
+          },
           child: Container(
             width: 31.r,
             height: 31.r,
@@ -102,33 +129,47 @@ class _MyCartViewState extends State<MyCartView> {
           ),
         ),
         title: "My Cart",
-        child: ListView(
-          children: [
-            AddCartWidget(
-              title: "Red bull Energy drink 24 can available",
-              subtitle: "Redbull, Energy Drink, Weight 32gram",
-              price: "12.00",
-              image: "",
-              isSelect: cart1,
-              onTap: () {
-                cart1 = !cart1;
-                setState(() {});
-              },
-            ),
-            10.ph,
-            AddCartWidget(
-              title: "Red bull Energy drink 24 can available",
-              subtitle: "Redbull, Energy Drink, Weight 32gram",
-              price: "12.00",
-              image: "",
-              isSelect: cart2,
-              onTap: () {
-                cart2 = !cart2;
-                setState(() {});
-              },
-            )
-          ],
-        ));
+        child: ListView.separated(
+            itemBuilder: (context, index) => AddCartWidget(
+                  title: checkoutList[index].productName!,
+                  subtitle: "Redbull, Energy Drink, Weight 32gram",
+                  price: checkoutList[index].productPrice!,
+                  image: checkoutList[index].productImage!,
+                  isSelect: check[index],
+                  onTap: () {
+                    check[index] = !check[index];
+                    setState(() {});
+                  },
+                ),
+            separatorBuilder: (context, index) => 10.ph,
+            itemCount: checkoutList.length));
+    // child: ListView(
+    //   children: [
+    // AddCartWidget(
+    //   title: "Red bull Energy drink 24 can available",
+    //   subtitle: "Redbull, Energy Drink, Weight 32gram",
+    //   price: "12.00",
+    //   image: "",
+    //   isSelect: cart1,
+    //   onTap: () {
+    //     cart1 = !cart1;
+    //     setState(() {});
+    //   },
+    // ),
+    //     10.ph,
+    //     AddCartWidget(
+    //       title: "Red bull Energy drink 24 can available",
+    //       subtitle: "Redbull, Energy Drink, Weight 32gram",
+    //       price: "12.00",
+    //       image: "",
+    //       isSelect: cart2,
+    //       onTap: () {
+    //         cart2 = !cart2;
+    //         setState(() {});
+    //       },
+    //     )
+    //   ],
+    // ));
   }
 }
 
@@ -185,7 +226,10 @@ class AddCartWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(Assets.placeOrderIcon),
+                  SvgPicture.asset(
+                    Assets.cartIcon,
+                    width: 35.r,
+                  ),
                   5.pw,
                   Text(
                     "PurelyPrime",

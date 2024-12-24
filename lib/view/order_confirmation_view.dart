@@ -34,7 +34,7 @@ class OrderConfirmationView extends StatelessWidget {
               if (isVender ?? false) {
                 AppRouter.pushAndRemoveUntil(const NavigationView());
               } else {
-                AppRouter.pushReplacement(PaymentConfirmedView());
+                AppRouter.pushReplacement(const PaymentConfirmedView());
               }
             },
           ),

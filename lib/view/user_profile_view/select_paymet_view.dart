@@ -121,11 +121,11 @@ class SelectableContainerList extends StatefulWidget {
   const SelectableContainerList({super.key, required this.items});
 
   @override
-  _SelectableContainerListState createState() =>
-      _SelectableContainerListState();
+  SelectableContainerListState createState() =>
+      SelectableContainerListState();
 }
 
-class _SelectableContainerListState extends State<SelectableContainerList> {
+class SelectableContainerListState extends State<SelectableContainerList> {
   int? selectedIndex; // To track which container is selected
   final TextEditingController textController =
       TextEditingController(); // Controller for TextField

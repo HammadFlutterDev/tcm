@@ -55,6 +55,12 @@ class CustomBottomAppBarWidget extends ConsumerWidget {
                                   : bottomItems[index].icon,
                               height: 26.r,
                               width: 26.r,
+                              colorFilter: index != selectIndex
+                                  ? ColorFilter.mode(
+                                      context
+                                          .bottomAppStyle.unselectedItemColor!,
+                                      BlendMode.srcIn)
+                                  : null,
                             ),
                             5.ph,
                             Text(

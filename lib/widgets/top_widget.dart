@@ -12,7 +12,6 @@ import 'package:tcm/widgets/custom_menu_icon_shape_widget.dart';
 import '../config/app_colors.dart';
 import '../config/app_styles.dart';
 import '../config/asset_path.dart';
-import 'animated_search_text_widget.dart' show AnimatedSearchText;
 
 class TopWidget extends StatelessWidget {
   final int index;
@@ -114,7 +113,7 @@ class TopWidget extends StatelessWidget {
                         CustomMenuIconShape(
                             icon: Assets.verticalMenuIcon,
                             onTap: () {
-                              AppRouter.push(SettingView());
+                              AppRouter.push(const SettingView());
                             }),
                       ],
                     ),
@@ -133,7 +132,7 @@ class TopWidget extends StatelessWidget {
                       child: CustomMenuIconShape(
                           icon: Assets.bagIcon,
                           onTap: () {
-                            AppRouter.push(MyCartView());
+                            AppRouter.push(const MyCartView());
                           }),
                     )
                 ],
@@ -227,16 +226,12 @@ class TopWidget extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Expanded(
-                            child: Text(
-                              "Search any product",
-                              style: context.textStyle.bodyMedium!.copyWith(
-                                  color: Colors.black.withValues(alpha: 0.5)),
-                            ),
+                          Text(
+                            "Search any product",
+                            style: context.textStyle.bodyMedium!.copyWith(
+                                color: Colors.black.withValues(alpha: 0.5)),
                           ),
-                          const AnimatedSearchText(
-                            texts: ["Hair Oil", "Beach Towels", "Herbs"],
-                          ),
+
                           8.pw,
                           // Expanded(child: MultipleTissueRollText()),
                           Image.asset(

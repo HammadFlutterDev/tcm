@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/post_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/view/community_view.dart';
 import 'package:tcm/widgets/custom_menu_icon_shape_widget.dart';
@@ -13,7 +14,8 @@ import 'package:tcm/widgets/user_profile_widget.dart';
 import '../widgets/custom_back_button_widget.dart';
 
 class CommentView extends StatefulWidget {
-  const CommentView({super.key});
+  final PostDataModel data;
+  const CommentView({super.key, required this.data});
 
   @override
   State<CommentView> createState() => _CommentViewState();
@@ -32,8 +34,8 @@ class _CommentViewState extends State<CommentView> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(128.h),
           child: ChatTopWidget(
-            imageUrl: "",
-            name: "Liam Sebastian",
+            imageUrl: widget.data.user!.image!,
+            name: widget.data.user!.name!,
             onOptionTap: () {},
             onBackTap: null,
           )),
@@ -42,7 +44,9 @@ class _CommentViewState extends State<CommentView> {
           child: ListView(
             padding: EdgeInsets.only(bottom: 100.r),
             children: [
-              PostWidget(),
+              PostWidget(
+                data: widget.data,
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: AppStyles.screenHorizontalPadding,
@@ -59,7 +63,7 @@ class _CommentViewState extends State<CommentView> {
                 ),
               ),
               ...List.generate(
-                10,
+                widget.data.comments!.length,
                 (index) => Padding(
                   padding: EdgeInsets.only(
                       left: AppStyles.screenHorizontalPadding,
@@ -68,7 +72,9 @@ class _CommentViewState extends State<CommentView> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      UserProfileWidget(radius: 20.r, imageUrl: ""),
+                      UserProfileWidget(
+                          radius: 20.r,
+                          imageUrl: widget.data.comments![index].user!.image!),
                       10.pw,
                       Expanded(
                         child: Container(
@@ -85,14 +91,14 @@ class _CommentViewState extends State<CommentView> {
                               Row(
                                 children: [
                                   Text(
-                                    "SandyTides87",
+                                    widget.data.comments![index].user!.name!,
                                     style: context.textStyle.labelSmall!
                                         .copyWith(letterSpacing: 0.4),
                                   )
                                 ],
                               ),
                               Text(
-                                "The Wave Slayer 3000 changed my surfing game forever. It's like the board reads the waves for you—pure magic!",
+                                widget.data.comments![index].content,
                                 style: context.textStyle.bodyMedium,
                               )
                             ],
