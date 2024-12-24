@@ -35,6 +35,12 @@ class _CheckoutPaymentSelectionViewState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const CustomListWidget(
+                iconPayment: Assets.cash,
+                title: "Cash",
+
+              ),
+              12.ph,
               CustomListWidget(
                 iconPayment: Assets.visa,
                 title: "Visa",

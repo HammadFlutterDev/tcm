@@ -212,7 +212,7 @@ class VenderProductDetailView extends StatelessWidget {
           children: [
             Expanded(
                 child: CustomButtonWidget(
-              title: "Ad to Cart",
+              title: "Add to Cart",
               onPressed: () {
                 AppRouter.push(const MyCartView());
               },

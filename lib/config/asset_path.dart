@@ -185,6 +185,7 @@ class Assets {
   static const String shopIcon = "${iconPath}shop_icon.svg";
   static const String editIcon = "${iconPath}edit_square.svg";
   static const String cartIcon = "${iconPath}cart_icon.svg";
+  static const String cash = "${imagePath}cash.png";
 
   static const String userImage =
       "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=";
