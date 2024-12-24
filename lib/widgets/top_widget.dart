@@ -231,9 +231,8 @@ class TopWidget extends StatelessWidget {
                             style: context.textStyle.bodyMedium!.copyWith(
                                 color: Colors.black.withValues(alpha: 0.5)),
                           ),
-
                           8.pw,
-                          // Expanded(child: MultipleTissueRollText()),
+                          Spacer(),
                           Image.asset(
                             Assets.searchIconGif,
                             width: 35.r,

@@ -110,7 +110,7 @@ class _CommunityViewState extends State<CommunityView> {
         postText:
             "Experience sound like never before with the BoomBlitz 9000, the ultimate party starter and travel buddy! Engineered with cutting-edge SonicBoomX™ ",
         attachmentLink: "www.tcm/surfshreddeals.com/wave-slayer-3000",
-        comments:[
+        comments: [
           UserComments(
               content:
                   "Caught my first perfect barrel with this beast. The legend of the hidden cave shaper is real!",
@@ -209,8 +209,8 @@ class _CommunityViewState extends State<CommunityView> {
                                 vertical: 0, horizontal: 10.r),
                             hintText: "What’s on your mind?",
                             hintStyle: context.textStyle.bodyMedium!.copyWith(
-                                color: context.colors.onSurface
-                                    .withOpacity( 0.7))),
+                                color:
+                                    context.colors.onSurface.withOpacity(0.7))),
                         controller: postTextEditController,
                       ),
                     ),
@@ -398,7 +398,7 @@ class PostWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                10.pw,
+                15.pw,
                 GestureDetector(
                   onTap: () {
                     AppRouter.push(CommentView(
@@ -419,6 +419,7 @@ class PostWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                12.pw,
                 IconButton(
                     visualDensity:
                         const VisualDensity(horizontal: -4.0, vertical: -4.0),
