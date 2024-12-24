@@ -100,7 +100,7 @@ class _CommunityViewState extends State<CommunityView> {
                             hintText: "What’s on your mind?",
                             hintStyle: context.textStyle.bodyMedium!.copyWith(
                                 color: context.colors.onSurface
-                                    .withValues(alpha: 0.7))),
+                                    .withOpacity( 0.7))),
                         controller: postTextEditController,
                       ),
                     ),
@@ -282,7 +282,7 @@ class PostWidget extends StatelessWidget {
                   )
                 ],
               ),
-              10.pw,
+              16.pw,
               GestureDetector(
                 onTap: () {
                   AppRouter.push(const CommentView());
@@ -301,6 +301,8 @@ class PostWidget extends StatelessWidget {
                   ],
                 ),
               ),
+              10.pw,
+
               IconButton(
                   visualDensity:
                       const VisualDensity(horizontal: -4.0, vertical: -4.0),

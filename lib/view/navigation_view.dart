@@ -100,7 +100,7 @@ class _NavigationViewState extends State<NavigationView> {
                           child: Column(
                             children: [
                               PurchasingOptionButtonWidget(
-                                icon: Assets.bagIcon,
+                                icon: Assets.dollarCircleIcon,
                                 title: "Sell Your Pre-owned Product",
                                 onTap: () {
                                   AppRouter.push(const SellProductView());
@@ -108,7 +108,7 @@ class _NavigationViewState extends State<NavigationView> {
                               ),
                               10.ph,
                               PurchasingOptionButtonWidget(
-                                icon: Assets.dollarCircleIcon,
+                                icon: Assets.bagIcon,
                                 title: "Buy Your Desired Product",
                                 onTap: () {
                                   AppRouter.push(const BuyProductView());

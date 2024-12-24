@@ -41,14 +41,14 @@ class _CustomSearchBarWidgetState extends State<CustomSearchBarWidget> {
         leading: SvgPicture.asset(
           Assets.searchIcon,
           colorFilter: ColorFilter.mode(
-              Colors.black.withValues(alpha: 0.6), BlendMode.srcIn),
+              Colors.black.withOpacity( 0.6), BlendMode.srcIn),
         ),
         padding: WidgetStatePropertyAll(
             EdgeInsets.only(left: 17.r, right: 17.r, bottom: 5.r, top: 5.r)),
         textStyle: WidgetStatePropertyAll(
             context.textStyle.titleMedium!.copyWith(color: Colors.black)),
         hintStyle: WidgetStatePropertyAll(context.textStyle.titleMedium!
-            .copyWith(color: Colors.black.withValues(alpha: 0.6))),
+            .copyWith(color: Colors.black.withOpacity( 0.6))),
         backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
       ),
     );

@@ -52,33 +52,46 @@ class _RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-                              color: Colors.red,
-                              image: Assets.i1,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders1,
+                           ),
                           Tile(
-                              color: Colors.grey,
-                              image: Assets.i2,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders2,
+                              ),
                           Tile(
-                              color: Colors.black,
-                              image: Assets.i3,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders3,
+                              ),
                           Tile(
-                              color: Colors.yellow,
-                              image: Assets.i4,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders4,
+                             ),
                           Tile(
-                              color: Colors.brown,
-                              image: Assets.i5,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders5,
+                             ),
                           Tile(
-                              color: Colors.lightBlue,
-                              image: Assets.i6,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders6,
+                             ),
                           Tile(
-                              color: Colors.blueGrey,
-                              image: Assets.i7,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders7,
+                             ),
+
+                          Tile(
+
+                            image: Assets.sliders8,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders9,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders10,
+                          ),
                         ],
                       ),
                     );
@@ -95,33 +108,50 @@ class _RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-                              color: Colors.red,
-                              image: Assets.i1,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders21,
+                          ),
                           Tile(
-                              color: Colors.grey,
-                              image: Assets.i2,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders22,
+                          ),
                           Tile(
-                              color: Colors.black,
-                              image: Assets.i3,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders23,
+                          ),
                           Tile(
-                              color: Colors.yellow,
-                              image: Assets.i4,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders24,
+                          ),
                           Tile(
-                              color: Colors.brown,
-                              image: Assets.i5,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders25,
+                          ),
+
                           Tile(
-                              color: Colors.lightBlue,
-                              image: Assets.i6,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders26,
+                          ),
+
                           Tile(
-                              color: Colors.blueGrey,
-                              image: Assets.i7,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders27,
+                          ),
+
+                          Tile(
+
+                            image: Assets.sliders28,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders31,
+                          ),
+
+                          Tile(
+
+                            image: Assets.sliders37,
+                          ),
+
                         ],
                       ),
                     );
@@ -139,33 +169,49 @@ class _RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-                              color: Colors.red,
-                              image: Assets.i1,
-                              textColor: Colors.black),
+
+                              image: Assets.sliders30,
+                              ),
                           Tile(
-                              color: Colors.grey,
-                              image: Assets.i2,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders31,
+                          ),
                           Tile(
-                              color: Colors.black,
-                              image: Assets.i3,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders32,
+                          ),
                           Tile(
-                              color: Colors.yellow,
-                              image: Assets.i4,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders33,
+                          ),
                           Tile(
-                              color: Colors.brown,
-                              image: Assets.i5,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders34,
+                          ),
                           Tile(
-                              color: Colors.lightBlue,
-                              image: Assets.i6,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders35,
+                          ),
                           Tile(
-                              color: Colors.blueGrey,
-                              image: Assets.i7,
-                              textColor: Colors.black),
+
+                            image: Assets.sliders36,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders37,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders38,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders39,
+                          ),
+                          Tile(
+
+                            image: Assets.sliders40,
+                          ),
                         ],
                       ),
                     );
@@ -183,12 +229,10 @@ class _RowAnimationState extends State<RowAnimation>
 class Tile extends StatelessWidget {
   const Tile(
       {super.key,
-      required this.color,
-      required this.image,
-      required this.textColor});
-  final Color color;
+      required this.image,});
+
   final String image;
-  final Color textColor;
+
 
   @override
   Widget build(BuildContext context) {

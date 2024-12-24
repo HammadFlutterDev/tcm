@@ -10,7 +10,7 @@ import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/providers/bottom_index_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
-import 'package:tcm/view/ad_preview_view.dart';
+import 'package:tcm/view/product_ad_live_now_view.dart';
 
 import 'package:tcm/widgets/buy_sell_screen_template_widget.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
@@ -253,13 +253,13 @@ class _AdProductViewState extends State<AdProductView> {
                 Text(
                   "Upload Purchasing Receipt",
                   style: context.textStyle.bodyMedium!
-                      .copyWith(color: Colors.black.withValues(alpha: 0.5)),
+                      .copyWith(color: Colors.black.withOpacity( 0.5)),
                 ),
                 SvgPicture.asset(
                   Assets.addDocumentIcon,
                   width: 20.r,
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withValues(alpha: 0.5), BlendMode.srcIn),
+                      Colors.black.withOpacity( 0.5), BlendMode.srcIn),
                 )
               ],
             ),
@@ -309,8 +309,10 @@ class _AdProductViewState extends State<AdProductView> {
                 AppRouter.back();
                 AppRouter.back();
                 AppRouter.back();
+                AppRouter.back();
                 ref.read(bottomIndexProvider.notifier).setIndex(0);
-                AppRouter.push(const AdPreviewView());
+                // AppRouter.push(const AdPreviewView());
+                AppRouter.push(const ProductAdLiveNowView());
               });
         }),
         20.ph
@@ -331,7 +333,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     return TextFormField(
       maxLines: maxline,
       decoration: InputDecoration(
-          maintainHintHeight: true,
+          // maintainHintHeight: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.r),
               borderSide: BorderSide(color: AppColors.borderColor)),
@@ -344,7 +346,7 @@ class CustomTextFieldWidget extends StatelessWidget {
               borderSide: BorderSide(color: AppColors.borderColor)),
           hintText: hintText,
           hintStyle: context.inputTheme.hintStyle!
-              .copyWith(color: Colors.black.withValues(alpha: 0.5))),
+              .copyWith(color: Colors.black.withOpacity( 0.5))),
     );
   }
 }
@@ -371,7 +373,7 @@ class LocationWidget extends StatelessWidget {
         Container(
           height: 118.h,
           decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.2),
+              color: Colors.black.withOpacity( 0.2),
               borderRadius: BorderRadius.circular(10.r)),
         ),
         Row(
@@ -569,7 +571,7 @@ class UploadProductImagesWidget extends StatelessWidget {
               "5MB maximum file size accepted in the following formats .jpg .jpeg png .gif",
               textAlign: TextAlign.center,
               style: context.textStyle.bodySmall!.copyWith(
-                color: Colors.black.withValues(alpha: 0.8),
+                color: Colors.black.withOpacity( 0.8),
               ),
             ),
           )

@@ -29,7 +29,7 @@ class PagerDot extends StatelessWidget {
             shape: isCircle! ? BoxShape.circle : BoxShape.rectangle,
             color: currentIndex != index
                 ? isCircle!
-                    ? const Color(0xffD9D9D9).withValues(alpha: 0.5)
+                    ? const Color(0xffD9D9D9).withOpacity( 0.5)
                     : Colors.white
                 : null,
           ),

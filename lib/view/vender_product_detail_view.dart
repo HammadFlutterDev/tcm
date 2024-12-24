@@ -35,7 +35,7 @@ class VenderProductDetailView extends StatelessWidget {
           children: [
             Expanded(
                 child: CustomButtonWidget(
-              title: "Ad to Cart",
+              title: "Add to Cart",
               onPressed: () {
                 AppRouter.push(const MyCartView());
               },
@@ -74,7 +74,7 @@ class VenderProductDetailView extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: AppStyles.screenHorizontalPadding),
                   child: Column(
-                    spacing: 10.h,
+                    // spacing: 10.h,
                     children: [
                       15.ph,
                       Row(
@@ -95,7 +95,7 @@ class VenderProductDetailView extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: 20.h,
+                            height: 30.h,
                             alignment: Alignment.center,
                             padding: EdgeInsets.only(left: 12.6.r, right: 12.6),
                             decoration: BoxDecoration(
@@ -107,7 +107,7 @@ class VenderProductDetailView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Fast Dilvery',
+                                  'Fast Delivery',
                                   style: context.textStyle.bodyMedium,
                                 ),
                                 3.pw,
@@ -278,7 +278,7 @@ class VenderProductDetailView extends StatelessWidget {
                                               .copyWith(
                                                   height: 0.8,
                                                   color: Colors.black
-                                                      .withValues(alpha: 0.7)),
+                                                      .withOpacity( 0.7)),
                                         ),
                                       )
                                     ],
@@ -396,7 +396,7 @@ class AboutSellerWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4.r),
                     child: DisplayNetworkImage(
-                      imageUrl: "",
+                      imageUrl: "https://i.ibb.co/QdBFy6Z/btx.png",
                       width: 37.r,
                       height: 32.r,
                     ),
@@ -563,7 +563,7 @@ class UserRatingWidget extends StatelessWidget {
                           Text(
                             "John D.",
                             style: context.textStyle.displaySmall!.copyWith(
-                                color: Colors.black.withValues(alpha: 0.7),
+                                color: Colors.black.withOpacity( 0.7),
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(

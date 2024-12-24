@@ -32,7 +32,7 @@ class _AnimatedSearchTextState extends State<AnimatedSearchText>
       duration: const Duration(seconds: 2),
     );
 
-    _animation = Tween<double>(begin: -1.0, end: 0.0).animate(
+    _animation = Tween<double>(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOut,
@@ -46,8 +46,8 @@ class _AnimatedSearchTextState extends State<AnimatedSearchText>
           _isPaused = true;
         });
 
-        // Wait for 1 second before changing the text
-        await Future.delayed(const Duration(seconds: 1));
+        // Wait for 4-5 seconds
+        await Future.delayed(const Duration(seconds: 4));
 
         // Move to the next text
         setState(() {
@@ -84,13 +84,14 @@ class _AnimatedSearchTextState extends State<AnimatedSearchText>
             animation: _animation,
             builder: (context, child) {
               return Transform.translate(
-                offset: Offset(0.0, -50.h * _animation.value),
+                offset: Offset(0.0, 50.h * _animation.value),
                 child: Text(
                   widget.texts[_currentIndex],
                   style: context.textStyle.displayMedium!.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp),
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                  ),
                 ),
               );
             },

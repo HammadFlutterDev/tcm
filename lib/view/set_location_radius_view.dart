@@ -25,7 +25,7 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
   @override
   Widget build(BuildContext context) {
     return CommonScreenTemplateWidget(
-      title: "Set Location Redius",
+      title: "Set Location Radius",
       leadingWidget: const CustomBackButtonWidget(),
       appBarHeight: 150.h,
       bottomAppbarWidget: PreferredSize(
@@ -52,7 +52,7 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
               Container(
                 width: double.infinity,
                 decoration:
-                    BoxDecoration(color: Colors.black.withValues(alpha: 0.4)),
+                    BoxDecoration(color: Colors.black.withOpacity( 0.4)),
               ),
             ],
           )),
@@ -81,7 +81,7 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
                 ),
                 Slider(
                   activeColor: context.colors.primary,
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10.r),
+              //    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10.r),
                   max: 100,
                   min: 0,
                   thumbColor: Colors.white,

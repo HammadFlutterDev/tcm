@@ -32,7 +32,7 @@ class CustomProfileScreenWidget extends StatelessWidget {
           color: AppColors.scaffoldColor1,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              width: 1, color: AppColors.lightIconColor.withValues(alpha: 0.1)),
+              width: 1, color: AppColors.lightIconColor.withOpacity( 0.1)),
         ),
         child: Row(
           children: [

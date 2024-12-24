@@ -39,7 +39,7 @@ class SelectPaymetView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                       width: 1,
-                      color: AppColors.lightIconColor.withValues(alpha: 0.1)),
+                      color: AppColors.lightIconColor.withOpacity( 0.1)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -106,7 +106,7 @@ class SelectPaymetView extends StatelessWidget {
             ),
             20.ph,
             const SelectableContainerList(
-              items: ["\$100", "\$200", "\$300"],
+              items: ["\$100.00", "\$200.00", "\$300.00"],
             ),
           ],
         ),
@@ -153,10 +153,10 @@ class _SelectableContainerListState extends State<SelectableContainerList> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: selectedIndex == index
-                        ? AppColors.primaryColor.withValues(alpha: 0.1)
-                        : AppColors.greyColor.withValues(alpha: 0.1),
+                        ? AppColors.primaryColor.withOpacity( 0.1)
+                        : AppColors.greyColor.withOpacity( 0.1),
                     border: Border.all(
-                        color: AppColors.lightIconColor.withValues(alpha: 0.1),
+                        color: AppColors.lightIconColor.withOpacity( 0.1),
                         width: 1),
                     borderRadius: BorderRadius.circular(10),
                   ),

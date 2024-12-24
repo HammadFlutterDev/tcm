@@ -8,6 +8,8 @@ import 'package:tcm/utils/app_router.dart';
 
 import 'package:tcm/widgets/custom_button_widget.dart';
 
+import 'ad_preview_view.dart';
+
 class ProductAdLiveNowView extends StatelessWidget {
   const ProductAdLiveNowView({super.key});
 
@@ -33,7 +35,7 @@ class ProductAdLiveNowView extends StatelessWidget {
         child: CustomButtonWidget(
             title: "Preview Ad",
             onPressed: () {
-              AppRouter.back();
+              AppRouter.push(const AdPreviewView());
             }),
       ),
       body: Center(
@@ -48,7 +50,9 @@ class ProductAdLiveNowView extends StatelessWidget {
             Text(
               "Your Ad is now Live!",
               style: context.textStyle.displayLarge!.copyWith(fontSize: 22.sp),
-            )
+            ),
+            
+
           ],
         ),
       ),

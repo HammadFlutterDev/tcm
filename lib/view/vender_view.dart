@@ -171,7 +171,7 @@ class TopVenderDataModel {
     TopVenderDataModel(
         title: "VividVault", image: "https://i.ibb.co/7CTPG0T/image-31.png"),
     TopVenderDataModel(
-        title: "PurelyPrime", image: "https://i.ibb.co/r6bST4w/Frame-30.png"),
+        title: "PurelyPrime", image: "https://i.ibb.co/y4L4scJ/purely-Prime.png"),
     TopVenderDataModel(
         title: "NestCart", image: "https://i.ibb.co/5hKDrYH/image29.png"),
   ];

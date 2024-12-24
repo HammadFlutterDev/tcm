@@ -170,26 +170,26 @@ class WalletView extends StatelessWidget {
             ),
             customDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withValues(alpha: 0.1),
-                "\$1000",
+                AppColors.greenColor.withOpacity( 0.1),
+                "\$100.00+",
                 Assets.down,
                 context),
             customDepositedStatus(
                 "Refund Successfully",
-                AppColors.blueColor.withValues(alpha: 0.1),
-                "\$1000",
+                AppColors.blueColor.withOpacity( 0.1),
+                "\$100.00+",
                 Assets.refresh,
                 context),
             customDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withValues(alpha: 0.1),
-                "\$1000",
+                AppColors.greenColor.withOpacity( 0.1),
+                "\$100.00+",
                 Assets.down,
                 context),
             customDepositedStatus(
                 "Deposit Successfully",
-                AppColors.greenColor.withValues(alpha: 0.1),
-                "\$1000",
+                AppColors.greenColor.withOpacity( 0.1),
+                "\$100.00+",
                 Assets.down,
                 context),
           ],
@@ -206,7 +206,7 @@ class WalletView extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor:
-                color ?? AppColors.greenColor.withValues(alpha: 0.1),
+                color ?? AppColors.greenColor.withOpacity( 0.1),
             radius: 35.r,
             child: SvgPicture.asset(
               icon!,

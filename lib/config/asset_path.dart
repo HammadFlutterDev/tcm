@@ -7,6 +7,48 @@ class Assets {
   static const String appLogo = '${imagePath}app_logo.svg';
   static const String appLogoDark = '${imagePath}app_logo_dark.svg';
 
+
+
+  //slider images
+
+  //slider1
+  static const String sliders1 = '${imagePath}s1.png';
+  static const String sliders2 = '${imagePath}s2.png';
+  static const String sliders3 = '${imagePath}s3.png';
+  static const String sliders4 = '${imagePath}s4.png';
+  static const String sliders5 = '${imagePath}s5.png';
+  static const String sliders6 = '${imagePath}s6.png';
+  static const String sliders7 = '${imagePath}s7.png';
+  static const String sliders8 = '${imagePath}s8.png';
+  static const String sliders9 = '${imagePath}s9.png';
+  static const String sliders10 = '${imagePath}s10.png';
+
+
+  //slider2
+  static const String sliders21 = '${imagePath}s21.png';
+  static const String sliders22 = '${imagePath}s22.png';
+  static const String sliders23 = '${imagePath}s23.png';
+  static const String sliders24 = '${imagePath}s24.png';
+  static const String sliders25 = '${imagePath}s25.png';
+  static const String sliders26 = '${imagePath}s26.png';
+  static const String sliders27 = '${imagePath}s27.png';
+  static const String sliders28 = '${imagePath}s28.png';
+  static const String sliders29 = '${imagePath}s31.png';
+  static const String sliders30 = '${imagePath}s32.png';
+
+
+  //slider3
+  static const String sliders31 = '${imagePath}s31.png';
+  static const String sliders32 = '${imagePath}s32.png';
+  static const String sliders33 = '${imagePath}s33.png';
+  static const String sliders34 = '${imagePath}s34.png';
+  static const String sliders35 = '${imagePath}s35.png';
+  static const String sliders36 = '${imagePath}s36.png';
+  static const String sliders37 = '${imagePath}s37.png';
+  static const String sliders38 = '${imagePath}s38.png';
+  static const String sliders39 = '${imagePath}s39.png';
+  static const String sliders40 = '${imagePath}s40.png';
+
   //ONBORDING IMAGES PATH
   static const String slideImg1a = '${imagePath}slide_image1a.png';
   static const String slideImg1b = '${imagePath}slide_image1b.png';

@@ -24,9 +24,9 @@ class _TextWithSeeMoreState extends State<TextWithSeeMore> {
     // If the text is longer than the max length and not expanded, truncate it
     if (displayText.length > widget.maxLength && !_isExpanded) {
       displayText = '${displayText.substring(0, widget.maxLength)}...';
-      buttonText = 'See more';
+      buttonText = 'See more...';
     } else {
-      buttonText = 'See less';
+      buttonText = 'See less...';
     }
 
     return Wrap(
@@ -42,10 +42,13 @@ class _TextWithSeeMoreState extends State<TextWithSeeMore> {
               _isExpanded = !_isExpanded; // Toggle the expanded state
             });
           },
-          child: Text(
-            buttonText,
-            style: context.textStyle.displayMedium!
-                .copyWith(color: AppColors.primaryColor),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Text(
+              buttonText,
+              style: context.textStyle.displayMedium!
+                  .copyWith(color: AppColors.primaryColor),
+            ),
           ),
         ),
       ],

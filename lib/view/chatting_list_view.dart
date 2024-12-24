@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
@@ -40,65 +41,85 @@ class ChattingListView extends StatelessWidget {
     return CommonScreenTemplateWidget(
       leadingWidget: const CustomBackButtonWidget(),
       title: "All Messages",
-      child: ListView.separated(
-        itemCount: chattingList.length,
-        padding:
-            EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
-        separatorBuilder: (context, index) => const Divider(),
-        itemBuilder: (context, index) => SizedBox(
-          height: 100.h,
-          child: ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-            onTap: () {
-              AppRouter.push(ChattingView(
-                userName: chattingList[index].username,
-                userImage: chattingList[index].userImage,
-                productImage: chattingList[index].productImage,
-              ));
-            },
-            visualDensity: const VisualDensity(horizontal: -4.0),
-            horizontalTitleGap: 40.r,
-            leading: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(5.r),
-                  child: DisplayNetworkImage(
-                    width: 74.r,
-                    height: 69.r,
-                    imageUrl: chattingList[index].productImage,
-                  ),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Text(
+                "Edit",
+                style: context.textStyle.bodyMedium!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
                 ),
-                Positioned(
-                  bottom: -15,
-                  right: -15,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 26.r,
-                      child: UserProfileWidget(
-                          radius: 18.r,
-                          imageUrl: chattingList[index].userImage)),
-                )
-              ],
-            ),
-            title: Text(
-              chattingList[index].username,
-              style: context.textStyle.labelMedium!.copyWith(fontSize: 16.sp),
-              maxLines: 1,
-            ),
-            subtitle: Text(
-              chattingList[index].lastmessagetext,
-              style: context.textStyle.bodyMedium,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              size: 15.r,
-              color: Colors.black,
+              ),
             ),
           ),
-        ),
+          Expanded(
+            child: ListView.separated(
+              itemCount: chattingList.length,
+              padding:
+                  EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
+              separatorBuilder: (context, index) => const Divider(),
+              itemBuilder: (context, index) => SizedBox(
+                height: 100.h,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+                  onTap: () {
+                    AppRouter.push(ChattingView(
+                      userName: chattingList[index].username,
+                      userImage: chattingList[index].userImage,
+                      productImage: chattingList[index].productImage,
+                    ));
+                  },
+                  visualDensity: const VisualDensity(horizontal: -4.0),
+                  horizontalTitleGap: 40.r,
+                  leading: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.r),
+                        child: DisplayNetworkImage(
+                          width: 74.r,
+                          height: 69.r,
+                          imageUrl: chattingList[index].productImage,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: -15,
+                        right: -15,
+                        child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 26.r,
+                            child: UserProfileWidget(
+                                radius: 18.r,
+                                imageUrl: chattingList[index].userImage)),
+                      )
+                    ],
+                  ),
+                  title: Text(
+                    chattingList[index].username,
+                    style: context.textStyle.labelMedium!.copyWith(fontSize: 16.sp),
+                    maxLines: 1,
+                  ),
+                  subtitle: Text(
+                    chattingList[index].lastmessagetext,
+                    style: context.textStyle.bodyMedium,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    size: 15.r,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

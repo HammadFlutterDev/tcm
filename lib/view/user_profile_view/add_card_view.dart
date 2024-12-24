@@ -56,6 +56,7 @@ class AddCardView extends StatelessWidget {
                     fontWeight: FontWeight.w300)),
             const TextFieldUnderGround(
               hintText: "0000 0000 0000 ",
+              keyboardType: TextInputType.number,
             ),
             24.ph,
             Row(
@@ -75,7 +76,7 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY"),
+                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
                     ],
                   ),
                 ),
@@ -96,7 +97,7 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY"),
+                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
                     ],
                   ),
                 ),
@@ -117,7 +118,7 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY"),
+                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
                     ],
                   ),
                 ),
@@ -144,6 +145,7 @@ class AddCardView extends StatelessWidget {
 class TextFieldUnderGround extends StatelessWidget {
   const TextFieldUnderGround(
       {super.key,
+        this.keyboardType,
       this.hintText,
       this.text,
       this.title,
@@ -154,6 +156,7 @@ class TextFieldUnderGround extends StatelessWidget {
   final String? text;
   final String? title;
   final bool? hasIcon;
+  final TextInputType? keyboardType;
 
   final TextEditingController? controller;
 
@@ -161,6 +164,7 @@ class TextFieldUnderGround extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      keyboardType: keyboardType,
       textAlign: TextAlign.left,
       decoration: InputDecoration(
         contentPadding:
@@ -189,11 +193,11 @@ class TextFieldUnderGround extends StatelessWidget {
         hintStyle: context.textStyle.displayMedium?.copyWith(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.greyColor70.withValues(alpha: 0.4)),
+            color: AppColors.greyColor70.withOpacity( 0.4)),
 
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-              color: AppColors.lightIconColor.withValues(alpha: 0.05)),
+              color: AppColors.lightIconColor.withOpacity( 0.05)),
         ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.blue, width: 2.0),

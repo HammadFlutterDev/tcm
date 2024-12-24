@@ -6,6 +6,7 @@ import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/view/ad_product_view.dart';
+
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:tcm/widgets/custom_button_widget.dart';
@@ -49,9 +50,9 @@ class AdPreviewView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: AppStyles.screenHorizontalPadding),
-                  child: Column(
-                    spacing: 10.h,
-                    children: const [
+                  child: const Column(
+                    // spacing: 10.h,
+                    children: [
                       ProductTitleWidget(),
                       AdDetailWidget(),
                       ProductDetailWidget(),
@@ -70,13 +71,14 @@ class AdPreviewView extends StatelessWidget {
 class ProductDetailWidget extends StatelessWidget {
   final String? description;
   final List<String>? features;
+
   const ProductDetailWidget({super.key, this.description, this.features});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 12.h,
+      // spacing: 12.h,
       children: [
         const TitleHeadingWidget(title: "Product Detail"),
         Row(
@@ -122,8 +124,8 @@ class ProductDetailWidget extends StatelessWidget {
               10.pw,
               Expanded(
                 child: TextWithSeeMore(
-                  maxLength: 4,
-                  text: features?[0] ?? "This is Best" * 10,
+                  maxLength: 20,
+                  text: features?[0] ?? "Convenient Packaging" * 10,
                 ),
               ),
             ],
@@ -159,10 +161,10 @@ class LocationDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 12.h,
+    return const Column(
+      // spacing: 12.h,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         TitleHeadingWidget(title: "Location"),
         AddressDisplayTextWidget(address: "Rainbow Resort, San Luis Obispo"),
         LocationWidget()
@@ -174,6 +176,7 @@ class LocationDetailWidget extends StatelessWidget {
 class AdDetailWidget extends StatelessWidget {
   final bool? showRecipt;
   final VoidCallback? onTap;
+
   const AdDetailWidget({super.key, this.showRecipt = false, this.onTap});
 
   @override
@@ -189,7 +192,7 @@ class AdDetailWidget extends StatelessWidget {
       list = List.from(ProductDetailTitleDataModel.detailList);
     }
     return Column(
-      spacing: 10.h,
+      // spacing: 10.h,
       children: [
         const Row(
           children: [TitleHeadingWidget(title: "Details")],
@@ -213,6 +216,7 @@ class ProductDetailTitleWidget extends StatelessWidget {
   final String description;
   final bool showOutline;
   final VoidCallback? onTap;
+
   const ProductDetailTitleWidget(
       {super.key,
       required this.title,
@@ -301,6 +305,7 @@ class ProductTitleWidget extends StatelessWidget {
 
 class AddressDisplayTextWidget extends StatelessWidget {
   final String address;
+
   const AddressDisplayTextWidget({super.key, required this.address});
 
   @override
@@ -340,6 +345,7 @@ class ProductMultipleImageDisplayWidget extends StatefulWidget {
 class _ProductMultipleImageDisplayWidgetState
     extends State<ProductMultipleImageDisplayWidget> {
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

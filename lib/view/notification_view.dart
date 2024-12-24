@@ -79,6 +79,8 @@ class NotificationView extends StatelessWidget {
               data: notifications[index],
             ),
           ),
+
+          20.ph,
           Row(
             children: [
               Text(
@@ -156,7 +158,7 @@ class NotificationTitleWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
             color: data.isNew!
                 ? AppColors.primaryColor
-                : Colors.black.withValues(alpha: 0.7),
+                : Colors.black.withOpacity( 0.7),
             wordSpacing: 1.4),
       ),
       trailing: IconButton(

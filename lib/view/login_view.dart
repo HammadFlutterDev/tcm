@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             SizedBox(
-              height: context.screenheight,
+              height: context.screenheight *0.6,
               width: double.infinity,
               child: const RowAnimation(),
             ),
@@ -44,7 +44,7 @@ class LoginView extends StatelessWidget {
 
                     Colors.white,
                     Colors.white
-                        .withValues(alpha: 0.0), // Fully transparent white
+                        .withOpacity( 0.0), // Fully transparent white
                   ],
                   stops: [
                     0.4787.h,
@@ -75,7 +75,7 @@ class LoginView extends StatelessWidget {
                     Expanded(
                         child: Divider(
                       thickness: 1,
-                      color: Colors.black.withValues(alpha: 0.5),
+                      color: Colors.black.withOpacity( 0.5),
                     )),
                     23.pw,
                     Text(
@@ -86,7 +86,7 @@ class LoginView extends StatelessWidget {
                     Expanded(
                         child: Divider(
                       thickness: 1,
-                      color: Colors.black.withValues(alpha: 0.5),
+                      color: Colors.black.withOpacity( 0.5),
                     )),
                   ],
                 ),
