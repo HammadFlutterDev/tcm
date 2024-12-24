@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/models/category_data_model.dart';
@@ -10,11 +10,9 @@ import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/widgets/category_widget.dart';
 
-
 import '../widgets/custom_search_bar_widget.dart';
 import '../widgets/product_widget.dart';
 import '../widgets/tab_screen_template.dart';
-
 
 class VenderView extends ConsumerStatefulWidget {
   const VenderView({super.key});
@@ -38,7 +36,8 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
             padding: EdgeInsets.symmetric(
                 horizontal: AppStyles.screenHorizontalPadding),
             child: CustomSearchBarWidget(
-                controller: TextEditingController(), hintText: "What are you looking for?"),
+                controller: TextEditingController(),
+                hintText: "What are you looking for?"),
           ),
           CategoriesWidget(items: CategoryDataModel.categories),
           Padding(
@@ -74,7 +73,7 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
-                    4,
+                    TopVenderDataModel.topVenders.length,
                     (index) => Column(
                       children: [
                         // Container(
@@ -87,11 +86,14 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
                         CircleAvatar(
                           maxRadius: 40.r,
                           backgroundColor: Colors.white,
-                          child: SvgPicture.asset(Assets.addCartIcon),
+                          child: Image.network(
+                            TopVenderDataModel.topVenders[index].image,
+                            width: 70.r,
+                          ),
                         ),
                         3.ph,
                         Text(
-                          "EvoCart",
+                          TopVenderDataModel.topVenders[index].title,
                           style: context.textStyle.labelMedium!
                               .copyWith(color: Colors.white),
                         )
@@ -155,4 +157,22 @@ class VerticalProjectsDisplayLayoutWidget extends StatelessWidget {
       },
     );
   }
+}
+
+class TopVenderDataModel {
+  late final String title;
+  late final String image;
+
+  TopVenderDataModel({required this.title, required this.image});
+
+  static List<TopVenderDataModel> topVenders = [
+    TopVenderDataModel(
+        title: "EvoCart", image: "https://i.ibb.co/XDXWqJp/image-28.png"),
+    TopVenderDataModel(
+        title: "VividVault", image: "https://i.ibb.co/7CTPG0T/image-31.png"),
+    TopVenderDataModel(
+        title: "PurelyPrime", image: "https://i.ibb.co/r6bST4w/Frame-30.png"),
+    TopVenderDataModel(
+        title: "NestCart", image: "https://i.ibb.co/5hKDrYH/image29.png"),
+  ];
 }

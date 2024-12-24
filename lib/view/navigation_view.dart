@@ -111,7 +111,7 @@ class _NavigationViewState extends State<NavigationView> {
                                 icon: Assets.dollarCircleIcon,
                                 title: "Buy Your Desired Product",
                                 onTap: () {
-                                   AppRouter.push(const BuyProductView());
+                                  AppRouter.push(const BuyProductView());
                                 },
                               )
                             ],
@@ -151,7 +151,10 @@ class PurchasingOptionButtonWidget extends StatelessWidget {
             color: Colors.white),
         child: Row(
           children: [
-            SvgPicture.asset(icon),
+            SvgPicture.asset(
+              icon,
+              width: 23.r,
+            ),
             10.pw,
             Expanded(
                 child: Text(

@@ -9,6 +9,7 @@ import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/widgets/custom_social_button_widget.dart';
 
+import '../widgets/onboarding_animation_widget.dart';
 import 'navigation_view.dart';
 
 class LoginView extends StatelessWidget {
@@ -23,27 +24,32 @@ class LoginView extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
         child: Stack(
           // alignment: Alignment.bottomCenter,
+          clipBehavior: Clip.none,
           children: [
-            Container(
-              height: 380,
+            SizedBox(
+              height: context.screenheight,
               width: double.infinity,
-              color: Colors.red,
+              child: const RowAnimation(),
             ),
             Container(
-              height: context.screenwidth,
+              height: context.screenheight,
+              width: context.screenwidth,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.topCenter, // Start from the top
-                  end: Alignment.bottomCenter, // End at the bottom
+                  end:
+                      Alignment.topCenter, // Equivalent to 0deg (top to bottom)
+                  begin: Alignment.bottomCenter,
                   colors: [
-                    Colors.white.withValues(alpha: 0),
-                    Colors.white.withValues(alpha: 1), // White at the top
-                    // Transparent white at the bottom
+                    // Fully opaque white
+
+                    Colors.white,
+                    Colors.white
+                        .withValues(alpha: 0.0), // Fully transparent white
                   ],
-                  stops: const [
-                    0.6648,
+                  stops: [
+                    0.4787.h,
                     1.0
-                  ], // Corresponds to 66.48% and 100% in CSS
+                  ], // Position the gradient stop to match 66.48%
                 ),
               ),
             ),
@@ -90,7 +96,7 @@ class LoginView extends StatelessWidget {
                       title: "Continue with Apple",
                       icon: Assets.appleIcon,
                       onTap: () {
-                         AppRouter.push(const NavigationView());
+                        AppRouter.push(const NavigationView());
                       }),
                   10.ph
                 ],
@@ -105,7 +111,7 @@ class LoginView extends StatelessWidget {
                     title: "Continue with Facebook",
                     icon: Assets.facebookIcon,
                     onTap: () {
-                       AppRouter.push(const NavigationView());
+                      AppRouter.push(const NavigationView());
                     }),
                 const Spacer(),
                 RichText(

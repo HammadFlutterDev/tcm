@@ -18,7 +18,7 @@ class WalletView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonScreenTemplateWidget(
-      appBarHeight: 60.h,
+      appBarHeight: 80.h,
       title: "Wallet",
       leadingWidget: const CustomBackButtonWidget(),
       child: Padding(
@@ -29,6 +29,7 @@ class WalletView extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
+              padding: EdgeInsets.only(bottom: 10.r),
               decoration: BoxDecoration(
                 color: AppColors.scaffoldColor,
                 borderRadius: BorderRadius.circular(20.r),
@@ -74,18 +75,33 @@ class WalletView extends StatelessWidget {
                             ),
                             const Spacer(),
                             SizedBox(
-                                height: 40,
-                                width: 140.w,
+                                height: 42.h,
+                                width: 119.w,
                                 child: CustomButtonWidget(
                                   title: "Deposit",
                                   onPressed: () {
                                     AppRouter.push(const SelectPaymetView());
                                   },
                                   color: AppColors.greyColor,
-                                  child: Row(
-                                    children: [],
-                                  ),
                                   textColor: AppColors.lightIconColor,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Desposit",
+                                        style: context.textStyle.displayMedium!
+                                            .copyWith(
+                                          height: 1.8,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: 6.r),
+                                        child: Image.asset(Assets.walletIcon),
+                                      )
+                                    ],
+                                  ),
                                 ))
                           ],
                         ),
@@ -152,25 +168,25 @@ class WalletView extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            CustomDepositedStatus(
+            customDepositedStatus(
                 "Deposit Successfully",
                 AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.down,
                 context),
-            CustomDepositedStatus(
+            customDepositedStatus(
                 "Refund Successfully",
                 AppColors.blueColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.refresh,
                 context),
-            CustomDepositedStatus(
+            customDepositedStatus(
                 "Deposit Successfully",
                 AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
                 Assets.down,
                 context),
-            CustomDepositedStatus(
+            customDepositedStatus(
                 "Deposit Successfully",
                 AppColors.greenColor.withValues(alpha: 0.1),
                 "\$1000",
@@ -182,7 +198,7 @@ class WalletView extends StatelessWidget {
     );
   }
 
-  Widget CustomDepositedStatus(String? text, Color? color, String? amountText,
+  customDepositedStatus(String? text, Color? color, String? amountText,
       String? icon, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -191,12 +207,9 @@ class WalletView extends StatelessWidget {
           CircleAvatar(
             backgroundColor:
                 color ?? AppColors.greenColor.withValues(alpha: 0.1),
-            radius: 40.r,
-            child: Container(
-              width: 40.r,
-              height: 40.r,
-              padding: EdgeInsets.all(4.r),
-              child: SvgPicture.asset(icon!),
+            radius: 35.r,
+            child: SvgPicture.asset(
+              icon!,
             ),
           ),
           8.pw,

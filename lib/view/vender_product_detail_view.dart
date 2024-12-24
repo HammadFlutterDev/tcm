@@ -11,6 +11,7 @@ import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/ad_preview_view.dart';
 import 'package:tcm/view/ad_product_view.dart';
 import 'package:tcm/view/checkout_view.dart';
+import 'package:tcm/view/my_cart_view.dart';
 import 'package:tcm/view/vender_view.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -35,7 +36,9 @@ class VenderProductDetailView extends StatelessWidget {
             Expanded(
                 child: CustomButtonWidget(
               title: "Ad to Cart",
-              onPressed: () {},
+              onPressed: () {
+                AppRouter.push(const MyCartView());
+              },
               border: Border.all(color: AppColors.borderColor),
               textColor: Colors.black,
               color: const Color(0xffEFEDEC),
@@ -45,7 +48,7 @@ class VenderProductDetailView extends StatelessWidget {
                 child: CustomButtonWidget(
                     title: "Buy Now",
                     onPressed: () {
-                      AppRouter.push( CheckoutView(
+                      AppRouter.push(CheckoutView(
                         product: product,
                       ));
                     }))
@@ -94,8 +97,7 @@ class VenderProductDetailView extends StatelessWidget {
                           Container(
                             height: 20.h,
                             alignment: Alignment.center,
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 12.6),
+                            padding: EdgeInsets.only(left: 12.6.r, right: 12.6),
                             decoration: BoxDecoration(
                                 color: const Color(0xffFFFF00),
                                 borderRadius: BorderRadius.horizontal(

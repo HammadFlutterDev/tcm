@@ -14,7 +14,7 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 3), () {
       AppRouter.pushReplacement(const OnboardingView());
     });
     super.initState();
@@ -22,6 +22,8 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.asset("assets/lottie/splash_lottie_json.json",);
+    return Lottie.asset(
+      "assets/lottie/splash_lottie_json.json",
+    );
   }
 }

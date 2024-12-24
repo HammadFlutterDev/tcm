@@ -139,6 +139,7 @@ class TextFieldUnderGround extends StatelessWidget {
         TextField(
           controller: controller,
           textAlign: TextAlign.left,
+          style: context.textStyle.displayMedium!.copyWith(fontSize: 22.sp),
           decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.only(left: 0, right: 0, bottom: 0, top: 0),

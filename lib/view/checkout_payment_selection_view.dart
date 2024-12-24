@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/checkout_view.dart';
@@ -12,7 +13,8 @@ import '../widgets/custom_list_widget.dart';
 import 'user_profile_view/add_card_view.dart';
 
 class CheckoutPaymentSelectionView extends StatefulWidget {
-  const CheckoutPaymentSelectionView({super.key});
+  final ProductDataModel? productData;
+  const CheckoutPaymentSelectionView({super.key,  this.productData});
 
   @override
   State<CheckoutPaymentSelectionView> createState() =>
@@ -40,10 +42,11 @@ class _CheckoutPaymentSelectionViewState
                   AppRouter.push(AddCardView(
                     onTap: () {
                       AppRouter.back();
-                      AppRouter.pushReplacement(const CheckoutView(
+                      AppRouter.pushReplacement( CheckoutView(
                         isDeliveryOptionSet: true,
                         isLocationSet: true,
                         isPaymentMethodSet: true,
+                        product: widget.productData,
                       ));
                     },
                   ));
@@ -57,10 +60,11 @@ class _CheckoutPaymentSelectionViewState
                   AppRouter.push(AddCardView(
                     onTap: () {
                       AppRouter.back();
-                      AppRouter.pushReplacement(const CheckoutView(
+                      AppRouter.pushReplacement( CheckoutView(
                         isDeliveryOptionSet: true,
                         isLocationSet: true,
                         isPaymentMethodSet: true,
+                        product: widget.productData,
                       ));
                     },
                   ));

@@ -42,7 +42,7 @@ class _CommentViewState extends State<CommentView> {
           child: ListView(
             padding: EdgeInsets.only(bottom: 100.r),
             children: [
-              const PostWidget(),
+              PostWidget(),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: AppStyles.screenHorizontalPadding,
@@ -220,5 +220,3 @@ class ChattingSendBoxWidget extends StatelessWidget {
     );
   }
 }
-
-

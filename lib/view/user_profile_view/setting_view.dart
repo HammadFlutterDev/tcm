@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/view/login_view.dart';
 import 'package:tcm/view/user_profile_view/custom_profile_widget.dart';
 import 'package:tcm/view/user_profile_view/edit_profile_view.dart';
 import 'package:tcm/view/user_profile_view/wallet_view.dart';
@@ -56,7 +58,9 @@ class SettingView extends StatelessWidget {
       {
         "icon": Assets.logout,
         "title": "Log Out",
-        "onTap": () {},
+        "onTap": () {
+          AppRouter.pushAndRemoveUntil(const LoginView());
+        },
         "color": Colors.red,
       },
     ];
@@ -106,7 +110,7 @@ class SettingView extends StatelessWidget {
                         onTap: () {
                           AppRouter.push(const EditProfileView());
                         },
-                        child: const Icon(Icons.edit_square))
+                        child: SvgPicture.asset(Assets.editIcon))
                   ],
                 ),
                 Center(

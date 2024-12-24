@@ -43,7 +43,7 @@ class CommonScreenTemplateWidget extends StatelessWidget {
             style: context.textStyle.displayMedium!.copyWith(fontSize: 18.sp),
           ),
           iconTheme: IconThemeData(size: 100.r),
-          actions: actionWidget != null ? [actionWidget!] : null,
+          actions: actionWidget != null ? [actionWidget!, 20.pw] : null,
           bottom: bottomAppbarWidget,
         ),
       ),

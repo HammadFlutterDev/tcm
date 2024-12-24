@@ -46,26 +46,31 @@ class ProductItemCard extends StatelessWidget {
                     Positioned(
                         top: 10,
                         right: 7,
-                        child: Container(
-                          height: 30.r,
-                          width: 30.r,
-                          padding: EdgeInsets.all(5.r),
-                          decoration: BoxDecoration(
-                            color: Colors.white, // Background color (white)
-                            borderRadius: BorderRadius.circular(
-                                4.r), // Border radius of 4px
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(
-                                    alpha: 0.25), // Shadow color with opacity
-                                offset: const Offset(0,
-                                    4), // Horizontal and vertical offsets (0px, 4px)
-                                blurRadius: 8.2, // Blur radius (8.2px)
-                                spreadRadius: 0, // No spread of the shadow
-                              ),
-                            ],
+                        child: GestureDetector(
+                          onTap: (){
+                            
+                          },
+                          child: Container(
+                            height: 30.r,
+                            width: 30.r,
+                            padding: EdgeInsets.all(5.r),
+                            decoration: BoxDecoration(
+                              color: Colors.white, // Background color (white)
+                              borderRadius: BorderRadius.circular(
+                                  4.r), // Border radius of 4px
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(
+                                      alpha: 0.25), // Shadow color with opacity
+                                  offset: const Offset(0,
+                                      4), // Horizontal and vertical offsets (0px, 4px)
+                                  blurRadius: 8.2, // Blur radius (8.2px)
+                                  spreadRadius: 0, // No spread of the shadow
+                                ),
+                              ],
+                            ),
+                            child: SvgPicture.asset(Assets.addCartIcon),
                           ),
-                          child: SvgPicture.asset(Assets.addCartIcon),
                         ))
                   ],
                 )

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
-import 'package:tcm/view/user_profile_view/setting_view.dart';
 
 import '../../config/app_colors.dart';
 import '../../config/app_styles.dart';
@@ -70,7 +69,10 @@ class MoneyDepositView extends StatelessWidget {
               child: CustomButtonWidget(
                 title: "Go Back",
                 onPressed: () {
-                  AppRouter.push(const SettingView());
+                  AppRouter.back();
+                  AppRouter.back();
+                  AppRouter.back();
+                  AppRouter.back();
                 },
               ),
             )

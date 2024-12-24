@@ -89,11 +89,16 @@ class _MyCartViewState extends State<MyCartView> {
           ),
         ),
         actionWidget: GestureDetector(
+          onTap: () {},
           child: Container(
             width: 31.r,
             height: 31.r,
+            padding: EdgeInsets.all(6.r),
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: Colors.white),
+            child: SvgPicture.asset(
+              Assets.deleteIcon,
+            ),
           ),
         ),
         title: "My Cart",
@@ -105,11 +110,9 @@ class _MyCartViewState extends State<MyCartView> {
               price: "12.00",
               image: "",
               isSelect: cart1,
-              onTap: (){
+              onTap: () {
                 cart1 = !cart1;
-                setState(() {
-                  
-                });
+                setState(() {});
               },
             ),
             10.ph,
@@ -119,11 +122,9 @@ class _MyCartViewState extends State<MyCartView> {
               price: "12.00",
               image: "",
               isSelect: cart2,
-              onTap: (){
+              onTap: () {
                 cart2 = !cart2;
-                setState(() {
-                  
-                });
+                setState(() {});
               },
             )
           ],
@@ -145,8 +146,7 @@ class AddCartWidget extends StatelessWidget {
       required this.image,
       required this.price,
       required this.isSelect,
-      required this.onTap
-      });
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +168,8 @@ class AddCartWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: isSelect ? AppColors.primaryGradinet : null,
-                      border: !isSelect ? Border.all(color: Colors.black) : null),
+                      border:
+                          !isSelect ? Border.all(color: Colors.black) : null),
                   child: Icon(
                     Icons.check,
                     color: Colors.white,
@@ -184,7 +185,7 @@ class AddCartWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(Assets.addCartIcon),
+                  SvgPicture.asset(Assets.placeOrderIcon),
                   5.pw,
                   Text(
                     "PurelyPrime",

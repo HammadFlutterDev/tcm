@@ -5,6 +5,8 @@ import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/utils/app_router.dart';
+import 'package:tcm/view/chatting_list_view.dart';
 import 'package:tcm/view/vender_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
@@ -27,12 +29,11 @@ class _SearchProductViewState extends State<SearchProductView> {
       title: widget.title,
       leadingWidget: const CustomBackButtonWidget(),
       appBarHeight: 100.h,
-      actionWidget: Row(
-        children: [
-          CustomMenuIconShape(icon: Assets.messageicon, onTap: () {}),
-          20.pw
-        ],
-      ),
+      actionWidget: CustomMenuIconShape(
+          icon: Assets.messageicon,
+          onTap: () {
+            AppRouter.push(ChattingListView());
+          }),
       child: ListView(
         children: [
           Padding(

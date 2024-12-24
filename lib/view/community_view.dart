@@ -116,7 +116,7 @@ class _CommunityViewState extends State<CommunityView> {
               ),
               ...List.generate(
                 5,
-                (index) => const PostWidget(
+                (index) => PostWidget(
                   isUserShow: true,
                 ),
               )
@@ -128,8 +128,13 @@ class _CommunityViewState extends State<CommunityView> {
 
 class PostWidget extends StatelessWidget {
   final bool? isUserShow;
-  const PostWidget({super.key, this.isUserShow = false});
-
+  PostWidget({super.key, this.isUserShow = false});
+  List<String> emojis = [
+    Assets.heartEmoji,
+    Assets.sadEmoji,
+    Assets.smileEmoji,
+    Assets.pointingFingerEmoji
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -229,23 +234,33 @@ class PostWidget extends StatelessWidget {
           const Divider(),
           Row(
             children: [
-              const Stack(
+              Stack(
                 clipBehavior: Clip.none,
                 children: [
                   ReactionIconWidget(
-                    emoji: '',
+                    emoji: emojis[0],
                   ),
                   Positioned(
                     right: -13,
                     child: ReactionIconWidget(
-                      emoji: '',
+                      emoji: emojis[2],
                     ),
                   ),
                   Positioned(
                     right: -28,
                     child: ReactionIconWidget(
-                      emoji: '',
+                      emoji: emojis[1],
                     ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  35.pw,
+                  Text(
+                    '534',
+                    style: context.textStyle.labelSmall!
+                        .copyWith(letterSpacing: 0.3),
                   ),
                 ],
               ),
@@ -313,6 +328,7 @@ class ReactionIconWidget extends StatelessWidget {
     return Container(
       width: radius ?? 22.r,
       height: radius ?? 22.r,
+      padding: EdgeInsets.all(2.r),
       decoration: const BoxDecoration(
           color: AppColors.reactionIconColor, shape: BoxShape.circle),
       child: emoji != "" ? SvgPicture.asset(emoji) : null,

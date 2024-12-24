@@ -270,7 +270,9 @@ class SenderMessageWidget extends StatelessWidget {
                   minWidth: 0.0, maxWidth: context.screenwidth * 0.8),
               decoration: BoxDecoration(
                   color: context.colors.primary,
-                  borderRadius: BorderRadius.circular(500.r)),
+                  borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(500.r),
+                      right: Radius.circular(500.r))),
               child: Text(
                 message,
                 style:
@@ -316,7 +318,9 @@ class ReceiverMessageWidget extends StatelessWidget {
                   minWidth: 0.0, maxWidth: context.screenwidth * 0.8),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(500.r)),
+                  borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(500.r),
+                      right: Radius.circular(500.r))),
               child: Text(
                 message,
                 style: context.textStyle.bodyMedium!,

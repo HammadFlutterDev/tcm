@@ -8,6 +8,7 @@ import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/ad_preview_view.dart';
 import 'package:tcm/view/ad_product_view.dart';
+import 'package:tcm/view/chatting_view.dart';
 import 'package:tcm/view/checkout_payment_selection_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
@@ -178,7 +179,9 @@ class PaymentConfirmedView extends StatelessWidget {
                       Expanded(
                           child: CustomButtonWidget(
                         title: "Go Back",
-                        onPressed: () {},
+                        onPressed: () {
+                          AppRouter.back();
+                        },
                         border: Border.all(color: AppColors.borderColor),
                         textColor: Colors.black,
                         color: const Color(0xffEFEDEC),
@@ -188,7 +191,12 @@ class PaymentConfirmedView extends StatelessWidget {
                           child: CustomButtonWidget(
                               title: "Chat",
                               onPressed: () {
-                                // AppRouter.push( );
+                                AppRouter.push(const ChattingView(
+                                  userImage: "sdsd",
+                                  userName: "Jone",
+                                  productImage: "sdsd",
+                                  isPaid: true,
+                                ));
                               }))
                     ],
                   ),

@@ -21,17 +21,17 @@ class SelectPaymetView extends StatelessWidget {
     return CommonScreenTemplateWidget(
       title: "Select Payment",
       leadingWidget: const CustomBackButtonWidget(),
-      appBarHeight: 60.h,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              AppRouter.push(const SelectPaymentAddMoreView());
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: AppStyles.screenHorizontalPadding),
+      appBarHeight: 80.h,
+      child: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: AppStyles.screenHorizontalPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                AppRouter.push(const SelectPaymentAddMoreView());
+              },
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(
@@ -95,11 +95,8 @@ class SelectPaymetView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: 20, horizontal: AppStyles.screenHorizontalPadding),
-            child: Text(
+            20.ph,
+            Text(
               "Deposit Amount",
               style: context.textStyle.displayMedium?.copyWith(
                 fontSize: 16.sp,
@@ -107,11 +104,12 @@ class SelectPaymetView extends StatelessWidget {
                 color: AppColors.lightIconColor,
               ),
             ),
-          ),
-          const SelectableContainerList(
-            items: ["\$100", "\$200", "\$300"],
-          ),
-        ],
+            20.ph,
+            const SelectableContainerList(
+              items: ["\$100", "\$200", "\$300"],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -138,64 +136,53 @@ class _SelectableContainerListState extends State<SelectableContainerList> {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: widget.items.map((item) {
               int index = widget.items.indexOf(item);
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = index;
-                      textController.text = item;
-                    });
-                  },
-                  child: Container(
-                    height: 50.h,
-                    width: 120.w,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == index
-                          ? AppColors.primaryColor.withValues(alpha: 0.1)
-                          : AppColors.greyColor.withValues(alpha: 0.1),
-                      border: Border.all(
-                          color:
-                              AppColors.lightIconColor.withValues(alpha: 0.1),
-                          width: 1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      item,
-                      style: context.textStyle.displayMedium?.copyWith(
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.lightIconColor,
-                      ),
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = index;
+                    textController.text = item;
+                  });
+                },
+                child: Container(
+                  height: 50.h,
+                  width: (context.screenwidth / 3) * 0.85,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: selectedIndex == index
+                        ? AppColors.primaryColor.withValues(alpha: 0.1)
+                        : AppColors.greyColor.withValues(alpha: 0.1),
+                    border: Border.all(
+                        color: AppColors.lightIconColor.withValues(alpha: 0.1),
+                        width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    item,
+                    style: context.textStyle.displayMedium?.copyWith(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.lightIconColor,
                     ),
                   ),
                 ),
               );
             }).toList(),
           ),
-          30.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppStyles.screenHorizontalPadding),
-            child: TextFieldUnderGround(
-              hintText: "Amount",
-              controller: textController,
-            ),
+          TextFieldUnderGround(
+            hintText: "Amount",
+            controller: textController,
           ),
           const Spacer(),
-          Padding(
-            padding: EdgeInsets.all(AppStyles.screenHorizontalPadding),
-            child: CustomButtonWidget(
-                title: "Proceed with ${textController.text}",
-                onPressed: () {
-                  AppRouter.push(const SelectPaymentAddMoreView());
-                }),
-          )
+          CustomButtonWidget(
+              title: "Proceed with ${textController.text}",
+              onPressed: () {
+                AppRouter.push(const SelectPaymentAddMoreView());
+              }),
+          20.ph,
         ],
       ),
     );

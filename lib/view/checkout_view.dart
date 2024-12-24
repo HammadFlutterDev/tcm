@@ -436,10 +436,14 @@ class _CheckoutViewState extends State<CheckoutView> {
                                 widget.isPaymentMethodSet!) ||
                             !(widget.product?.isStoreProduct ?? false)) {
                           AppRouter.back();
-                          AppRouter.back();
-                          AppRouter.push(OrderConfirmationView());
+
+                          AppRouter.push(OrderConfirmationView(
+                            isVender: widget.product?.isStoreProduct ?? false,
+                          ));
                         } else {
-                          AppRouter.push(const CheckoutPaymentSelectionView());
+                          AppRouter.push(CheckoutPaymentSelectionView(
+                            productData: widget.product,
+                          ));
                         }
                       }),
                 ],

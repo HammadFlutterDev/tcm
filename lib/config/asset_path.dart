@@ -47,6 +47,7 @@ class Assets {
   static const String locationIcon = '${iconPath}location.svg';
   static const String bagIcon = '${iconPath}bag_icon.svg';
   static const String addCartIcon = '${iconPath}add_cart_icon.svg';
+  static const String placeOrderIcon = '${iconPath}my_cart_icon.svg';
 
   static const String bannerImage = '${imagePath}banner_image.png';
 
@@ -98,6 +99,20 @@ class Assets {
 
   static const String searchIconGif = "${gifPath}search_icon.gif";
 
+  //EMOJI ICONS
+  static const String smileEmoji = "${iconPath}smile_emoji.svg";
+  static const String heartEmoji = "${iconPath}heart_emoji_icon.svg";
+  static const String sadEmoji = "${iconPath}sad_emoji.svg";
+  static const String pointingFingerEmoji =
+      "${iconPath}pointing_finger_emoji.svg";
+  static const String i1 = '${imagePath}i1.png';
+  static const String i2 = '${imagePath}i2.png';
+  static const String i3 = '${imagePath}i3.png';
+  static const String i4 = '${imagePath}i4.png';
+  static const String i5 = '${imagePath}i5.png';
+  static const String i6 = '${imagePath}i6.png';
+  static const String i7 = '${imagePath}i7.png';
+
   //COMMON
   static const String userAvatar = "${imagePath}user_avatar.jpg";
   static const String chatGalleryIcon = "${iconPath}chat_gallery_icon.svg";
@@ -126,11 +141,7 @@ class Assets {
   static const String confirmOrderIcon = "${gifPath}deliver_confirmation.gif";
   static const String deleteIcon = "${iconPath}delete_icon.svg";
   static const String shopIcon = "${iconPath}shop_icon.svg";
-
-
-
+  static const String editIcon = "${iconPath}edit_square.svg";
   static const String userImage =
       "https://media.istockphoto.com/id/1200677760/photo/portrait-of-handsome-smiling-young-man-with-crossed-arms.jpg?s=612x612&w=0&k=20&c=g_ZmKDpK9VEEzWw4vJ6O577ENGLTOcrvYeiLxi8mVuo=";
-
-
 }
