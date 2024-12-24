@@ -406,9 +406,9 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
         const AdSliderWidget(
           images: [
             // Add your image URLs here
-            "https://i.ibb.co/ftqt8BH/Frame-719.png",
-            "https://i.ibb.co/ftqt8BH/Frame-719.png",
-            "https://i.ibb.co/ftqt8BH/Frame-719.png",
+            "https://i.ibb.co/1Xpw8j7/Frame-1030.png",
+            "https://i.ibb.co/1Xpw8j7/Frame-1030.png",
+            "https://i.ibb.co/1Xpw8j7/Frame-1030.png",
           ],
         ),
         10.ph,

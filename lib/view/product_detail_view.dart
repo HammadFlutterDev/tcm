@@ -231,6 +231,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               showAddCard: true,
               title: "Similar Products",
             ),
+            100.ph
           ],
         ),
       ),
