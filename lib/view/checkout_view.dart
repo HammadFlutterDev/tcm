@@ -122,7 +122,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                     4.pw,
                     Expanded(
                         child: Text(
-                      "BTX Traders",
+                      widget.product?.productOwner?.username ?? "BTX Traders",
                       style: context.textStyle.displayMedium!
                           .copyWith(fontWeight: FontWeight.w700),
                     ))
@@ -136,7 +136,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10.r),
                       child: DisplayNetworkImage(
-                        imageUrl: "",
+                        imageUrl: widget.product?.productImage ?? "",
                         width: 77.297.w,
                         height: 75.595.h,
                       ),
@@ -144,9 +144,11 @@ class _CheckoutViewState extends State<CheckoutView> {
                     10.pw,
                     Expanded(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Red Bull Energy Drink Can 250ml Pack of 4 full Extreme Energy",
+                            widget.product?.productName ??
+                                "Red Bull Energy Drink Can 250ml Pack of 4 full Extreme Energy",
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: context.textStyle.displayMedium!
@@ -156,7 +158,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "\$12.00",
+                                "\$${widget.product?.productPrice ?? 12.00}",
                                 style: context.textStyle.displayLarge!
                                     .copyWith(fontWeight: FontWeight.w700),
                               ),
@@ -438,6 +440,7 @@ class _CheckoutViewState extends State<CheckoutView> {
 
                           AppRouter.push(OrderConfirmationView(
                             isVender: widget.product?.isStoreProduct ?? false,
+                            product: widget.product,
                           ));
                         } else {
                           AppRouter.push(CheckoutPaymentSelectionView(

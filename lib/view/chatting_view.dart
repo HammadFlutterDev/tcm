@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
+import 'package:tcm/utils/app_router.dart';
+import 'package:tcm/view/checkout_view.dart';
 import 'package:tcm/view/comment_view.dart';
 import 'package:tcm/widgets/display_network_image.dart';
 import 'package:tcm/widgets/user_profile_widget.dart';
@@ -109,7 +112,17 @@ class _ChattingViewState extends State<ChattingView> {
                 productPrice: "12.00",
                 productTitle: "Best Travel neck pillow available two...",
                 isButtonEnable: true,
-                onTap: () {},
+                isPaid: widget.isPaid,
+                onTap: widget.isPaid
+                    ? () {
+                        AppRouter.back();
+                      }
+                    : () {
+                        AppRouter.push(CheckoutView(
+                            product: ProductDataModel(
+                          productImage: widget.productImage,
+                        )));
+                      },
               ),
               20.ph,
               Center(
@@ -189,7 +202,7 @@ class BuyingProductTitleWidget extends StatelessWidget {
                 3.ph,
                 Row(
                   children: [
-                    !isPaid!
+                    isPaid!
                         ? GestureDetector(
                             onTap: onTap,
                             child: Container(

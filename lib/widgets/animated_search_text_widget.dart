@@ -42,26 +42,33 @@ class _AnimatedSearchTextState extends State<AnimatedSearchText>
     _controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed && !_isPaused) {
         // Pause when animation reaches the center
+        if (!mounted) return; // Ensure widget is still mounted
+
+        // Initial pause and state change
         setState(() {
           _isPaused = true;
         });
 
         // Wait for 4-5 seconds
-        await Future.delayed(const Duration(seconds: 4));
+        await Future.delayed(const Duration(seconds: 2));
 
-        // Move to the next text
-        setState(() {
-          _currentIndex = (_currentIndex + 1) % widget.texts.length;
-        });
+        // If widget is still mounted, proceed with next text and reset animation
+        if (mounted) {
+          setState(() {
+            _currentIndex = (_currentIndex + 1) % widget.texts.length;
+          });
 
-        // Reset and start the animation again for the next text
-        _controller.reset();
-        _controller.forward();
+          // Reset animation and start it again
+          _controller.reset();
+          _controller.forward();
 
-        // After the animation finishes, reset pause flag
-        setState(() {
-          _isPaused = false;
-        });
+          // After animation finishes, reset pause flag
+          if (mounted) {
+            setState(() {
+              _isPaused = false;
+            });
+          }
+        }
       }
     });
 

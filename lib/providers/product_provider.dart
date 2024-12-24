@@ -243,8 +243,10 @@ class ProductProvider with ChangeNotifier {
   }
 
   void removeItem(index) {
-    checkOutList.removeAt(index);
-    notifyListeners();
+    if (!(index <0) && checkOutList.isNotEmpty) {
+      checkOutList.removeAt(index);
+      notifyListeners();
+    }
   }
 }
 

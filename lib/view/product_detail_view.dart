@@ -61,6 +61,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
       productPrice: '19.99',
       isFavourite: true,
       productSampleImages: [
+        'https://i.ibb.co/ssVbBkd/image4.png',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZ3MLALqrveBjqVQaqW3OrUJVJboxr-lhAw&s',
         'https://media.istockphoto.com/id/538896642/photo/happy-young-man-sleeping-in-travel-bus[…]12&w=0&k=20&c=4kbnXQ0rhGGBsZugMwdS6VaQJ90wekeFReneXuRV8c0='
       ],
@@ -184,7 +185,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductTitleWidget(
-                    address: widget.product.locationData.address,
+                    address: widget.product.locationData?.address,
                     title: widget.product.productName,
                     price: widget.product.productPrice,
                   ),

@@ -7,6 +7,7 @@ import 'package:tcm/view/chatting_list_view.dart';
 import 'package:tcm/view/my_cart_view.dart';
 import 'package:tcm/view/notification_view.dart';
 import 'package:tcm/view/user_profile_view/setting_view.dart';
+import 'package:tcm/widgets/animated_search_text_widget.dart';
 import 'package:tcm/widgets/custom_menu_icon_shape_widget.dart';
 
 import '../config/app_colors.dart';
@@ -231,8 +232,16 @@ class TopWidget extends StatelessWidget {
                             style: context.textStyle.bodyMedium!.copyWith(
                                 color: Colors.black.withValues(alpha: 0.5)),
                           ),
-                          8.pw,
-                          Spacer(),
+                          10.pw,
+                          const AnimatedSearchText(texts: [
+                            "Hair Oil",
+                            "Herbs",
+                            "Grocery",
+                            "Sand Toys",
+                            "Colddrinks",
+                            "Beach Towels"
+                          ]),
+                          const Spacer(),
                           Image.asset(
                             Assets.searchIconGif,
                             width: 35.r,

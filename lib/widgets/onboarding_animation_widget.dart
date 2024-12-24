@@ -52,44 +52,33 @@ class RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-
-                              image: Assets.sliders1,
-                           ),
+                            image: Assets.sliders1,
+                          ),
                           Tile(
-
-                              image: Assets.sliders2,
-                              ),
+                            image: Assets.sliders2,
+                          ),
                           Tile(
-
-                              image: Assets.sliders3,
-                              ),
+                            image: Assets.sliders3,
+                          ),
                           Tile(
-
-                              image: Assets.sliders4,
-                             ),
+                            image: Assets.sliders4,
+                          ),
                           Tile(
-
-                              image: Assets.sliders5,
-                             ),
+                            image: Assets.sliders5,
+                          ),
                           Tile(
-
-                              image: Assets.sliders6,
-                             ),
+                            image: Assets.sliders6,
+                          ),
                           Tile(
-
-                              image: Assets.sliders7,
-                             ),
-
+                            image: Assets.sliders7,
+                          ),
                           Tile(
-
                             image: Assets.sliders8,
                           ),
                           Tile(
-
                             image: Assets.sliders9,
                           ),
                           Tile(
-
                             image: Assets.sliders10,
                           ),
                         ],
@@ -108,50 +97,35 @@ class RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-
                             image: Assets.sliders21,
                           ),
                           Tile(
-
                             image: Assets.sliders22,
                           ),
                           Tile(
-
                             image: Assets.sliders23,
                           ),
                           Tile(
-
                             image: Assets.sliders24,
                           ),
                           Tile(
-
                             image: Assets.sliders25,
                           ),
-
                           Tile(
-
                             image: Assets.sliders26,
                           ),
-
                           Tile(
-
                             image: Assets.sliders27,
                           ),
-
                           Tile(
-
                             image: Assets.sliders28,
                           ),
                           Tile(
-
                             image: Assets.sliders31,
                           ),
-
                           Tile(
-
                             image: Assets.sliders37,
                           ),
-
                         ],
                       ),
                     );
@@ -169,47 +143,36 @@ class RowAnimationState extends State<RowAnimation>
                       child: const Column(
                         children: [
                           Tile(
-
-                              image: Assets.sliders30,
-                              ),
+                            image: Assets.sliders30,
+                          ),
                           Tile(
-
                             image: Assets.sliders31,
                           ),
                           Tile(
-
                             image: Assets.sliders32,
                           ),
                           Tile(
-
                             image: Assets.sliders33,
                           ),
                           Tile(
-
                             image: Assets.sliders34,
                           ),
                           Tile(
-
                             image: Assets.sliders35,
                           ),
                           Tile(
-
                             image: Assets.sliders36,
                           ),
                           Tile(
-
                             image: Assets.sliders37,
                           ),
                           Tile(
-
                             image: Assets.sliders38,
                           ),
                           Tile(
-
                             image: Assets.sliders39,
                           ),
                           Tile(
-
                             image: Assets.sliders40,
                           ),
                         ],
@@ -227,25 +190,23 @@ class RowAnimationState extends State<RowAnimation>
 }
 
 class Tile extends StatelessWidget {
-  const Tile(
-      {super.key,
-      required this.image,});
+  const Tile({
+    super.key,
+    required this.image,
+  });
 
   final String image;
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 154.h,
-        width: 120.w,
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        margin: EdgeInsets.only(bottom: 10.r),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.r),
-            image: const DecorationImage(
-                image: AssetImage(Assets.homeBackgroundImage),
-                fit: BoxFit.cover)),
-        child: Image.asset(image));
+      height: 154.h,
+      width: 112.w,
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      margin: EdgeInsets.only(bottom: 10.r),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.r),
+          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+    );
   }
 }

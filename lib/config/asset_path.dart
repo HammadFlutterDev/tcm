@@ -59,11 +59,9 @@ class Assets {
 
   //LOTTIE ANIMATION
   static const String splashAnimation = "${lottiePath}splash_lottie_json.josn";
-  static const String internetIssueAnimation =
-      '${lottiePath}internet_issue.json';
-  static const String noFavouriteAnimation = '${lottiePath}animation_2.json';
-  static const String noNotificationAnimation = '${lottiePath}animation_1.json';
-  static const String noCategoryAnimation = '${lottiePath}no_category.json';
+  static const String handShakeLottie = "${lottiePath}handshake_lottie.json";
+  static const String noCartItemLottie = "${lottiePath}no_cart_item.json";
+
 
   //Product Placeholder Image
   static const String placeholderImage = '${imagePath}placeholder_image.webp';
@@ -90,7 +88,7 @@ class Assets {
   static const String bagIcon = '${iconPath}bag_icon.svg';
   static const String addCartIcon = '${iconPath}add_cart_icon.svg';
   static const String placeOrderIcon = '${iconPath}my_cart_icon.svg';
-
+  static const String cashWalletIcon = "${iconPath}cash_wallet.svg";
   static const String bannerImage = '${imagePath}banner_image.png';
 
   //VENDER SCREEN IMAGES

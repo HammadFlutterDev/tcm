@@ -63,8 +63,9 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       productPrice: '19.99',
       isFavourite: true,
       productSampleImages: [
+        'https://i.ibb.co/ssVbBkd/image4.png',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZ3MLALqrveBjqVQaqW3OrUJVJboxr-lhAw&s',
-        'https://media.istockphoto.com/id/538896642/photo/happy-young-man-sleeping-in-travel-bus[…]12&w=0&k=20&c=4kbnXQ0rhGGBsZugMwdS6VaQJ90wekeFReneXuRV8c0='
+        'https://m.media-amazon.com/images/I/81g3pyGvYkL._AC_SL1500_.jpg'
       ],
       productDescription:
           'The Neck Pillow is designed to provide maximum comfort during travel or relaxation at home. Its ergonomic shape supports the neck and head, reducing strain and fatigue during long journeys.',
@@ -270,7 +271,7 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
       isStoreProduct: true,
       productSampleImages: [
         'https://images-cdn.ubuy.co.id/638ae1adff848f5d8c595a62-ihave-toothbrush-holder-for-bathroom.jpg',
-        'https://images-cdn.ubuy.co.i64c2111c48233b158c3db54c-ihave-toothbrush-holders-bathroomjpg'
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTixcIc2zO9QaP-l3fdk8zAYJClqJM0KdvO8g&s'
       ],
       productDescription:
           '5 holes for toothbrushes, 2 holes for toothpastes, and 3 larger space for your rinse cups ; TOOTHBRUSH HOLDER · Made of Food-grade ABS Plastic, Eco-',

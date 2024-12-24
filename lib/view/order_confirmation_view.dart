@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/navigation_view.dart';
@@ -14,7 +15,8 @@ import 'package:tcm/widgets/custom_button_widget.dart';
 
 class OrderConfirmationView extends StatelessWidget {
   final bool? isVender;
-  OrderConfirmationView({super.key, this.isVender = false});
+  final ProductDataModel? product;
+  OrderConfirmationView({super.key, this.isVender = false, required this.product});
   final List<String> safetyInstruction = [
     "Only meet in public / crowded places.",
     "Never go alone to meet a buyer/seller always take someone with you.",
@@ -34,7 +36,9 @@ class OrderConfirmationView extends StatelessWidget {
               if (isVender ?? false) {
                 AppRouter.pushAndRemoveUntil(const NavigationView());
               } else {
-                AppRouter.pushReplacement(const PaymentConfirmedView());
+                AppRouter.pushReplacement( PaymentConfirmedView(
+                  product: product ,
+                ));
               }
             },
           ),

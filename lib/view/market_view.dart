@@ -55,6 +55,7 @@ class _MarketViewState extends State<MarketView> {
       productPrice: '19.99',
       isFavourite: true,
       productSampleImages: [
+        'https://i.ibb.co/ssVbBkd/image4.png',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDZ3MLALqrveBjqVQaqW3OrUJVJboxr-lhAw&s',
         'https://media.istockphoto.com/id/538896642/photo/happy-young-man-sleeping-in-travel-bus[…]12&w=0&k=20&c=4kbnXQ0rhGGBsZugMwdS6VaQJ90wekeFReneXuRV8c0='
       ],
@@ -108,7 +109,7 @@ class _MarketViewState extends State<MarketView> {
   final List<ProductDataModel> discountPreOwnedGroceryProducts = [
     ProductDataModel(
       id: 6,
-      productName: "Vegetable Oil",
+      productName: "Vegetable Oil extracted from seeds",
       productImage: "https://i.ibb.co/x7g9tr5/image4.png",
       productPrice: "3.49",
       isFavourite: false,
@@ -138,7 +139,7 @@ class _MarketViewState extends State<MarketView> {
     ),
     ProductDataModel(
       id: 2,
-      productName: 'Nutella',
+      productName: 'Nutella, hazelnut cocoa spread',
       productImage: 'https://i.ibb.co/hdh4zwF/image2.png',
       productPrice: '5.99',
       isFavourite: true,
@@ -280,7 +281,7 @@ class _MarketViewState extends State<MarketView> {
   final List<ProductDataModel> preOwnedInfantProducts = [
     ProductDataModel(
       id: 10,
-      productName: "Camping Tent",
+      productName: "Camping Tent (for children)",
       productImage: "https://i.ibb.co/0jP205s/small-tent.png",
       productPrice: "89 .99",
       isFavourite: false,
@@ -308,7 +309,7 @@ class _MarketViewState extends State<MarketView> {
     ),
     ProductDataModel(
       id: 7,
-      productName: "Stylish Jacket",
+      productName: "Stylish Jacket (for children)",
       productImage: "https://i.ibb.co/R7JZVZL/jacket.png",
       productPrice: "49.99",
       isFavourite: true,

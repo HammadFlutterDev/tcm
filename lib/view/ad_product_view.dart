@@ -253,13 +253,13 @@ class _AdProductViewState extends State<AdProductView> {
                 Text(
                   "Upload Purchasing Receipt",
                   style: context.textStyle.bodyMedium!
-                      .copyWith(color: Colors.black.withOpacity( 0.5)),
+                      .copyWith(color: Colors.black.withOpacity(0.5)),
                 ),
                 SvgPicture.asset(
                   Assets.addDocumentIcon,
                   width: 20.r,
                   colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity( 0.5), BlendMode.srcIn),
+                      Colors.black.withOpacity(0.5), BlendMode.srcIn),
                 )
               ],
             ),
@@ -309,7 +309,6 @@ class _AdProductViewState extends State<AdProductView> {
                 AppRouter.back();
                 AppRouter.back();
                 AppRouter.back();
-                AppRouter.back();
                 ref.read(bottomIndexProvider.notifier).setIndex(0);
                 // AppRouter.push(const AdPreviewView());
                 AppRouter.push(const ProductAdLiveNowView());
@@ -346,7 +345,7 @@ class CustomTextFieldWidget extends StatelessWidget {
               borderSide: BorderSide(color: AppColors.borderColor)),
           hintText: hintText,
           hintStyle: context.inputTheme.hintStyle!
-              .copyWith(color: Colors.black.withOpacity( 0.5))),
+              .copyWith(color: Colors.black.withOpacity(0.5))),
     );
   }
 }
@@ -373,7 +372,7 @@ class LocationWidget extends StatelessWidget {
         Container(
           height: 118.h,
           decoration: BoxDecoration(
-              color: Colors.black.withOpacity( 0.2),
+              color: Colors.black.withOpacity(0.2),
               borderRadius: BorderRadius.circular(10.r)),
         ),
         Row(
@@ -571,7 +570,7 @@ class UploadProductImagesWidget extends StatelessWidget {
               "5MB maximum file size accepted in the following formats .jpg .jpeg png .gif",
               textAlign: TextAlign.center,
               style: context.textStyle.bodySmall!.copyWith(
-                color: Colors.black.withOpacity( 0.8),
+                color: Colors.black.withOpacity(0.8),
               ),
             ),
           )

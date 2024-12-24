@@ -8,7 +8,7 @@ class ProductDataModel {
   late final String? productDescription;
   late final List<String>? keyFeatures;
   late final ProductOwnerData? productOwner;
-  late final LocationData locationData;
+  late final LocationData? locationData;
   late final bool isStoreProduct; 
 
   ProductDataModel({
@@ -21,7 +21,7 @@ class ProductDataModel {
     this.productDescription,
     this.keyFeatures,
     this.productOwner,
-    required this.locationData,
+    this.locationData,
     this.isStoreProduct = false
   });
 

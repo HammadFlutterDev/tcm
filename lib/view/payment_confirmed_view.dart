@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
+import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/ad_preview_view.dart';
@@ -18,7 +19,8 @@ import '../widgets/custom_button_widget.dart';
 import '../widgets/display_network_image.dart';
 
 class PaymentConfirmedView extends StatelessWidget {
-  const PaymentConfirmedView({super.key});
+  final ProductDataModel? product;
+  const PaymentConfirmedView({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +40,12 @@ class PaymentConfirmedView extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        UserProfileWidget(radius: 15.r, imageUrl: "ah"),
+                        UserProfileWidget(
+                            radius: 15.r,
+                            imageUrl: product?.productOwner?.userImage ?? ""),
                         10.pw,
                         Text(
-                          "Cristiano David",
+                          product?.productOwner?.username ?? "Cristiano David",
                           style: context.textStyle.displayMedium,
                         )
                       ],
@@ -52,7 +56,7 @@ class PaymentConfirmedView extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(10.r),
                           child: DisplayNetworkImage(
-                            imageUrl: "",
+                            imageUrl: product?.productImage ?? "",
                             width: 77.297.w,
                             height: 75.595.h,
                           ),
@@ -62,7 +66,8 @@ class PaymentConfirmedView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                "Red Bull Energy Drink Can 250ml Pack of 4 full Extreme Energy",
+                                product?.productName ??
+                                    "Red Bull Energy Drink Can 250ml Pack of 4 full Extreme Energy",
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: context.textStyle.displayMedium!
@@ -73,7 +78,7 @@ class PaymentConfirmedView extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "\$12.00",
+                                    "\$${product?.productPrice ?? 12.00}",
                                     style: context.textStyle.displayLarge!
                                         .copyWith(fontWeight: FontWeight.w700),
                                   ),
@@ -191,10 +196,12 @@ class PaymentConfirmedView extends StatelessWidget {
                           child: CustomButtonWidget(
                               title: "Chat",
                               onPressed: () {
-                                AppRouter.push(const ChattingView(
-                                  userImage: "sdsd",
-                                  userName: "Jone",
-                                  productImage: "sdsd",
+                                AppRouter.push(ChattingView(
+                                  userImage:
+                                      product?.productOwner?.userImage ?? "",
+                                  userName:
+                                      product?.productOwner?.username ?? "",
+                                  productImage: product?.productImage ?? "",
                                   isPaid: true,
                                 ));
                               }))

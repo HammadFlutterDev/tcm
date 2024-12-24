@@ -24,7 +24,7 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
   final List<ProductDataModel> mostSellProducts = [
     ProductDataModel(
       id: 1,
-      productName: 'Pepsi S’mores collection 3 can',
+      productName: 'Pepsi S’mores collection 3 can pack',
       productImage: 'https://i.ibb.co/Rhm9Txj/image.png',
       productPrice: '1.50',
       isFavourite: false,
@@ -90,7 +90,7 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
       isStoreProduct: true,
       productSampleImages: [
         'https://images-cdn.ubuy.co.id/638ae1adff848f5d8c595a62-ihave-toothbrush-holder-for-bathroom.jpg',
-        'https://images-cdn.ubuy.co.i64c2111c48233b158c3db54c-ihave-toothbrush-holders-bathroomjpg'
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTixcIc2zO9QaP-l3fdk8zAYJClqJM0KdvO8g&s'
       ],
       productDescription:
           '5 holes for toothbrushes, 2 holes for toothpastes, and 3 larger space for your rinse cups ; TOOTHBRUSH HOLDER · Made of Food-grade ABS Plastic, Eco-',
@@ -170,7 +170,7 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
     ),
     ProductDataModel(
       id: 5,
-      productName: 'Red Bull Energy Drink 3 can',
+      productName: 'Red Bull Energy Drink 3 can pack',
       productImage: 'https://i.ibb.co/kSK3Jbw/1.png',
       productPrice: '2.99',
       isFavourite: true,
@@ -297,6 +297,7 @@ class _VenderViewConsumerState extends ConsumerState<VenderView> {
       isFavourite: true,
       isStoreProduct: true,
       productSampleImages: [
+        'https://i.ibb.co/B4Z8193/Black-Mountain-Products-Memory-Neck-Pillow.png',
         'https://m.media-amazon.com/images/I/81S+Z8DaW6L.jpg',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd6uz12WQ5tJVlxX6q_wizmPxUMGmF_rpVyQ&s'
       ],
@@ -466,10 +467,13 @@ class TopVenderDataModel {
     TopVenderDataModel(
         title: "EvoCart", image: "https://i.ibb.co/XDXWqJp/image-28.png"),
     TopVenderDataModel(
-        title: "VividVault", image: "https://i.ibb.co/7CTPG0T/image-31.png"),
+        title: "VividVault",
+        image: "https://i.ibb.co/5hKDrYH/image29.png"
+            "https://i.ibb.co/7CTPG0T/image-31.png"),
     TopVenderDataModel(
-        title: "PurelyPrime", image: "https://i.ibb.co/y4L4scJ/purely-Prime.png"),
+        title: "PurelyPrime",
+        image: "https://i.ibb.co/y4L4scJ/purely-Prime.png"),
     TopVenderDataModel(
-        title: "NestCart", image: "https://i.ibb.co/5hKDrYH/image29.png"),
+        title: "NestCart", image: "https://i.ibb.co/7CTPG0T/image-31.png"),
   ];
 }

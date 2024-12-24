@@ -35,7 +35,7 @@ class ProductAdLiveNowView extends StatelessWidget {
         child: CustomButtonWidget(
             title: "Preview Ad",
             onPressed: () {
-              AppRouter.push(const AdPreviewView());
+              AppRouter.pushReplacement(const AdPreviewView());
             }),
       ),
       body: Center(
@@ -51,8 +51,6 @@ class ProductAdLiveNowView extends StatelessWidget {
               "Your Ad is now Live!",
               style: context.textStyle.displayLarge!.copyWith(fontSize: 22.sp),
             ),
-            
-
           ],
         ),
       ),

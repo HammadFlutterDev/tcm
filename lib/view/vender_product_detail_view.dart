@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
-import 'package:tcm/providers/product_provider.dart';
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/ad_preview_view.dart';
@@ -93,7 +91,7 @@ class VenderProductDetailView extends StatelessWidget {
       isStoreProduct: true,
       productSampleImages: [
         'https://images-cdn.ubuy.co.id/638ae1adff848f5d8c595a62-ihave-toothbrush-holder-for-bathroom.jpg',
-        'https://images-cdn.ubuy.co.i64c2111c48233b158c3db54c-ihave-toothbrush-holders-bathroomjpg'
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTixcIc2zO9QaP-l3fdk8zAYJClqJM0KdvO8g&s'
       ],
       productDescription:
           '5 holes for toothbrushes, 2 holes for toothpastes, and 3 larger space for your rinse cups ; TOOTHBRUSH HOLDER · Made of Food-grade ABS Plastic, Eco-',
@@ -212,10 +210,13 @@ class VenderProductDetailView extends StatelessWidget {
           children: [
             Expanded(
                 child: CustomButtonWidget(
-              title: "Ad to Cart",
+              title: "Add to Cart",
               onPressed: () {
                 AppRouter.push(const MyCartView());
               },
+              border: Border.all(color: AppColors.borderColor),
+              textColor: Colors.black,
+              color: const Color(0xffEFEDEC),
             )),
             9.pw,
             Expanded(
@@ -458,7 +459,7 @@ class VenderProductDetailView extends StatelessWidget {
                                               .copyWith(
                                                   height: 0.8,
                                                   color: Colors.black
-                                                      .withOpacity( 0.7)),
+                                                      .withOpacity(0.7)),
                                         ),
                                       )
                                     ],
@@ -740,16 +741,17 @@ class UserRatingWidget extends StatelessWidget {
                           Text(
                             UserReviewDataModel.reviews[index].username,
                             style: context.textStyle.displaySmall!.copyWith(
-                                color: Colors.black.withOpacity( 0.7),
+                                color: Colors.black.withOpacity(0.7),
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(
-                           UserReviewDataModel.reviews[index].content,
+                            UserReviewDataModel.reviews[index].content,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: context.textStyle.bodySmall,
                           ),
-                         CustomRatingIndicator(rating: UserReviewDataModel.reviews[index].rating)
+                          CustomRatingIndicator(
+                              rating: UserReviewDataModel.reviews[index].rating)
                         ],
                       )),
                       Row(
@@ -757,7 +759,8 @@ class UserRatingWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(6.r),
                             child: DisplayNetworkImage(
-                              imageUrl: UserReviewDataModel.reviews[index].images[0],
+                              imageUrl:
+                                  UserReviewDataModel.reviews[index].images[0],
                               width: 52.r,
                               height: 68.r,
                             ),
@@ -766,7 +769,8 @@ class UserRatingWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(6.r),
                             child: DisplayNetworkImage(
-                              imageUrl: UserReviewDataModel.reviews[index].images[0],
+                              imageUrl:
+                                  UserReviewDataModel.reviews[index].images[0],
                               width: 52.r,
                               height: 68.r,
                             ),
@@ -848,7 +852,7 @@ class UserReviewDataModel {
         content:
             "I've been a Red Bull drinker for years, and it never fails to give me the need.....",
         rating: 5.0),
-     UserReviewDataModel(
+    UserReviewDataModel(
         username: "Kelly T.",
         images: [
           'https://i.redd.it/m2xp6d1ur3g91.jpg',

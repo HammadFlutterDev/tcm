@@ -226,9 +226,19 @@ class _CommunityViewState extends State<CommunityView> {
               ),
               ...List.generate(
                 posts.length,
-                (index) => PostWidget(
-                  isUserShow: true,
-                  data: posts[index],
+                (index) => GestureDetector(
+                  onTap: () {
+                    AppRouter.push(CommentView(data: posts[index]));
+                  },
+                  child: PostWidget(
+                    isUserShow: true,
+                    data: posts[index],
+                    onTap: () {
+                      AppRouter.push(CommentView(
+                        data: posts[index],
+                      ));
+                    },
+                  ),
                 ),
               )
             ],
@@ -241,7 +251,9 @@ class _CommunityViewState extends State<CommunityView> {
 class PostWidget extends StatelessWidget {
   final bool? isUserShow;
   final PostDataModel data;
-  PostWidget({super.key, this.isUserShow = false, required this.data});
+  final VoidCallback? onTap;
+  PostWidget(
+      {super.key, this.isUserShow = false, required this.data, this.onTap});
   List<String> emojis = [
     Assets.heartEmoji,
     Assets.sadEmoji,
@@ -250,189 +262,180 @@ class PostWidget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppRouter.push(CommentView(data: data));
-      },
-      child: Container(
-        // height: 281.h,
-        padding: EdgeInsets.symmetric(
-            horizontal: AppStyles.screenHorizontalPadding, vertical: 17.r),
-        margin: EdgeInsets.only(bottom: 10.r),
-        color: AppColors.scaffoldColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (isUserShow!)
+    return Container(
+      // height: 281.h,
+      padding: EdgeInsets.symmetric(
+          horizontal: AppStyles.screenHorizontalPadding, vertical: 17.r),
+      margin: EdgeInsets.only(bottom: 10.r),
+      color: AppColors.scaffoldColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (isUserShow!)
+            Row(
+              children: [
+                UserProfileWidget(radius: 25.r, imageUrl: data.user!.image!),
+                10.pw,
+                Expanded(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data.user!.name!,
+                      style:
+                          context.textStyle.labelMedium!.copyWith(height: 0.9),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          data.user!.status!,
+                          style: context.textStyle.bodySmall!
+                              .copyWith(color: AppColors.primaryColor),
+                        ),
+                        Text(
+                          " • ",
+                          style: context.textStyle.bodyMedium!
+                              .copyWith(fontSize: 16.sp),
+                        ),
+                        SvgPicture.asset(
+                          Assets.worldIcon,
+                          width: 12.r,
+                        )
+                      ],
+                    )
+                  ],
+                )),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.more_horiz_outlined),
+                  padding: EdgeInsets.zero,
+                  visualDensity: const VisualDensity(horizontal: -4.0),
+                )
+              ],
+            ),
+          TextWithSeeMore(
+            maxLength: 200,
+            text: data.postText!,
+          ),
+          Row(
+            children: [
+              Transform.rotate(
+                  angle: -10.2,
+                  child: Icon(
+                    Icons.link,
+                    size: 15.r,
+                    color: AppColors.primaryColor,
+                  )),
+              Expanded(
+                  child: Text(
+                data.attachmentLink!,
+                style: context.textStyle.displayMedium!.copyWith(
+                    color: AppColors.primaryColor,
+                    decoration: TextDecoration.underline),
+              ))
+            ],
+          ),
+          Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.spaceBetween,
+            runSpacing: 8.r,
+            spacing: 8.r,
+            children: List.generate(
+              data.postImages!.length,
+              (index) => ClipRRect(
+                borderRadius: BorderRadius.circular(6.r),
+                child: DisplayNetworkImage(
+                  imageUrl: data.postImages![index],
+                  height: 62.r,
+                  width: 73.r,
+                ),
+              ),
+            ),
+          ),
+          5.ph,
+          const Divider(),
+          Row(
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ReactionIconWidget(
+                    emoji: emojis[0],
+                  ),
+                  Positioned(
+                    right: -13,
+                    child: ReactionIconWidget(
+                      emoji: emojis[2],
+                    ),
+                  ),
+                  Positioned(
+                    right: -28,
+                    child: ReactionIconWidget(
+                      emoji: emojis[1],
+                    ),
+                  ),
+                ],
+              ),
               Row(
                 children: [
-                  UserProfileWidget(radius: 25.r, imageUrl: data.user!.image!),
-                  10.pw,
-                  Expanded(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        data.user!.name!,
-                        style: context.textStyle.labelMedium!
-                            .copyWith(height: 0.9),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            data.user!.status!,
-                            style: context.textStyle.bodySmall!
-                                .copyWith(color: AppColors.primaryColor),
-                          ),
-                          Text(
-                            " • ",
-                            style: context.textStyle.bodyMedium!
-                                .copyWith(fontSize: 16.sp),
-                          ),
-                          SvgPicture.asset(
-                            Assets.worldIcon,
-                            width: 12.r,
-                          )
-                        ],
-                      )
-                    ],
-                  )),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.more_horiz_outlined),
-                    padding: EdgeInsets.zero,
-                    visualDensity: const VisualDensity(horizontal: -4.0),
+                  35.pw,
+                  Text(
+                    data.reactionCount.toString(),
+                    style: context.textStyle.labelSmall!
+                        .copyWith(letterSpacing: 0.3),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    Assets.likeIcon,
+                    width: 20.r,
+                    // height: 18.r,
+                  ),
+                  5.pw,
+                  Text(
+                    'Like',
+                    style: context.textStyle.labelSmall!
+                        .copyWith(letterSpacing: 0.3),
                   )
                 ],
               ),
-            TextWithSeeMore(
-              maxLength: 200,
-              text: data.postText!,
-            ),
-            Row(
-              children: [
-                Transform.rotate(
-                    angle: -10.2,
-                    child: Icon(
-                      Icons.link,
-                      size: 15.r,
-                      color: AppColors.primaryColor,
-                    )),
-                Expanded(
-                    child: Text(
-                  data.attachmentLink!,
-                  style: context.textStyle.displayMedium!.copyWith(
-                      color: AppColors.primaryColor,
-                      decoration: TextDecoration.underline),
-                ))
-              ],
-            ),
-            Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.spaceBetween,
-              runSpacing: 8.r,
-              spacing: 8.r,
-              children: List.generate(
-                data.postImages!.length,
-                (index) => ClipRRect(
-                  borderRadius: BorderRadius.circular(6.r),
-                  child: DisplayNetworkImage(
-                    imageUrl: data.postImages![index],
-                    height: 62.r,
-                    width: 73.r,
-                  ),
-                ),
-              ),
-            ),
-            5.ph,
-            const Divider(),
-            Row(
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    ReactionIconWidget(
-                      emoji: emojis[0],
-                    ),
-                    Positioned(
-                      right: -13,
-                      child: ReactionIconWidget(
-                        emoji: emojis[2],
-                      ),
-                    ),
-                    Positioned(
-                      right: -28,
-                      child: ReactionIconWidget(
-                        emoji: emojis[1],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    35.pw,
-                    Text(
-                      data.reactionCount.toString(),
-                      style: context.textStyle.labelSmall!
-                          .copyWith(letterSpacing: 0.3),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+              15.pw,
+              GestureDetector(
+                onTap: onTap,
+                child: Row(
                   children: [
                     SvgPicture.asset(
-                      Assets.likeIcon,
+                      Assets.commentIcon,
                       width: 20.r,
                       // height: 18.r,
                     ),
                     5.pw,
-                    Text(
-                      'Like',
-                      style: context.textStyle.labelSmall!
-                          .copyWith(letterSpacing: 0.3),
-                    )
+                    Text(data.comments!.length.toString(),
+                        style: context.textStyle.labelSmall!
+                            .copyWith(letterSpacing: 0.3))
                   ],
                 ),
-                15.pw,
-                GestureDetector(
-                  onTap: () {
-                    AppRouter.push(CommentView(
-                      data: data,
-                    ));
-                  },
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        Assets.commentIcon,
-                        width: 20.r,
-                        // height: 18.r,
-                      ),
-                      5.pw,
-                      Text(data.comments!.length.toString(),
-                          style: context.textStyle.labelSmall!
-                              .copyWith(letterSpacing: 0.3))
-                    ],
-                  ),
-                ),
-                12.pw,
-                IconButton(
-                    visualDensity:
-                        const VisualDensity(horizontal: -4.0, vertical: -4.0),
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      Assets.uploadIcon,
-                      width: 20.r,
-                    ))
-              ],
-            )
-          ],
-        ),
+              ),
+              12.pw,
+              IconButton(
+                  visualDensity:
+                      const VisualDensity(horizontal: -4.0, vertical: -4.0),
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    Assets.uploadIcon,
+                    width: 20.r,
+                  ))
+            ],
+          )
+        ],
       ),
     );
   }

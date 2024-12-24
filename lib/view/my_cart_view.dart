@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
@@ -129,20 +130,42 @@ class _MyCartViewConsumerState extends ConsumerState<MyCartView> {
           ),
         ),
         title: "My Cart",
-        child: ListView.separated(
-            itemBuilder: (context, index) => AddCartWidget(
-                  title: checkoutList[index].productName!,
-                  subtitle: "Redbull, Energy Drink, Weight 32gram",
-                  price: checkoutList[index].productPrice!,
-                  image: checkoutList[index].productImage!,
-                  isSelect: check[index],
-                  onTap: () {
-                    check[index] = !check[index];
-                    setState(() {});
-                  },
+        child: checkoutList.isNotEmpty
+            ? ListView.separated(
+                itemBuilder: (context, index) => AddCartWidget(
+                      title: checkoutList[index].productName!,
+                      subtitle: "Redbull, Energy Drink, Weight 32gram",
+                      price: checkoutList[index].productPrice!,
+                      image: checkoutList[index].productImage!,
+                      isSelect: check[index],
+                      onTap: () {
+                        check[index] = !check[index];
+                        setState(() {});
+                      },
+                    ),
+                separatorBuilder: (context, index) => 10.ph,
+                itemCount: checkoutList.length)
+            : SizedBox(
+                width: context.screenwidth,
+                height: context.screenheight,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      left: AppStyles.screenHorizontalPadding,
+                      right: AppStyles.screenHorizontalPadding,
+                      bottom: 100.r),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Lottie.asset(Assets.noCartItemLottie, width: 240.r),
+                      Text(
+                        "No Product In Cart",
+                        style: context.textStyle.displayLarge!
+                            .copyWith(fontSize: 22.sp),
+                      )
+                    ],
+                  ),
                 ),
-            separatorBuilder: (context, index) => 10.ph,
-            itemCount: checkoutList.length));
+              ));
     // child: ListView(
     //   children: [
     // AddCartWidget(
@@ -243,7 +266,7 @@ class AddCartWidget extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(9.r),
                     child: DisplayNetworkImage(
-                      imageUrl: "",
+                      imageUrl: image,
                       width: 99.r,
                       height: 93.r,
                     ),

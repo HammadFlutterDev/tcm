@@ -14,7 +14,7 @@ import 'user_profile_view/add_card_view.dart';
 
 class CheckoutPaymentSelectionView extends StatefulWidget {
   final ProductDataModel? productData;
-  const CheckoutPaymentSelectionView({super.key,  this.productData});
+  const CheckoutPaymentSelectionView({super.key, this.productData});
 
   @override
   State<CheckoutPaymentSelectionView> createState() =>
@@ -36,13 +36,19 @@ class _CheckoutPaymentSelectionViewState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomListWidget(
+                iconPayment: Assets.cashWalletIcon,
+                title: "Cash",
+                onTap: () {},
+              ),
+              12.ph,
+              CustomListWidget(
                 iconPayment: Assets.visa,
                 title: "Visa",
                 onTap: () {
                   AppRouter.push(AddCardView(
                     onTap: () {
                       AppRouter.back();
-                      AppRouter.pushReplacement( CheckoutView(
+                      AppRouter.pushReplacement(CheckoutView(
                         isDeliveryOptionSet: true,
                         isLocationSet: true,
                         isPaymentMethodSet: true,
@@ -60,7 +66,7 @@ class _CheckoutPaymentSelectionViewState
                   AppRouter.push(AddCardView(
                     onTap: () {
                       AppRouter.back();
-                      AppRouter.pushReplacement( CheckoutView(
+                      AppRouter.pushReplacement(CheckoutView(
                         isDeliveryOptionSet: true,
                         isLocationSet: true,
                         isPaymentMethodSet: true,
@@ -90,6 +96,5 @@ class _CheckoutPaymentSelectionViewState
             ],
           ),
         ));
-    
   }
 }
