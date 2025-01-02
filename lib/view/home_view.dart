@@ -7,7 +7,8 @@ import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
 import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/models/product_data_model.dart';
-import 'package:tcm/providers/product_provider.dart';
+import 'package:tcm/providers/location_provider.dart';
+
 
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
@@ -16,6 +17,7 @@ import 'package:tcm/view/search_product_view.dart';
 import 'package:tcm/widgets/cutom_dot_slide_widget.dart';
 import 'package:tcm/widgets/display_network_image.dart';
 import 'package:tcm/widgets/tab_screen_template.dart';
+import '../providers/product_provider.dart';
 import '../widgets/category_widget.dart';
 import '../widgets/product_widget.dart';
 
@@ -383,13 +385,18 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration.zero,(){
+      ref.read(currentLocationProvider).checkLocationPermission();
+  });
   }
 
   @override
   void didChangeDependencies() {
-    Future.delayed(Duration.zero, () {
+    Future.delayed(Duration.zero, () async {
       ref.read(productDataProvider.notifier).clearCheckOutList();
+     
     });
+
     super.didChangeDependencies();
   }
 

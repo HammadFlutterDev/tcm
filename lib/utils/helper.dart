@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+// import 'package:skeletonizer/skeletonizer.dart';
 
 // import '../config/app_colors.dart';
 
@@ -26,13 +25,13 @@ class Helper {
   //   );
   //   }
   // }
-  static showDisplayImage(double height, Widget? child){
-     Skeleton.ignore(
-      // baseColor: Colors.grey, highlightColor: Colors.blueGrey, 
-     child: Container(
-      height: height,
-     ));
-  }  
+  // static showDisplayImage(double height, Widget? child){
+  //    Skeleton.ignore(
+  //     // baseColor: Colors.grey, highlightColor: Colors.blueGrey, 
+  //    child: Container(
+  //     height: height,
+  //    ));
+  // }  
   static List errorHandler(String val) {
     List<String> results = [];
     List<String> resultConcator = [];

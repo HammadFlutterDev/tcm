@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:tcm/data/enums/api_status.dart';
+import 'package:tcm/providers/location_provider.dart';
+
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/chatting_list_view.dart';
@@ -58,47 +63,52 @@ class TopWidget extends StatelessWidget {
               50.ph,
               Row(
                 children: [
-                  Expanded(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
+                  Expanded(child: Consumer(
+                    builder: (_, WidgetRef ref, __) {
+                      final location =
+                          ref.watch(currentLocationProvider).currentLocation;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 5.r, vertical: 7.r),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6.r),
-                                gradient: AppColors.primaryGradinet),
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  Assets.locationIcon,
-                                  width: 12.r,
-                                  colorFilter: const ColorFilter.mode(
-                                      Colors.white, BlendMode.srcIn),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 6.r, vertical: 7.r),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6.r),
+                                    gradient: AppColors.primaryGradinet),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      Assets.locationIcon,
+                                      width: 12.r,
+                                      colorFilter: const ColorFilter.mode(
+                                          Colors.white, BlendMode.srcIn),
+                                    ),
+                                    4.pw,
+                                    Text(
+                                      "Location",
+                                      style: context.textStyle.displaySmall!
+                                          .copyWith(color: Colors.white),
+                                    )
+                                  ],
                                 ),
-                                4.pw,
-                                Text(
-                                  "Location",
-                                  style: context.textStyle.displaySmall!
-                                      .copyWith(color: Colors.white),
-                                )
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                          5.ph,
+                          Text(
+                            location.placeName,
+                            style: context.textStyle.displayMedium,
+                          ),
+                          Text(
+                            location.cityName,
+                            style: context.textStyle.bodyMedium,
+                          )
                         ],
-                      ),
-                      5.ph,
-                      Text(
-                        "Rainbow Resort, San Luis Obispo",
-                        style: context.textStyle.displayMedium,
-                      ),
-                      Text(
-                        "California",
-                        style: context.textStyle.bodyMedium,
-                      )
-                    ],
+                      );
+                    },
                   )),
                   if (index == 0)
                     Row(
@@ -140,73 +150,102 @@ class TopWidget extends StatelessWidget {
               ),
               const Spacer(),
               if (index == 0) ...[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        Text("Sunny",
-                            style: context.textStyle.bodySmall!.copyWith(
-                              height: 1,
-                            )),
-                        RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                // Temperature number with large font size
-                                TextSpan(
-                                  text: "25\u00B0",
-                                  style: context.textStyle.displayLarge!
-                                      .copyWith(fontSize: 50.sp),
-                                ),
-
-                                TextSpan(
-                                  text: "C",
-                                  style: context.textStyle.bodySmall!
-                                      .copyWith(fontSize: 18.sp),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                    14.pw,
-                    SizedBox(
-                      height: 68.h,
-                      child: VerticalDivider(
-                        width: 1,
-                        thickness: 1,
-                        color: Colors.black.withValues(alpha: 0.08),
-                      ),
-                    ),
-                    14.pw,
-                    Column(
+                Consumer(
+                  builder: (_, WidgetRef ref, __) {
+                    final currentLocation = ref.watch(currentLocationProvider);
+                    return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        10.ph,
-                        Text(
-                          "Monday, 21 September",
-                          style: context.textStyle.bodyMedium,
-                        ),
-                        Row(
+                        Stack(
                           children: [
-                            SvgPicture.asset(Assets.locationIcon),
-                            5.pw,
                             Text(
-                              "California",
+                                currentLocation
+                                        .apiResponse.data?.weather?[0].main ??
+                                    "",
+                                style: context.textStyle.bodySmall!.copyWith(
+                                  height: 1,
+                                )),
+                            RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  children: [
+                                    // Temperature number with large font size
+                                    TextSpan(
+                                      text: currentLocation
+                                                  .apiResponse.status ==
+                                              Status.completed
+                                          ? "${currentLocation.apiResponse.data?.main?.temp}"
+                                          : "----",
+                                      style: context.textStyle.displayLarge!
+                                          .copyWith(fontSize: 50.sp),
+                                    ),
+                                    if (currentLocation.apiResponse.status ==
+                                        Status.completed)
+                                      TextSpan(
+                                        text: "\u00B0",
+                                        style: context.textStyle.bodyLarge!
+                                            .copyWith(fontSize: 50.sp),
+                                      ),
+                                    if (currentLocation.apiResponse.status ==
+                                        Status.completed)
+                                      TextSpan(
+                                        text: "C",
+                                        style: context.textStyle.bodySmall!
+                                            .copyWith(fontSize: 18.sp),
+                                      ),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        14.pw,
+                        SizedBox(
+                          height: 68.h,
+                          child: VerticalDivider(
+                            width: 1,
+                            thickness: 1,
+                            color: Colors.black.withValues(alpha: 0.08),
+                          ),
+                        ),
+                        14.pw,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            10.ph,
+                            Text(
+                              DateFormat('EEEE, d MMMM').format(DateTime.now()),
                               style: context.textStyle.bodyMedium,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(Assets.locationIcon),
+                                5.pw,
+                                Text(
+                                  currentLocation.currentLocation.cityName,
+                                  style: context.textStyle.bodyMedium,
+                                )
+                              ],
                             )
                           ],
+                        ),
+                        const Spacer(),
+                        // Image.asset(
+                        //   Assets.weatherIcon,
+                        //   width: 77.r,
+                        //   height: 77.r,
+                        // )
+
+                        Image.network(
+                          "http://openweathermap.org/img/w/${currentLocation.apiResponse.data?.weather?[0].icon}.png",
+                          errorBuilder: (context, error, stackTrace) =>
+                              const SizedBox.shrink(),
+
+                          // width: 77.r,
+                          // height: 77.r,
                         )
                       ],
-                    ),
-                    const Spacer(),
-                    Image.asset(
-                      Assets.weatherIcon,
-                      width: 77.r,
-                      height: 77.r,
-                    )
-                  ],
+                    );
+                  },
                 ),
               ],
               if (index == 0)

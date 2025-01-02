@@ -76,7 +76,10 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
+                      const TextFieldUnderGround(
+                        hintText: "MM/YY",
+                        keyboardType: TextInputType.number,
+                      ),
                     ],
                   ),
                 ),
@@ -97,7 +100,10 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
+                      const TextFieldUnderGround(
+                        hintText: "MM/YY",
+                        keyboardType: TextInputType.number,
+                      ),
                     ],
                   ),
                 ),
@@ -118,7 +124,10 @@ class AddCardView extends StatelessWidget {
                         ),
                       ),
                       8.ph, // Space between label and field
-                      const TextFieldUnderGround(hintText: "MM/YY",  keyboardType: TextInputType.number,),
+                      const TextFieldUnderGround(
+                        hintText: "MM/YY",
+                        keyboardType: TextInputType.number,
+                      ),
                     ],
                   ),
                 ),
@@ -145,7 +154,7 @@ class AddCardView extends StatelessWidget {
 class TextFieldUnderGround extends StatelessWidget {
   const TextFieldUnderGround(
       {super.key,
-        this.keyboardType,
+      this.keyboardType,
       this.hintText,
       this.text,
       this.title,
@@ -193,11 +202,11 @@ class TextFieldUnderGround extends StatelessWidget {
         hintStyle: context.textStyle.displayMedium?.copyWith(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.greyColor70.withOpacity( 0.4)),
+            color: AppColors.greyColor70.withValues(alpha: 0.4)),
 
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-              color: AppColors.lightIconColor.withOpacity( 0.05)),
+              color: AppColors.lightIconColor.withValues(alpha: 0.05)),
         ),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.blue, width: 2.0),

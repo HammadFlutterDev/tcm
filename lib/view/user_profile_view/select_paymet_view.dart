@@ -39,7 +39,7 @@ class SelectPaymetView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                       width: 1,
-                      color: AppColors.lightIconColor.withOpacity( 0.1)),
+                      color: AppColors.lightIconColor.withValues(alpha: 0.1)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -121,8 +121,7 @@ class SelectableContainerList extends StatefulWidget {
   const SelectableContainerList({super.key, required this.items});
 
   @override
-  SelectableContainerListState createState() =>
-      SelectableContainerListState();
+  SelectableContainerListState createState() => SelectableContainerListState();
 }
 
 class SelectableContainerListState extends State<SelectableContainerList> {
@@ -153,10 +152,10 @@ class SelectableContainerListState extends State<SelectableContainerList> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: selectedIndex == index
-                        ? AppColors.primaryColor.withOpacity( 0.1)
-                        : AppColors.greyColor.withOpacity( 0.1),
+                        ? AppColors.primaryColor.withValues(alpha: 0.1)
+                        : AppColors.greyColor.withValues(alpha: 0.1),
                     border: Border.all(
-                        color: AppColors.lightIconColor.withOpacity( 0.1),
+                        color: AppColors.lightIconColor.withValues(alpha: 0.1),
                         width: 1),
                     borderRadius: BorderRadius.circular(10),
                   ),

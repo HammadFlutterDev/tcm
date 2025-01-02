@@ -459,7 +459,7 @@ class VenderProductDetailView extends StatelessWidget {
                                               .copyWith(
                                                   height: 0.8,
                                                   color: Colors.black
-                                                      .withOpacity(0.7)),
+                                                      .withValues(alpha: 0.7)),
                                         ),
                                       )
                                     ],
@@ -741,7 +741,7 @@ class UserRatingWidget extends StatelessWidget {
                           Text(
                             UserReviewDataModel.reviews[index].username,
                             style: context.textStyle.displaySmall!.copyWith(
-                                color: Colors.black.withOpacity(0.7),
+                                color: Colors.black.withValues(alpha: 0.7),
                                 fontWeight: FontWeight.w700),
                           ),
                           Text(

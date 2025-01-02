@@ -12,10 +12,10 @@ class AnimatedSearchText extends StatefulWidget {
   });
 
   @override
-  _AnimatedSearchTextState createState() => _AnimatedSearchTextState();
+  AnimatedSearchTextState createState() => AnimatedSearchTextState();
 }
 
-class _AnimatedSearchTextState extends State<AnimatedSearchText>
+class AnimatedSearchTextState extends State<AnimatedSearchText>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;

@@ -209,8 +209,8 @@ class _CommunityViewState extends State<CommunityView> {
                                 vertical: 0, horizontal: 10.r),
                             hintText: "What’s on your mind?",
                             hintStyle: context.textStyle.bodyMedium!.copyWith(
-                                color:
-                                    context.colors.onSurface.withOpacity(0.7))),
+                                color: context.colors.onSurface
+                                    .withValues(alpha: 0.7))),
                         controller: postTextEditController,
                       ),
                     ),

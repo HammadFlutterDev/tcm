@@ -2,7 +2,7 @@ abstract class BaseApiServices {
   //DEV URL
   //static String baseURL =   "http://192.168.18.145:8080/";
   //static String imageURL =  "http://192.168.18.145:8080";
-
+  static String weatherAppId = "28a9b26783d5b53ed2f25d7dd7717889";
   //Staging URL
   static String baseURL = "http://43.216.145.219:7000/";
   static String imageURL = "https://dealspot.s3.amazonaws.com";
