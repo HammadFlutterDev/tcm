@@ -30,6 +30,7 @@ class CustomBottomAppBarWidget extends ConsumerWidget {
           height: 85.h,
           decoration: const BoxDecoration(
             // color: Color(0xFFF8F8F8),
+            color: Colors.white,
             border: Border(
               top: BorderSide(
                 color: Color(0x1A000000), // border color with 10% opacity

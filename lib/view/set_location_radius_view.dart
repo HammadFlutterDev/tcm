@@ -199,7 +199,7 @@ void showFullScreenModal(BuildContext context) {
                           AppBar().preferredSize.height + 200.h),
                       child: AppBar(
                         elevation: 0.0,
-                        toolbarHeight: 100,
+                        toolbarHeight: 150.h,
                         centerTitle: true,
                         title: Text(
                           "Ready for Notifications",

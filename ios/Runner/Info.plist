@@ -3,9 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+<string>We need your location to show weather information.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>We need your location for weather updates, even when the app is in the background.</string>
+
+	<!-- <key>NSLocationWhenInUseUsageDescription</key>
     <string>Need location when in use</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Always and when in use!</string>
+    <string>Always and when in use!</string> -->
     <key>NSLocationUsageDescription</key>
     <string>Older devices need location.</string>
     <key>NSLocationAlwaysUsageDescription</key>

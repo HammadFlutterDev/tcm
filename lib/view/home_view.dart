@@ -9,7 +9,6 @@ import 'package:tcm/models/category_data_model.dart';
 import 'package:tcm/models/product_data_model.dart';
 import 'package:tcm/providers/location_provider.dart';
 
-
 import 'package:tcm/utils/app_extensions.dart';
 import 'package:tcm/utils/app_router.dart';
 import 'package:tcm/view/buy_product_view.dart';
@@ -385,16 +384,15 @@ class _HomeViewConsumerState extends ConsumerState<HomeView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero,(){
+    Future.delayed(Duration.zero, () {
       ref.read(currentLocationProvider).checkLocationPermission();
-  });
+    });
   }
 
   @override
   void didChangeDependencies() {
     Future.delayed(Duration.zero, () async {
       ref.read(productDataProvider.notifier).clearCheckOutList();
-     
     });
 
     super.didChangeDependencies();
@@ -634,6 +632,7 @@ class ProductDisplayWidget extends StatelessWidget {
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: !showSeeAll! ? 10.h : 0.0,
         children: [
           Row(
             children: [

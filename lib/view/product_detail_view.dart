@@ -183,6 +183,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                   horizontal: AppStyles.screenHorizontalPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10.h,
                 children: [
                   ProductTitleWidget(
                     address: widget.product.locationData?.address,
@@ -229,6 +230,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               items: nearByItems,
               showSeeAll: false,
               showAddCard: true,
+              height: 300.h,
               title: "Similar Products",
             ),
             100.ph

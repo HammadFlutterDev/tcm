@@ -50,9 +50,9 @@ class AdPreviewView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: AppStyles.screenHorizontalPadding),
-                  child: const Column(
-                    // spacing: 10.h,
-                    children: [
+                  child: Column(
+                    spacing: 10.h,
+                    children: const [
                       ProductTitleWidget(),
                       AdDetailWidget(),
                       ProductDetailWidget(),
