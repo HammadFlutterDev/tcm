@@ -16,6 +16,7 @@ import 'package:tcm/widgets/buy_sell_screen_template_widget.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:tcm/widgets/custom_button_widget.dart';
+import 'package:tcm/widgets/custom_google_map_widget.dart';
 import '../widgets/display_network_image.dart';
 
 class AdProductView extends StatefulWidget {
@@ -289,7 +290,10 @@ class _AdProductViewState extends State<AdProductView> {
           title: "Select Location",
         ),
         12.ph,
-        const LocationWidget(),
+        const LocationWidget(
+          lat: 37.43296265331129,
+          long: -122.08832357078792,
+        ),
         20.ph,
         const Divider(),
         20.ph,
@@ -351,23 +355,25 @@ class CustomTextFieldWidget extends StatelessWidget {
 }
 
 class LocationWidget extends StatelessWidget {
-  const LocationWidget({
-    super.key,
-  });
+  final double lat;
+  final double long;
+
+  const LocationWidget({super.key, required this.lat, required this.long});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
+        SizedBox(
           height: 118.h,
-          decoration: BoxDecoration(
-              image: const DecorationImage(
-                  image: NetworkImage(
-                      "https://storage.googleapis.com/support-forums-api/attachment/thread-6243036-16169345230575017474.jpg"),
-                  fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(10.r)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.r),
+            child: CustomGoogleMapWidget(
+              lat: lat,
+              long: long,
+            ),
+          ),
         ),
         Container(
           height: 118.h,

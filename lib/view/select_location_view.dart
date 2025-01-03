@@ -8,11 +8,12 @@ import 'package:tcm/view/checkout_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:tcm/widgets/custom_button_widget.dart';
+import 'package:tcm/widgets/custom_google_map_widget.dart';
 
 import '../widgets/custom_search_bar_widget.dart';
 
 class SelectLocationView extends StatelessWidget {
-  final ProductDataModel ?product;
+  final ProductDataModel? product;
   const SelectLocationView({super.key, required this.product});
 
   @override
@@ -28,19 +29,17 @@ class SelectLocationView extends StatelessWidget {
                   vertical: AppStyles.screenHorizontalPadding),
               child: CustomSearchBarWidget(
                   controller: TextEditingController(),
-                  hintText: "Search Product"),
+                  hintText: "Search Location"),
             )),
         title: "Select Location",
         child: Stack(
           clipBehavior: Clip.none,
           alignment: Alignment.bottomCenter,
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(Assets.map), fit: BoxFit.cover)),
+            const CustomGoogleMapWidget(
+              lat: 40.71302519172581,
+              long: -74.01013023107718,
+              zoom: 13,
             ),
             Container(
               height: 165.h,
@@ -70,7 +69,7 @@ class SelectLocationView extends StatelessWidget {
                       title: "Select",
                       onPressed: () {
                         AppRouter.back();
-                        AppRouter.pushReplacement( CheckoutView(
+                        AppRouter.pushReplacement(CheckoutView(
                           isLocationSet: true,
                           product: product,
                         ));

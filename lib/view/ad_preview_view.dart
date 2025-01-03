@@ -56,7 +56,11 @@ class AdPreviewView extends StatelessWidget {
                       ProductTitleWidget(),
                       AdDetailWidget(),
                       ProductDetailWidget(),
-                      LocationDetailWidget(),
+                      LocationDetailWidget(
+                        address:"Rainbow Resort, San Luis Obispo",
+                        lat: 37.43296265331129,
+                        long: -122.08832357078792,
+                      ),
                     ],
                   ),
                 ),
@@ -155,19 +159,28 @@ class ProductDetailWidget extends StatelessWidget {
 }
 
 class LocationDetailWidget extends StatelessWidget {
+  final String address;
+  final double lat;
+  final double long;
   const LocationDetailWidget({
     super.key,
+    required this.address,
+    required this.lat,
+    required this.long
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      // spacing: 12.h,
+    return Column(
+      spacing: 12.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleHeadingWidget(title: "Location"),
-        AddressDisplayTextWidget(address: "Rainbow Resort, San Luis Obispo"),
-        LocationWidget()
+        const TitleHeadingWidget(title: "Location"),
+        AddressDisplayTextWidget(address: address),
+        LocationWidget(
+          lat: lat,
+          long: long,
+        )
       ],
     );
   }

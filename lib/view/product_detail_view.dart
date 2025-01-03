@@ -198,7 +198,11 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                     },
                   ),
                   const ProductDetailWidget(),
-                  const LocationDetailWidget(),
+                  LocationDetailWidget(
+                    address: widget.product.locationData?.address ?? "",
+                    lat: widget.product.locationData?.lat ?? 0.0,
+                    long: widget.product.locationData?.long ?? 0.0,
+                  ),
                   20.ph,
                   const TitleHeadingWidget(title: "Listed by private user"),
                   ListTile(

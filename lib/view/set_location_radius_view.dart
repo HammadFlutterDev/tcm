@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tcm/config/app_colors.dart';
 import 'package:tcm/config/app_styles.dart';
 import 'package:tcm/config/asset_path.dart';
@@ -11,6 +12,7 @@ import 'package:tcm/view/set_notification_view.dart';
 import 'package:tcm/widgets/common_screen_template_widget.dart';
 import 'package:tcm/widgets/custom_back_button_widget.dart';
 import 'package:tcm/widgets/custom_button_widget.dart';
+import 'package:tcm/widgets/custom_google_map_widget.dart';
 import 'package:tcm/widgets/custom_search_bar_widget.dart';
 
 class SetLocationRadiusView extends StatefulWidget {
@@ -41,20 +43,18 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
       child: Column(
         children: [
           Expanded(
-              child: Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(Assets.map), fit: BoxFit.cover)),
+              child: CustomGoogleMapWidget(
+            lat: 34.047016,
+            long: -118.330215,
+            radiusCircle: {
+              Circle(
+                circleId: const CircleId('currentCircle'),
+                center: const LatLng(34.047016, -118.330215),
+                radius: _sliderValue * 5,
+                fillColor: Colors.blue.shade100.withAlpha(90),
+                strokeColor: Colors.blue.shade100.withAlpha(10),
               ),
-              Container(
-                width: double.infinity,
-                decoration:
-                    BoxDecoration(color: Colors.black.withValues(alpha: 0.4)),
-              ),
-            ],
+            },
           )),
           Container(
             padding: EdgeInsets.symmetric(
@@ -81,7 +81,7 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
                 ),
                 Slider(
                   activeColor: context.colors.primary,
-                  //    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10.r),
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10.r),
                   max: 100,
                   min: 0,
                   thumbColor: Colors.white,
@@ -104,78 +104,6 @@ class _SetLocationRadiusViewState extends State<SetLocationRadiusView> {
         ],
       ),
     );
-  }
-}
-
-class DashedSliderPainter extends CustomPainter {
-  final Color activeColor;
-  final Color inactiveColor;
-  final double activeTrackEnd; // Track end point controlled by the slider value
-
-  DashedSliderPainter({
-    required this.activeColor,
-    required this.inactiveColor,
-    required this.activeTrackEnd,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4;
-
-    // Draw the inactive track (grey color)
-    paint.color = inactiveColor;
-    canvas.drawLine(
-        Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
-
-    // Draw the dashed active track (blue color)
-    paint.color = activeColor;
-    paint.strokeCap = StrokeCap.round;
-
-    double dashWidth = 10;
-    double dashSpace = 5;
-    double distance = 0;
-
-    // Calculate the position of the dashed line based on the slider's value
-    double activeTrackEndPosition =
-        size.width * activeTrackEnd; // Position of the thumb
-
-    while (distance < activeTrackEndPosition) {
-      canvas.drawLine(
-        Offset(distance, size.height / 2),
-        Offset(distance + dashWidth, size.height / 2),
-        paint,
-      );
-      distance += dashWidth + dashSpace;
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true; // Repaint whenever the slider value changes
-  }
-}
-
-class CircleClipPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.blue
-      ..style = PaintingStyle.fill;
-
-    // Draw the background (full blue container)
-    canvas.drawRect(Offset.zero & size, paint);
-
-    // Transparent circle in the center
-    paint.color = Colors.transparent; // Make the circle transparent
-    double radius = size.width / 4; // Circle radius
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), radius, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }
 
