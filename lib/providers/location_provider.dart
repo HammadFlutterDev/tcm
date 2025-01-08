@@ -8,13 +8,14 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:tcm/models/weather_data_model.dart';
 import 'package:tcm/repository/get_weather_repo.dart';
 
+
 import '../data/network/api_response.dart';
 import '../utils/helper.dart';
 
 class GetCurrentLocation extends ChangeNotifier {
    LocationData currentLocation = LocationData(latitude: 0.0, longitude: 0.0, placeName: "-----------", cityName: "-------");
  final GetWeatherRepo weatherRepo = GetWeatherRepo();
-  late ApiResponse<WeatherDataModel> apiResponse = ApiResponse();
+ late ApiResponse<WeatherDataModel> apiResponse = ApiResponse();
   
 
   Future<void> checkLocationPermission() async {
@@ -31,7 +32,10 @@ class GetCurrentLocation extends ChangeNotifier {
                 longitude: position.longitude,
                 placeName:"${place.name  ?? ""}, ${ place.subLocality}",
                 cityName: place.locality ?? "");
-            fetchWeatherOfCity(currentLocation.cityName);
+            if(currentLocation.placeName != ""){
+              fetchWeatherOfCity(currentLocation.cityName);
+            }
+            
           }
         }
       }
@@ -89,12 +93,11 @@ class GetCurrentLocation extends ChangeNotifier {
         apiResponse = ApiResponse.error("Something went wrong!");
       }
       notifyListeners();
-      return true;
     } catch (e) {
       apiResponse =
           ApiResponse.errors(Helper.genericErrorHandler(e.toString()));
       notifyListeners();
-      return false;
+     
     }
   }
 }

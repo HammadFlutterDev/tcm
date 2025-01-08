@@ -1,6 +1,5 @@
 enum APIPath {
   signup,
-  getCityWeather
-
-
+  getCityWeather,
+  googleMapApi
 }

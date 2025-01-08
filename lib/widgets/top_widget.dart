@@ -329,3 +329,99 @@ class CustomBadgeWidget extends StatelessWidget {
         child: child);
   }
 }
+
+// class WeatherIconWidget extends StatelessWidget {
+//   final String weatherCode;
+
+//   const WeatherIconWidget({super.key, required this.weatherCode});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     IconData icon;
+
+//     // Map weather codes to icons
+//     switch (weatherCode) {
+//       // Clear sky
+//       case '01d':
+//         icon = WeatherIcons.day_sunny;
+//         break;
+//       case '01n':
+//         icon = WeatherIcons.night_clear;
+//         break;
+
+//       // Few clouds
+//       case '02d':
+//         icon = WeatherIcons.day_cloudy;
+//         break;
+//       case '02n':
+//         icon = WeatherIcons.night_alt_cloudy;
+//         break;
+
+//       // Scattered clouds
+//       case '03d':
+//         icon = WeatherIcons.cloudy;
+//         break;
+//       case '03n':
+//         icon = WeatherIcons.cloudy;
+//         break;
+
+//       // Broken clouds
+//       case '04d':
+//         icon = WeatherIcons.cloud;
+//         break;
+//       case '04n':
+//         icon = WeatherIcons.cloud;
+//         break;
+
+//       // Shower rain
+//       case '09d':
+//         icon = WeatherIcons.showers;
+//         break;
+//       case '09n':
+//         icon = WeatherIcons.showers;
+//         break;
+
+//       // Rain
+//       case '10d':
+//         icon = WeatherIcons.rain;
+//         break;
+//       case '10n':
+//         icon = WeatherIcons.rain;
+//         break;
+
+//       // Thunderstorm
+//       case '11d':
+//         icon = WeatherIcons.thunderstorm;
+//         break;
+//       case '11n':
+//         icon = WeatherIcons.thunderstorm;
+//         break;
+
+//       // Snow
+//       case '13d':
+//         icon = WeatherIcons.snow;
+//         break;
+//       case '13n':
+//         icon = WeatherIcons.snow;
+//         break;
+
+//       // Mist
+//       case '50d':
+//         icon = WeatherIcons.fog;
+//         break;
+//       case '50n':
+//         icon = WeatherIcons.fog;
+//         break;
+
+//       // Default case for unknown weather codes
+//       default:
+//         icon = WeatherIcons.na; // Not Available icon
+//     }
+
+//     return Icon(
+//       icon,
+//       size: 38.r,
+//       // Customize color if needed
+//     );
+//   }
+// }
