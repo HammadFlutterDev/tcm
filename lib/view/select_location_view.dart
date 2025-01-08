@@ -256,47 +256,47 @@ class _SelectLocationViewState extends State<SelectLocationView> {
   }
 }
 
-void displaySearchModalSheet(
-    BuildContext context, TextEditingController controller) {
-  showModalBottomSheet(
-    context: context,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r))),
-    isScrollControlled: true, // allows the bottom sheet to take up more space
-    builder: (BuildContext context) {
-      return Container(
-        constraints: BoxConstraints(
-            maxHeight: context.screenheight * 0.46,
-            minHeight: context.screenheight * 0.10),
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            CustomSearchBarWidget(
-              hintText: "Search Location",
-              controller: controller,
-            ),
-            20.ph,
-            Expanded(
-              child: ListView.builder(
-                itemCount: 2,
-                // shrinkWrap: true,
-                itemBuilder: (context, index) => ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  horizontalTitleGap: -2.9,
-                  leading: SvgPicture.asset(Assets.locationIcon),
-                  title: Text(
-                    "gdhasghdgash" * 10,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      );
-    },
-  );
-}
+// void displaySearchModalSheet(
+//     BuildContext context, TextEditingController controller) {
+//   showModalBottomSheet(
+//     context: context,
+//     shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r))),
+//     isScrollControlled: true, // allows the bottom sheet to take up more space
+//     builder: (BuildContext context) {
+//       return Container(
+//         constraints: BoxConstraints(
+//             maxHeight: context.screenheight * 0.46,
+//             minHeight: context.screenheight * 0.10),
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: <Widget>[
+//             CustomSearchBarWidget(
+//               hintText: "Search Location",
+//               controller: controller,
+//             ),
+//             20.ph,
+//             Expanded(
+//               child: ListView.builder(
+//                 itemCount: 2,
+//                 // shrinkWrap: true,
+//                 itemBuilder: (context, index) => ListTile(
+//                   contentPadding: EdgeInsets.zero,
+//                   horizontalTitleGap: -2.9,
+//                   leading: SvgPicture.asset(Assets.locationIcon),
+//                   title: Text(
+//                     "gdhasghdgash" * 10,
+//                     maxLines: 2,
+//                     overflow: TextOverflow.ellipsis,
+//                   ),
+//                 ),
+//               ),
+//             )
+//           ],
+//         ),
+//       );
+//     },
+//   );
+// }
