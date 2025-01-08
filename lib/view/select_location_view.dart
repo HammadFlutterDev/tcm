@@ -63,6 +63,7 @@ class _SelectLocationViewState extends State<SelectLocationView> {
   setLatLong(double lat, double long) {
     final CameraUpdate cameraUpdate =
         CameraUpdate.newLatLng(LatLng(lat, long)); // Example position
+    googleMapController?.moveCamera(cameraUpdate);
     googleMapController
         ?.animateCamera(cameraUpdate); // Animate to the camera update
   }
